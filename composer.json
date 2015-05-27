@@ -1,0 +1,14 @@
+{
+    "name": "smtech/smcanvaslib-canvaspest",
+    "description": "An extension of Pest to make RESTful queries to the Instructure Canvas API",
+    "authors": [
+        {
+            "name": "Seth Battis",
+            "email": "sethbattis@stmarksschool.org"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "educoder/pest": "dev-master"
+    }
+}
