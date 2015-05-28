@@ -31,6 +31,29 @@ class CanvasPest extends Pest {
 		return $data;
 	}
 	
+	/**
+     * Prepare data
+     * @param array $data
+     * @return array|string
+     */
+    public function prepData($data)
+    {
+        if (is_array($data)) {
+            $multipart = false;
+
+            foreach ($data as $item) {
+                if (is_string($item) && strncmp($item, "@", 1) == 0 && is_file(substr($item, 1))) {
+                    $multipart = true;
+                    break;
+                }
+            }
+
+            return ($multipart) ? $data : preg_replace('/%5B[0-9]+%5D/simU', '%5B%5D', http_build_query($data));
+        } else {
+            return $data;
+        }
+    }
+
 	protected function prepHeaders($headers) {
 		return parent::prepHeaders(array_merge($this->headers, $headers));
 	}
@@ -148,6 +171,7 @@ class CanvasPest extends Pest {
 	}
 }
 
+// TODO make this a real iterator
 class CanvasPestIterator {
 	protected $canvasPest;
 	protected $response;

@@ -1,5 +1,5 @@
 {
-    "name": "smtech/smcanvaslib-canvaspest",
+    "name": "smtech/canvaspest",
     "description": "An extension of Pest to make RESTful queries to the Instructure Canvas API",
     "authors": [
         {
