@@ -26,7 +26,7 @@ class CanvasPest extends Pest {
 	
 	protected function preprocessData($data) {
 		if (is_array($data) && !array_key_exists('per_page', $data)) {
-			$data['per_page'] = CanvasPest_MAXIMUM_PER_PAGE;
+			$data['per_page'] = CANVASPEST_MAXIMUM_PER_PAGE;
 		}
 		return $data;
 	}
@@ -204,8 +204,6 @@ class CanvasPestIterator {
 		return $this->response[$this->responseIndex];
 	}
 }
-
-class CanvasApiProcess extends CanvasPest {}
 
 class CanvasPest_Exception extends Exception {}
 
