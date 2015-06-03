@@ -10,5 +10,8 @@
     "minimum-stability": "dev",
     "require": {
         "educoder/pest": "dev-master"
+    },
+    "autoload": {
+        "classmap": [""]
     }
 }
