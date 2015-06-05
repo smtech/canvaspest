@@ -95,6 +95,14 @@ class CanvasPest extends Pest {
 		return $this->response;
 	}
 	
+	/**
+	 * @deprecated The Canvas API does not currently support PATCH calls
+	 * @throws CanvasPest_Exception All calls to this method will cause an exception
+	 **/	
+	public function patch($path, $data = array(), $headers = array()) {
+		throw new CanvasPest_Exception('The Canvas API does not allow PATCH calls.');
+	}
+	
 	public function delete($path, $headers = array()) {
 		$this->postprocessResponse(parent::delete($path, $headers));
 		$this->parseResponsePages();
@@ -170,6 +178,38 @@ class CanvasPest extends Pest {
 		return $this->getPrevPageNumber() !== false;
 	}
 }
+
+/**
+ * Enforce read-only access to the API on the client-side (since the server
+ * can't/won't do so)
+ **/
+class CanvasPest_ReadOnly extends CanvasPest {
+	/**
+	 * @deprecated CanvasPest_ReadOnly only supports GET calls to the API
+	 * @throws CanvasPest_ReadOnly_Exception All calls to this method will cause an exception
+	 **/
+	public function put($path, $data = array(), $headers = array()) {
+		throw new CanvasPest_ReadOnly_Exception('Only GET calls to the API are allowed from CanvasPest_ReadOnly.');
+	}
+
+	/**
+	 * @deprecated CanvasPest_ReadOnly only supports GET calls to the API
+	 * @throws CanvasPest_ReadOnly_Exception All calls to this method will cause an exception
+	 **/
+	public function post($path, $data = array(), $headers = array()) {
+		throw new CanvasPest_ReadOnly_Exception('Only GET calls to the API are allowed from CanvasPest_ReadOnly.');
+	}
+
+	/**
+	 * @deprecated CanvasPest_ReadOnly only supports GET calls to the API
+	 * @throws CanvasPest_ReadOnly_Exception All calls to this method will cause an exception
+	 **/
+	public function delete($path, $headers = array()) {
+		throw new CanvasPest_ReadOnly_Exception('Only GET calls to the API are allowed from CanvasPest_ReadOnly.');
+	}
+}
+
+class CanvasPest_ReadOnly_Exception extends CanvasPest_Exception {}
 
 // TODO make this a real iterator
 class CanvasPestIterator {
