@@ -1,11 +1,11 @@
 <?php
 
-require_once('vendor/autoload.php');
-
-/* the current maximum number of results per page returned by the Canvas API */
-define ('CANVASPEST_MAXIMUM_PER_PAGE', '50');
-
 class CanvasPest extends Pest {
+	
+	/**
+	 * current maximum response page
+	 **/
+	const MAXIMUM_PER_PAGE = 100;
 	
 	protected $headers;
 	protected $response = array();
@@ -26,7 +26,7 @@ class CanvasPest extends Pest {
 	
 	protected function preprocessData($data) {
 		if (is_array($data) && !array_key_exists('per_page', $data)) {
-			$data['per_page'] = CANVASPEST_MAXIMUM_PER_PAGE;
+			$data['per_page'] = self::MAXIMUM_PER_PAGE;
 		}
 		return $data;
 	}
