@@ -7,6 +7,7 @@
  **/
 class CanvasPageLink {
 	
+	const CURRENT = 'current';
 	const FIRST = 'first';
 	const LAST = 'last';
 	const NEXT = 'next';
@@ -25,8 +26,8 @@ class CanvasPageLink {
 				$pageUrl = func_get_arg(0);
 				$this->name = func_get_arg(1);
 				if (is_string($pageUrl) && !empty($pageUrl) && is_string($this->name) && !empty($this->name)) {
-					$this->endpoint = preg_replace('%.*/api/v1(/.*)$%', '$1', parse_url($pageUrl, PHP_URL_PATH);
-					$this->params = parse_url($pageUrl, PHP_URL_QUERY);
+					$this->endpoint = preg_replace('%.*/api/v1(/.*)$%', '$1', parse_url($pageUrl, PHP_URL_PATH));
+					parse_str(parse_url($pageUrl, PHP_URL_QUERY), $this->params);
 				} else {
 					throw new CanvasPageLink_Exception(
 						'Expected two non-empty strings for page URL and name',

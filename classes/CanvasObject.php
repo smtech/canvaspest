@@ -13,11 +13,11 @@
  **/
 class CanvasObject implements ArrayAccess {
 	
-	protected $pest;
+	//protected $pest;
 	private $data;
 	
 	public function __construct($response, $canvasPest) {
-		$this->pest = $canvasPest;
+		//$this->pest = $canvasPest;
 		if (is_array($response)) {
 			$this->data = $response;
 		} else {
@@ -60,7 +60,7 @@ class CanvasObject implements ArrayAccess {
 	}
 	
 	public function offsetGet ($offset) {
-		return $this->data($offset);
+		return $this->data[$offset];
 	}
 	
 	public function offsetSet($offset, $value) {

@@ -29,19 +29,13 @@ class CanvasArray implements Iterator, ArrayAccess {
 			foreach ($links as $link)
 			{
 				$this->pagination[$link[2]] = new CanvasPageLink($link[1], $link[2]);
-				if (!isset($this->endpoint)) {
-					$this->endpoint = $this->pagination[$link[2]]->getEndpoint();
-				}
-				if (!isset($this->perPage)) {
-					$this->perPage = $this->pagination[$link[2]]->getPerPage();
-				}
 			}
 		} else {
 			$this->pagination = array(); // might only be one page of results
 		}
 		
 		/* locate ourselves */
-		$this->page = $this->getCurrentPageNumber();
+		$this->page = $this->pagination[CanvasPageLink::CURRENT]->getPageNumber();
 		$this->key = $this->pageNumberToKey($this->page);
 
 		/* parse the JSON response string */
@@ -52,40 +46,30 @@ class CanvasArray implements Iterator, ArrayAccess {
 	}
 	
 	private function pageNumberToKey($pageNumber) {
-		return ($pageNumber - 1) * $this->perPage;
+		return ($pageNumber - 1) * $this->pagination[CanvasPageLink::CURRENT]->getPerPage();
 	}
 	
 	private function keyToPageNumber($key) {
-		return ((int) ($key / $this->perPage)) + 1;
+		return ((int) ($key / $this->pagination[CanvasPageLink::CURRENT]->getPerPage())) + 1;
 	}
 	
-	private function getCurrentPageNumber() {
-		if (array_key_exists(CanvasPageLink::NEXT, $this->pagination)) {
-			return $this->pagination[CanvasPageLink::NEXT]->getPageNumber() - 1;
-		} elseif (array_key_exists(CanvasPageLink::PREV, $this->pagination)) {
-			return $this->pagination[CanvasPageLink::PREV]->getPageNumber() + 1;
-		} else {
-			return 1; // the cheese stands alone
-		}
-	}
-
-	public function requestPageNumber($pageNumber, $forceRefresh = false) {
-		if (!array_key_exists($this->keyToPageNumber($pageNumber), $this->data) || $forceRefresh) {
+	private function requestPageNumber($pageNumber, $forceRefresh = false) {
+		if (!isset($this->data[$this->pageNumberToKey($pageNumber)]) || $forceRefresh) {
 			$page = $this->api->get(
-				$this->endpoint,
+				$this->pagination[CanvasPageLink::CURRENT]->getEndpoint(),
 				array(
 					CanvasPageLink::PARAM_PAGE_NUMBER => $pageNumber,
-					CanvasPageLink::PARAM_PER_PAGE => $this->perPage
+					CanvasPageLink::PARAM_PER_PAGE => $this->pagination[CanvasPageLink::CURRENT]->getPerPage()
 				)
 			);
-			$this->data = $page->data + $this->data;
+			$this->data = array_replace($this->data, $page->data);
 		}
 	}
 	
-	public function rewindToPageNumber($pageNumber, $forceRefresh = false) {
+	private function rewindToPageNumber($pageNumber, $forceRefresh = false) {
 		$page = null;
 		$key = $this->pageNumberToKey($pageNumber);
-		if ($forceRefresh || !array_key_exists($key, $this->data)) {
+		if ($forceRefresh || !isset($this->data[$key])) {
 			$page = $this->requestPageNumber($pageNumber, $forceRefresh);
 		}
 		
@@ -102,24 +86,20 @@ class CanvasArray implements Iterator, ArrayAccess {
 			CanvasPageLink::NEXT
 		);
 	}
-	
-	public function rewindToPage($pageName, $forceRefresh = false) {
-		return this->rewindToPageNumber($this->pagination[$pageName]->getPageNumber(), $forceRefresh);
-	}
 		
 	/****************************************************************************
 	 ArrayAccess methods */
 	
 	public function offsetExists($offset) {
-		$lastPageNumber = $this->getLastPageNumber();
-		if ($this->keyToPageNumber($offset) == $lastPageNumber && !array_key_exists($this->pageNumberToKey($lastPageNumber), $this->data)) {
+		$lastPageNumber = $this->pagination[CanvasPageLink::LAST]->getPageNumber();
+		if ($this->keyToPageNumber($offset) == $lastPageNumber && !isset($this->data[$this->pageNumberToKey($lastPageNumber)])) {
 			$this->requestPageNumber($lastPageNumber);
 		}
-		return array_key_exists($offset, $this->data) || ($offset >= 0 && $offset < $this->pageNumberToKey($this->getLastPageNumber()))
+		return isset($this->data[$offset]) || ($offset >= 0 && $offset < $this->pageNumberToKey($lastPageNumber));
 	}
 	
 	public function offsetGet($offset) {
-		if (offsetExists($offset) && !array_key_exists($offset, $this->data)) {
+		if ($this->offsetExists($offset) && !isset($this->data[$offset])) {
 			$this->requestPageNumber($this->keyToPageNumber($offset));
 		}
 		return $this->data[$offset];
@@ -145,6 +125,9 @@ class CanvasArray implements Iterator, ArrayAccess {
 	 Iterator methods */
 	
 	public function current() {
+		if (!isset($this->data[$this->key])) {
+			$this->requestPageNumber($this->keyToPageNumber($this->key));
+		}
 		return $this->data[$this->key];
 	}
 	
@@ -153,19 +136,15 @@ class CanvasArray implements Iterator, ArrayAccess {
 	}
 	
 	public function next() {
-		$key++;
+		$this->key++;
 	}
 	
 	public function rewind() {
-		$this->rewindToFirstPage();
+		$this->key = 0;
 	}
 	
 	public function valid() {
-		if (array_key_exists($this->key, $this->data)) {
-			return true;
-		} else {
-		
-		}
+		return ($this->offsetExists($this->key));
 	}
 	
 	/****************************************************************************/
