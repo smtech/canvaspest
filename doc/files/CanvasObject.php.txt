@@ -85,9 +85,7 @@ class CanvasObject implements ArrayAccess {
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
 class CanvasObject_Exception extends CanvasPest_Exception {
-	/**
-	 * @const IMMUTABLE Response values are read-only
-	 **/
+	/** Response values are read-only */
 	const IMMUTABLE = 101;
 }
 
