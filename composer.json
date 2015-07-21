@@ -12,6 +12,6 @@
         "educoder/pest": "dev-master"
     },
     "autoload": {
-        "classmap": [""]
+        "psr-4": {"": "classes/"}
     }
 }
