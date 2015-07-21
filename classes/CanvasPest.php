@@ -23,7 +23,7 @@ class CanvasPest extends Pest {
 	
 	protected function preprocessData($data) {
 		if (is_array($data) && !array_key_exists('per_page', $data)) {
-			$data['per_page'] = CanvasPest_ResponseList::MAXIMUM_PER_PAGE;
+			$data['per_page'] = CanvasArray::MAXIMUM_PER_PAGE;
 		}
 		return $data;
 	}
@@ -61,13 +61,13 @@ class CanvasPest extends Pest {
 	/**
 	 * Do any necessary processing and parsing of the API response
 	 *
-	 * @return CanvasPest_Response | CanvasPest_ResponseList | 
+	 * @return CanvasObject | CanvasArray
 	 **/
 	protected function postprocessResponse($path, $response) {
 		if(preg_match('%^.*/\d+/?$%', $path)) {
-			return new CanvasPest_Response($response, $this);
+			return new CanvasObject($response, $this);
 		} else {
-			return new CanvasPest_ResponseList($response, $this);
+			return new CanvasArray($response, $this);
 		}
 	}
 	
@@ -105,7 +105,7 @@ class CanvasPest extends Pest {
 	 **/	
 	public function patch($path, $data = array(), $headers = array()) {
 		throw new CanvasPest_Exception(
-			'The Canvas API does not allow PATCH calls.',
+			'The Canvas API does not support the PATCH method',
 			CanvasPest_Exception::UNSUPPORTED_METHOD
 		);
 	}

@@ -3,12 +3,12 @@
 /**
  * An object that represents a single Canvas object, providing both object-
  * style access (obj->key) and array-style access (array[key]).
- * CanvasPest_Response objects are immutable, so attempts to change their
+ * CanvasObject objects are immutable, so attempts to change their
  * underlying data will result in exceptions.
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class CanvasPest_Response implements ArrayAccess {
+class CanvasObject implements ArrayAccess {
 	
 	protected $pest;
 	private $data;
@@ -34,16 +34,16 @@ class CanvasPest_Response implements ArrayAccess {
 	}
 
 	public function __set($key, $value) {
-		throw new CanvasPest_Response_Exception(
-			'CanvasPest_Response objects are immutable',
-			CanvasPest_Response_Exception::IMMUTABLE
+		throw new CanvasObject_Exception(
+			'CanvasObject objects are immutable',
+			CanvasObject_Exception::IMMUTABLE
 		);
 	}
 	
 	public function __unset($key) {
-		throw new CanvasPest_Response_Exception(
-			'CanvasPest_Response objects are immutable',
-			CanvasPest_Response_Exception::IMMUTABLE
+		throw new CanvasObject_Exception(
+			'CanvasObject objects are immutable',
+			CanvasObject_Exception::IMMUTABLE
 		);
 	}
 	
@@ -61,15 +61,15 @@ class CanvasPest_Response implements ArrayAccess {
 	}
 	
 	public function offsetSet($offset, $value) {
-		throw new CanvasPest_Response_Exception(
-			'CanvasPest_Response objects are immutable',
-			CanvasPest_Response_Exception::IMMUTABLE
+		throw new CanvasObject_Exception(
+			'CanvasObject objects are immutable',
+			CanvasObject_Exception::IMMUTABLE
 		);
 	}
 	public function offsetUnset ($offset) {
-		throw new CanvasPest_Response_Exception(
-			'CanvasPest_Response objects are immutable',
-			CanvasPest_Response_Exception::IMMUTABLE
+		throw new CanvasObject_Exception(
+			'CanvasObject objects are immutable',
+			CanvasObject_Exception::IMMUTABLE
 		);
 	}
 	
@@ -77,11 +77,11 @@ class CanvasPest_Response implements ArrayAccess {
 }
 
 /**
- * All exceptions thrown by CanvasPest_Response
+ * All exceptions thrown by CanvasObject
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class CanvasPest_Response_Exception extends CanvasPest_Exception {
+class CanvasObject_Exception extends CanvasPest_Exception {
 	/**
 	 * @const IMMUTABLE Response values are read-only
 	 **/

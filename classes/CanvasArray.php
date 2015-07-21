@@ -6,7 +6,7 @@
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class CanvasPest_ResponseList implements Iterator, ArrayAccess {
+class CanvasArray implements Iterator, ArrayAccess {
 	
 	/**
 	 * @const MAXIMUM_PER_PAGE The maximum supported number of responses per page
@@ -57,7 +57,7 @@ class CanvasPest_ResponseList implements Iterator, ArrayAccess {
 	private function parseJsonPage($jsonPage, $pageNumber) {
 		$key = self::pageKey($pageNumber);
 		foreach (json_decode($jsonResponse, true) as $item) {
-			$this->data[$key++] = new CanvasPest_Response($item, $this->api);
+			$this->data[$key++] = new CanvasObject($item, $this->api);
 		}
 	}
 	
@@ -131,16 +131,16 @@ class CanvasPest_ResponseList implements Iterator, ArrayAccess {
 	}
 	
 	public function offsetSet($offset, $value) {
-		throw new CanvasPest_ResponseList_Exception(
+		throw new CanvasArray_Exception(
 			'Response lists are immutable',
-			CanvasPest_ResponseList_Exception::IMMUTABLE
+			CanvasArray_Exception::IMMUTABLE
 		);
 	}
 	
 	public function offsetUnset($offset) {
-		throw new CanvasPest_ResponseList_Exception(
+		throw new CanvasArray_Exception(
 			'Response lists are immutable',
-			CanvasPest_ResponseList_Exception::IMMUTABLE
+			CanvasArray_Exception::IMMUTABLE
 		);
 	}
 	
@@ -177,12 +177,12 @@ class CanvasPest_ResponseList implements Iterator, ArrayAccess {
 }
 
 /**
- * All exceptions thrown by CanvasPest_ResponseList
+ * All exceptions thrown by CanvasArray
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/	
-class CanvasPest_ResponseList_Exception extends CanvasPest_Exception {
-	const IMMUTABLE = 1;
+class CanvasArray_Exception extends CanvasObject_Exception {
+	// index starts at 100;
 }
 	
 ?>

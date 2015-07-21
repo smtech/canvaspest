@@ -24,30 +24,50 @@ class Pagination {
 			case 2: {
 				$pageUrl = func_get_arg(0);
 				$this->name = func_get_arg(1);
-				$this->endpoint = preg_replace('%.*/api/v1(/.*)$%', '$1', parse_url($pageUrl, PHP_URL_PATH);
-				$this->params = parse_url($pageUrl, PHP_URL_QUERY);
+				if (is_string($pageUrl) && !empty($pageUrl) && is_string($this->name) && !empty($this->name)) {
+					$this->endpoint = preg_replace('%.*/api/v1(/.*)$%', '$1', parse_url($pageUrl, PHP_URL_PATH);
+					$this->params = parse_url($pageUrl, PHP_URL_QUERY);
+				} else {
+					throw new Pagination_Exception(
+						'Expected two non-empty strings for page URL and name',
+						Pagination_Exception::INVALID_CONSTRUCTOR
+					);
+				}
 				break;
 			}
 			case 3: {
 				$pageNumber = func_get_arg(0);
 				$model = func_get_arg(1);
 				$this->name = func_get_arg(2);
-				$this->endpoint = $model->endpoint;
-				$this->params = $model->params;
-				switch($this->name) {
-					case self::PREV: {
-						$this->params[self::PARAM_PAGE_NUMBER] = $pageNumber - 1;
-						break;
+				if (is_int($pageNumber) && $pageNumber > 0 && $model instanceof Pagination && is_string($this->name) && !empty($this->name)) {
+					$this->endpoint = $model->endpoint;
+					$this->params = $model->params;
+					switch($this->name) {
+						case self::PREV: {
+							$this->params[self::PARAM_PAGE_NUMBER] = $pageNumber - 1;
+							break;
+						}
+						case self::NEXT: {
+							$this->params[self::PARAM_PAGE_NUMBER] = $pageNumber + 1;
+							break;
+						}
+						case self::FIRST: {
+							$this->params[self::PARAM_PAGE_NUMBER] = 1;
+							break;
+						}
+						case self::LAST:
+						default: {
+							throw new Pagination_Exception(
+								"'{$this->name}' cannot be converted to a page number",
+								Pagination_Exception::INVALID_CONSTRUCTOR
+							);
+						}
 					}
-					case self::NEXT: {
-						$this->params[self::PARAM_PAGE_NUMBER] = $pageNumber + 1;
-						break;
-					}
-					case self::FIRST:
-					case self::LAST:
-					default: {
-						throw new Pagination_Exception();
-					}
+				} else {
+					throw new Pagination_Exception(
+						'Expected a page number, a model Pagination object and a non-empty string page name',
+						Pagination_Exception::INVALID_CONSTRUCTOR
+					);
 				}
 				break;
 			}
@@ -80,6 +100,8 @@ class Pagination {
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class Pagination_Exception extends CanvasPest_ResponseList_Exception {}
+class Pagination_Exception extends CanvasArray_Exception {
+	const INVALID_CONSTRUCTOR = 201;
+}
 
 ?>
