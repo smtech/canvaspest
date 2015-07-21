@@ -6,27 +6,58 @@
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
 class CanvasPest extends Pest {
+	
+	/**
+	 * @const PARAM_PER_PAGE Name of the parameter controlling the number of responses per page
+	 **/
+	const PARAM_PER_PAGE = 'per_page';
+	
+	/**
+	 * @var array $headers Additional headers to be passed to the API with each call
+	 **/
 	protected $headers;
 	
-	public function __construct($apiInstanceUrl, $apiAuthorizationToken) {
+	/**
+	 * @param string $apiInstanceUrl URL of the API instance (e.g. 'https://canvas.instructure.com/api/v1')
+	 * @param string $apiAuthorizationToken Optional API access token for the API instance (if not provided now, it will need to be provided later
+	 *
+	 * @see CanvasPest::setupToken()
+	 **/
+	public function __construct($apiInstanceUrl, $apiAuthorizationToken = null) {
 		parent::__construct($apiInstanceUrl);
-		$this->setupToken($apiAuthorizationToken);
+		if (!empty($apiAuthorizationToken)) {
+			$this->setupToken($apiAuthorizationToken);
+		}
 	}
 	
+	/**
+	 * Set up a new API access token to access this instance
+	 *
+	 * @param string $token API access token
+	 *
+	 * @throws CanvasPest_Exception INVALID_TOKEN on an empty or non-string token value
+	 **/
 	public function setupToken($token) {
-		if (is_string($token) && strlen($token) > 0) {
+		if (is_string($token) && !empty($token)) {
 			$this->headers['Authorization'] = "Bearer $token";
 		} else if ($this->throw_exceptions) {
-			throw new CanvasPest_Exception('API authorization token must be a non-zero-length string');
+			throw new CanvasPest_Exception(
+				'API authorization token must be a non-zero-length string',
+				CanvasPest_Exception::INVALID_TOKEN
+			);
 		}
 	}
 	
 	/**
 	 * Force maximum response page size, if not already defined
+	 *
+	 * @param array $data Array of parameters for the next API call
+	 *
+	 * @return array Updated array of parameters
 	 **/
 	private function preprocessData($data) {
-		if (is_array($data) && !array_key_exists('per_page', $data)) {
-			$data['per_page'] = CanvasArray::MAXIMUM_PER_PAGE;
+		if (is_array($data) && !array_key_exists(self::PARAM_PER_PAGE, $data)) {
+			$data[self::PARAM_PER_PAGE] = CanvasArray::MAXIMUM_PER_PAGE;
 		}
 		return $data;
 	}
@@ -132,6 +163,11 @@ class CanvasPest_Exception extends Exception {
 	 * @const UNSUPPORTED_METHOD The API access method is not supported by the Canvas API
 	 **/
 	const UNSUPPORTED_METHOD = 1;
+	
+	/**
+	 * @const INVALID_TOKEN The API access token provided is invalid
+	 **/
+	const INVALID_TOKEN = 2;
 }
 
 ?>
