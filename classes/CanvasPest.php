@@ -21,7 +21,10 @@ class CanvasPest extends Pest {
 		}
 	}
 	
-	protected function preprocessData($data) {
+	/**
+	 * Force maximum response page size, if not already defined
+	 **/
+	private function preprocessData($data) {
 		if (is_array($data) && !array_key_exists('per_page', $data)) {
 			$data['per_page'] = CanvasArray::MAXIMUM_PER_PAGE;
 		}
@@ -29,9 +32,7 @@ class CanvasPest extends Pest {
 	}
 	
 	/**
-     * Prepare data
-     * @param array $data
-     * @return array|string
+     * {@inheritDoc} extended by CanvasPest to format the HTTP query parameters with non-indexed array elements (so http://example.com/api/v1/foo?bar[]=1&bar[]=2, rather than http://example.com/api/v1/foo?bar[0]=1&bar[1]=2).
      */
     public function prepData($data)
     {
@@ -52,15 +53,13 @@ class CanvasPest extends Pest {
     }
 
 	/**
-	 * {@inheritDoc}
+	 * {@inheritDoc} extended by CanvasPest to include the API access token in the Authorization header.
 	 **/
 	protected function prepHeaders($headers) {
 		return parent::prepHeaders(array_merge($this->headers, $headers));
 	}
 	
 	/**
-	 * Do any necessary processing and parsing of the API response
-	 *
 	 * @return CanvasObject | CanvasArray
 	 **/
 	protected function postprocessResponse($path, $response) {
@@ -71,6 +70,9 @@ class CanvasPest extends Pest {
 		}
 	}
 	
+	/**
+	 * @return CanvasObject | CanvasArray
+	 **/
 	public function get($path, $data = array(), $headers = array()) {
 		return $this->postprocessResponse(
 			$path,
@@ -78,6 +80,9 @@ class CanvasPest extends Pest {
 		);
 	}
 	
+	/**
+	 * @return CanvasObject | CanvasArray
+	 **/
 	public function post($path, $data = array(), $headers = array()) {
 		return $this->postprocessResponse(
 			$path,
@@ -85,6 +90,9 @@ class CanvasPest extends Pest {
 		);
 	}
 	
+	/**
+	 * @return CanvasObject | CanvasArray
+	 **/
 	public function put($path, $data = array(), $headers = array()) {
 		return $this->postprocessResponse(
 			$path,
@@ -92,6 +100,9 @@ class CanvasPest extends Pest {
 		);
 	}
 		
+	/**
+	 * @return CanvasObject | CanvasArray
+	 **/
 	public function delete($path, $headers = array()) {
 		return $this->postprocessResponse(
 			$path,

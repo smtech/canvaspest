@@ -6,6 +6,9 @@
  * CanvasObject objects are immutable, so attempts to change their
  * underlying data will result in exceptions.
  *
+ * A CanvasObject is returned from any API request for which the endpoint ends
+ * with a specific ID number (e.g. http://example.com/api/v1/accounts/1/users/1).
+ *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
 class CanvasObject implements ArrayAccess {
@@ -35,14 +38,14 @@ class CanvasObject implements ArrayAccess {
 
 	public function __set($key, $value) {
 		throw new CanvasObject_Exception(
-			'CanvasObject objects are immutable',
+			'Canvas objects are immutable',
 			CanvasObject_Exception::IMMUTABLE
 		);
 	}
 	
 	public function __unset($key) {
 		throw new CanvasObject_Exception(
-			'CanvasObject objects are immutable',
+			'Canvas objects are immutable',
 			CanvasObject_Exception::IMMUTABLE
 		);
 	}
@@ -62,13 +65,13 @@ class CanvasObject implements ArrayAccess {
 	
 	public function offsetSet($offset, $value) {
 		throw new CanvasObject_Exception(
-			'CanvasObject objects are immutable',
+			'Canvas objects are immutable',
 			CanvasObject_Exception::IMMUTABLE
 		);
 	}
 	public function offsetUnset ($offset) {
 		throw new CanvasObject_Exception(
-			'CanvasObject objects are immutable',
+			'Canvas objects are immutable',
 			CanvasObject_Exception::IMMUTABLE
 		);
 	}
@@ -85,7 +88,7 @@ class CanvasObject_Exception extends CanvasPest_Exception {
 	/**
 	 * @const IMMUTABLE Response values are read-only
 	 **/
-	const IMMUTABLE = 1;
+	const IMMUTABLE = 101;
 }
 
 ?>

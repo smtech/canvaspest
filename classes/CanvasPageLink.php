@@ -5,7 +5,7 @@
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class Pagination {
+class CanvasPageLink {
 	
 	const FIRST = 'first';
 	const LAST = 'last';
@@ -28,9 +28,9 @@ class Pagination {
 					$this->endpoint = preg_replace('%.*/api/v1(/.*)$%', '$1', parse_url($pageUrl, PHP_URL_PATH);
 					$this->params = parse_url($pageUrl, PHP_URL_QUERY);
 				} else {
-					throw new Pagination_Exception(
+					throw new CanvasPageLink_Exception(
 						'Expected two non-empty strings for page URL and name',
-						Pagination_Exception::INVALID_CONSTRUCTOR
+						CanvasPageLink_Exception::INVALID_CONSTRUCTOR
 					);
 				}
 				break;
@@ -39,7 +39,7 @@ class Pagination {
 				$pageNumber = func_get_arg(0);
 				$model = func_get_arg(1);
 				$this->name = func_get_arg(2);
-				if (is_int($pageNumber) && $pageNumber > 0 && $model instanceof Pagination && is_string($this->name) && !empty($this->name)) {
+				if (is_int($pageNumber) && $pageNumber > 0 && $model instanceof CanvasPageLink && is_string($this->name) && !empty($this->name)) {
 					$this->endpoint = $model->endpoint;
 					$this->params = $model->params;
 					switch($this->name) {
@@ -57,16 +57,16 @@ class Pagination {
 						}
 						case self::LAST:
 						default: {
-							throw new Pagination_Exception(
+							throw new CanvasPageLink_Exception(
 								"'{$this->name}' cannot be converted to a page number",
-								Pagination_Exception::INVALID_CONSTRUCTOR
+								CanvasPageLink_Exception::INVALID_CONSTRUCTOR
 							);
 						}
 					}
 				} else {
-					throw new Pagination_Exception(
-						'Expected a page number, a model Pagination object and a non-empty string page name',
-						Pagination_Exception::INVALID_CONSTRUCTOR
+					throw new CanvasPageLink_Exception(
+						'Expected a page number, a model CanvasPageLink object and a non-empty string page name',
+						CanvasPageLink_Exception::INVALID_CONSTRUCTOR
 					);
 				}
 				break;
@@ -96,12 +96,12 @@ class Pagination {
 }
 
 /**
- * All exceptions thrown by Pagination objects
+ * All exceptions thrown by CanvasPageLink objects
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class Pagination_Exception extends CanvasArray_Exception {
-	const INVALID_CONSTRUCTOR = 201;
+class CanvasPageLink_Exception extends CanvasArray_Exception {
+	const INVALID_CONSTRUCTOR = 301;
 }
 
 ?>
