@@ -67,13 +67,16 @@ class CanvasObject implements ArrayAccess {
 	 *
 	 * @deprecated Canvas objects are immutable
 	 *
+	 * @param string $key
+	 * @param mixed $value
+	 *
 	 * @return void
 	 *
 	 * @throws CanvasObject_Exception IMMUTABLE All calls to this method will cause an exception
 	 *
 	 * @see http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members Property overloading
 	 **/
-	public function __set() {
+	public function __set($key, $value) {
 		throw new CanvasObject_Exception(
 			'Canvas objects are immutable',
 			CanvasObject_Exception::IMMUTABLE
@@ -85,13 +88,15 @@ class CanvasObject implements ArrayAccess {
 	 *
 	 * @deprecated Canvas objects are immutable
 	 *
+	 * @param string $key
+	 *
 	 * @return void
 	 *
 	 * @throws CanvasObject_Exception IMMUTABLE All calls to this method will cause an exception
 	 *
 	 * @see http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members Property overloading
 	 **/
-	public function __unset() {
+	public function __unset($key) {
 		throw new CanvasObject_Exception(
 			'Canvas objects are immutable',
 			CanvasObject_Exception::IMMUTABLE
@@ -134,13 +139,16 @@ class CanvasObject implements ArrayAccess {
 	 *
 	 * @deprecated Canvas objects are immutable
 	 *
+	 * @param int|string $offset
+	 * @param mixed $value
+	 *
 	 * @return void
 	 *
 	 * @throws CanvasObject_Exception IMMUTABLE All calls to this method will cause an exception
 	 *
 	 * @see http://php.net/manual/en/arrayaccess.offsetset.php ArrayAccess::offsetSet
 	 **/
-	public function offsetSet() {
+	public function offsetSet($offset, $value) {
 		throw new CanvasObject_Exception(
 			'Canvas objects are immutable',
 			CanvasObject_Exception::IMMUTABLE
@@ -152,13 +160,15 @@ class CanvasObject implements ArrayAccess {
 	 *
 	 * @deprecated Canvas objects are immutable
 	 *
+	 * @param int|string $offset
+	 *
 	 * @return void
 	 *
 	 * @throws CanvasObject_Exception IMMUTABLE All calls to this method will cause an exception
 	 *
 	 * @see http://php.net/manual/en/arrayaccess.offsetunset.php ArrayAccess::offsetUnset
 	 **/
-	public function offsetUnset () {
+	public function offsetUnset ($offset) {
 		throw new CanvasObject_Exception(
 			'Canvas objects are immutable',
 			CanvasObject_Exception::IMMUTABLE

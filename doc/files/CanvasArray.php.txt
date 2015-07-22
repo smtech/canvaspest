@@ -243,13 +243,16 @@ class CanvasArray implements Iterator, ArrayAccess {
 	 *
 	 * @deprecated Canvas responses are immutable
 	 *
+	 * @param int|string $offset
+	 * @param CanvasObject $value
+	 *
 	 * @return void
 	 *
 	 * @throws CanvasArray_Exception IMMUTABLE All calls to this method will cause an exception
 	 *
 	 * @see http://php.net/manual/en/arrayaccess.offsetset.php ArrayAccess::offsetSet
 	 **/
-	public function offsetSet() {
+	public function offsetSet($offset, $value) {
 		throw new CanvasArray_Exception(
 			'Canvas responses are immutable',
 			CanvasArray_Exception::IMMUTABLE
@@ -261,13 +264,15 @@ class CanvasArray implements Iterator, ArrayAccess {
 	 *
 	 * @deprecated Canvas responses are immutable
 	 *
+	 * @param int|string $offset
+	 *
 	 * @return void
 	 *
 	 * @throws CanvasArray_Exception IMMUTABLE All calls to this method will cause an exception
 	 *
 	 * @see http://php.net/manual/en/arrayaccess.offsetunset.php ArrayAccess::offsetUnset
 	 **/
-	public function offsetUnset() {
+	public function offsetUnset($offset) {
 		throw new CanvasArray_Exception(
 			'Canvas responses are immutable',
 			CanvasArray_Exception::IMMUTABLE
