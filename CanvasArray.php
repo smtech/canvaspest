@@ -168,7 +168,40 @@ class CanvasArray implements Iterator, ArrayAccess {
 			CanvasPageLink::NEXT
 		);
 	}
-		
+	
+	/****************************************************************************
+	 ArrayObject methods */
+	
+	/**
+	 * Get the number of CanvasObjects in the Canvas response
+	 *
+	 * @return int
+	 *
+	 * @see http://php.net/manual/en/arrayobject.count.php ArrayObject::count
+	 **/
+	public function count() {
+		$this->requestPageNumber($this->pagination[CanvasPageLink::LAST]);
+		end($this->data);
+		return current($this->data) + 1;
+	}
+	
+	/**
+	 * Creates a copy of the CanvasArray
+	 *
+	 * @return CanvasObject[]
+	 *
+	 * @see http://php.net/manual/en/arrayobject.getarraycopy.php ArrayObject::getArrayCopy
+	 **/
+	public function getArrayCopy() {
+		$_key = $this->key;
+		$this->rewindToPageNumber(1);
+		while(isset($this->pagination[CanvasPageLink::NEXT])) {
+			$this->rewindToPageNumber($this->pagination[CanvasPageLink::NEXT]);
+		}
+		$this->key = $_key;
+		return $this->data;
+	}
+	
 	/****************************************************************************
 	 ArrayAccess methods */
 	
