@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpdoc>
+	<title>CanvasPest</title>
+	<parser>
+		<target>phpdoc</target>
+	</parser>
+	<transformer>
+		<target>doc</target>
+	</transformer>
+	<transformation>
+		<template name="responsive"/>
+	</transformation>
+	<files>
+		<ignore>.</ignore>
+		<file>Canvas*</file>
+	</files>
+</phpdoc>

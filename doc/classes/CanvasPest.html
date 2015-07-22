@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>CanvasPest</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">CanvasPest</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">10</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-486296754"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-486296754" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/CanvasArray.html">CanvasArray</a></li>
+                                                    <li class="class"><a href="../classes/CanvasArray_Exception.html">CanvasArray_Exception</a></li>
+                                                    <li class="class"><a href="../classes/CanvasObject.html">CanvasObject</a></li>
+                                                    <li class="class"><a href="../classes/CanvasObject_Exception.html">CanvasObject_Exception</a></li>
+                                                    <li class="class"><a href="../classes/CanvasPageLink.html">CanvasPageLink</a></li>
+                                                    <li class="class"><a href="../classes/CanvasPageLink_Exception.html">CanvasPageLink_Exception</a></li>
+                                                    <li class="class"><a href="../classes/CanvasPest.html">CanvasPest</a></li>
+                                                    <li class="class"><a href="../classes/CanvasPest_Exception.html">CanvasPest_Exception</a></li>
+                                                    <li class="class"><a href="../classes/CanvasPestImmutable.html">CanvasPestImmutable</a></li>
+                                                    <li class="class"><a href="../classes/CanvasPestImmutable_Exception.html">CanvasPestImmutable_Exception</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>CanvasPest</h1>
+                    <p><em>An object to handle interactions with the Canvas API.</em></p>
+                    <p>For more information on the Canvas API refer to the offical
+<a href="https://canvas.instructure.com/doc/api/">Canvas API documentation</a> or
+to the (slightly more up-to-date and pleasingly interactive)
+<a href="https://canvas.instructure.com/doc/api/live">live documentation</a>.</p>
+<p>You can access the live documentation for your own Canvas instance and make
+actual API calls to it at <code>https://&lt;path-to-your-instance&gt;/doc/api/live</code></p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/CanvasPest.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/CanvasPest.html#method_setupToken" class="">setupToken()</a><br />
+                                                                    <a href="../classes/CanvasPest.html#method_prepData" class="">prepData()</a><br />
+                                                                    <a href="../classes/CanvasPest.html#method_get" class="">get()</a><br />
+                                                                    <a href="../classes/CanvasPest.html#method_post" class="">post()</a><br />
+                                                                    <a href="../classes/CanvasPest.html#method_put" class="">put()</a><br />
+                                                                    <a href="../classes/CanvasPest.html#method_delete" class="">delete()</a><br />
+                                                                    <a href="../classes/CanvasPest.html#method_patch" class="deprecated">patch()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/CanvasPest.html#constant_PARAM_PER_PAGE" class="">PARAM_PER_PAGE</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/CanvasPest.html#method_prepHeaders" class="">prepHeaders()</a><br />
+                                                                    <a href="../classes/CanvasPest.html#method_postprocessResponse" class="">postprocessResponse()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/CanvasPest.html#property_headers" class="">$headers</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/CanvasPest.html#method_preprocessData" class="">preprocessData()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/CanvasPest.html"><div class="path-wrapper">CanvasPest.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper">\Pest</div>
+                                                                                                    <div class="namespace-wrapper">\CanvasPest</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Seth Battis <a href="mailto:SethBattis@stmarksschool.org">SethBattis@stmarksschool.org</a></p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_PARAM_PER_PAGE" name="constant_PARAM_PER_PAGE" class="anchor"></a>
+            <article id="constant_PARAM_PER_PAGE" class="constant">
+                <h3 class="">PARAM_PER_PAGE</h3>
+                <pre class="signature">PARAM_PER_PAGE</pre>
+                <p><em>Name of the parameter controlling the number of responses per page</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_headers" name="property_headers" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$headers</h3>
+                <pre class="signature">$headers : array&lt;mixed,string&gt;</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                array&lt;mixed,string&gt;
+                &mdash; Additional headers to be passed to the API with each call                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$apiInstanceUrl</span>, string  <span class="argument">$apiAuthorizationToken = null</span>) : void</pre>
+                <p><em>Construct a new CanvasPest</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$apiInstanceUrl </td>
+                                <td><p>URL of the API instance (e.g.
+<code>'https://canvas.instructure.com/api/v1'</code>)</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$apiAuthorizationToken </td>
+                                <td><p>(Optional) API access token for the
+API instance (if not provided now, it will need to be provided later)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/CanvasPest.html#method_setupToken"><span class="namespace-wrapper">To configure the API access token later</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setupToken" name="method_setupToken" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setupToken()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setupToken(string  <span class="argument">$token</span>) </pre>
+                <p><em>Set up a new API access token to access this instance</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$token </td>
+                                <td><p>API access token</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CanvasPest_Exception</dt>
+                            <dd><p>INVALID_TOKEN on an empty or non-string token value</p></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_prepData" name="method_prepData" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">prepData()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">prepData(array&lt;mixed,string&gt;  <span class="argument">$data</span>) : string|array&lt;mixed,string&gt;</pre>
+                <p><em>Prepare data</em></p>
+                <p>Extended by CanvasPest to format the HTTP query parameters
+with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rather than
+<code>...foo?bar[0]=1&amp;bar[1]=2</code>, as the Canvas API prefers them).</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,string&gt;</td>
+                                <td>$data </td>
+                                <td><p>Query parameters</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string|array&lt;mixed,string&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get" name="method_get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$data = array()</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : \CanvasObject|\CanvasArray</pre>
+                <p><em>Make a GET call to the API</em></p>
+                <p>For queries to individually identified endpoints (e.g.
+<code>accounts/1/users/123</code>), return a CanvasObject representing the API response
+describing <em>that</em> individually identified object affected by the query.</p>
+<p>For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a
+traversable CanvasArray (of CanvasObjects) representing the API response
+describing the list of objects affected by the query.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td><p>Path to the API endpoint of this call</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|array&lt;mixed,string&gt;</td>
+                                <td>$data </td>
+                                <td><p>(Optional) Query parameters for this call</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|array&lt;mixed,string&gt;</td>
+                                <td>$headers </td>
+                                <td><p>(Optional) Any additional HTTP headers for this call</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CanvasObject.html">\CanvasObject</a>|<a href="../classes/CanvasArray.html">\CanvasArray</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_post" name="method_post" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">post()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">post(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$data = array()</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : \CanvasObject|\CanvasArray</pre>
+                <p><em>Make a POST call to the API</em></p>
+                <p>For queries to individually identified endpoints (e.g.
+<code>accounts/1/users/123</code>), return a CanvasObject representing the API response
+describing <em>that</em> individually identified object affected by the query.</p>
+<p>For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a
+traversable CanvasArray (of CanvasObjects) representing the API response
+describing the list of objects affected by the query.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td><p>Path to the API endpoint of this call</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|array&lt;mixed,string&gt;</td>
+                                <td>$data </td>
+                                <td><p>(Optional) Query parameters for this call</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|array&lt;mixed,string&gt;</td>
+                                <td>$headers </td>
+                                <td><p>(Optional) Any additional HTTP headers for this call</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CanvasObject.html">\CanvasObject</a>|<a href="../classes/CanvasArray.html">\CanvasArray</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_put" name="method_put" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">put()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">put(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$data = array()</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : \CanvasObject|\CanvasArray</pre>
+                <p><em>Make a PUT call to the API</em></p>
+                <p>For queries to individually identified endpoints (e.g.
+<code>accounts/1/users/123</code>), return a CanvasObject representing the API response
+describing <em>that</em> individually identified object affected by the query.</p>
+<p>For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a
+traversable CanvasArray (of CanvasObjects) representing the API response
+describing the list of objects affected by the query.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td><p>Path to the API endpoint of this call</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|array&lt;mixed,string&gt;</td>
+                                <td>$data </td>
+                                <td><p>(Optional) Query parameters for this call</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|array&lt;mixed,string&gt;</td>
+                                <td>$headers </td>
+                                <td><p>(Optional) Any additional HTTP headers for this call</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CanvasObject.html">\CanvasObject</a>|<a href="../classes/CanvasArray.html">\CanvasArray</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_delete" name="method_delete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">delete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">delete(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : \CanvasObject|\CanvasArray</pre>
+                <p><em>Make a DELETE call to the API</em></p>
+                <p>For queries to individually identified endpoints (e.g.
+<code>accounts/1/users/123</code>), return a CanvasObject representing the API response
+describing <em>that</em> individually identified object affected by the query.</p>
+<p>For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a
+traversable CanvasArray (of CanvasObjects) representing the API response
+describing the list of objects affected by the query.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td><p>Path to the API endpoint of this call</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|array&lt;mixed,string&gt;</td>
+                                <td>$headers </td>
+                                <td><p>(Optional) Any additional HTTP headers for this call</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CanvasObject.html">\CanvasObject</a>|<a href="../classes/CanvasArray.html">\CanvasArray</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_patch" name="method_patch" class="anchor"></a>
+            <article class="method">
+                <h3 class="public deprecated">patch()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">patch() : void</pre>
+                <p><em>Make a PATCH call to the API</em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CanvasPest_Exception</dt>
+                            <dd><p>UNSUPPORTED_METHOD All calls to this method will cause an exception</p></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                                <aside class="alert alert-block alert-error">
+                    <h4>Deprecated</h4>
+                    The Canvas API does not currently support PATCH calls
+                </aside>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_prepHeaders" name="method_prepHeaders" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">prepHeaders()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">prepHeaders(array&lt;mixed,string&gt;  <span class="argument">$headers</span>) : array&lt;mixed,string&gt;</pre>
+                <p><em>Prepare API request headers</em></p>
+                <p>Flatten headers from an associative array to a numerically indexed array
+of <code>"Name: Value"</code> style entries like <code>CURLOPT_HTTPHEADER</code> expects.
+Numerically indexed arrays are not modified.</p>
+<p>Extended by CanvasPest to include the API access token in the
+<code>Authorization</code> header.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,string&gt;</td>
+                                <td>$headers </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,string&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_postprocessResponse" name="method_postprocessResponse" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">postprocessResponse()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">postprocessResponse(string  <span class="argument">$path</span>, string  <span class="argument">$response</span>) : \CanvasObject|\CanvasArray</pre>
+                <p><em>Parse the API response into an object (or collection of objects).</em></p>
+                <p>For queries to individually identified endpoints (e.g.
+<code>accounts/1/users/123</code>), return a CanvasObject representing the API response
+describing <em>that</em> individually identified object affected by the query.</p>
+<p>For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a
+traversable CanvasArray (of CanvasObjects) representing the API response
+describing the list of objects affected by the query.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td><p>Path to the API endpoint queried</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$response </td>
+                                <td><p>JSON-encoded response from the API</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/CanvasObject.html">\CanvasObject</a>|<a href="../classes/CanvasArray.html">\CanvasArray</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_preprocessData" name="method_preprocessData" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">preprocessData()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">preprocessData(array&lt;mixed,string&gt;  <span class="argument">$data</span>) : array&lt;mixed,string&gt;</pre>
+                <p><em>Preprocess API call parameters before use</em></p>
+                <p>Force maximum response page size, if not already defined.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,string&gt;</td>
+                                <td>$data </td>
+                                <td><p>Array of parameters for the next API call</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,string&gt;
+                                            &mdash; <p>Updated array of parameters</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/CanvasArray.html#constant_MAXIMUM_PER_PAGE"><span class="namespace-wrapper">Maximum number of responses per page</span></a></dd>
+                                            <dd><a href="../classes/CanvasPest.html#constant_PARAM_PER_PAGE"><span class="namespace-wrapper">Page size parameter</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">CanvasPest.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/CanvasPest.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on 
+Warning: date_default_timezone_get(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in phar:///Users/sethbattis/Dropbox/Library/Scripts/phpdocumentor.phar/vendor/twig/twig/lib/Twig/Extension/Core.php on line 89
+July 22nd, 2015 at 03:20.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
