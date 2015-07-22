@@ -106,17 +106,17 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">81</span>
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/deprecated.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">4</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">10</span>
                                 </a>
                             </li>
                         </ul>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1379476953"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1884181641"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1379476953" class="accordion-body collapse in">
+            <div id="namespace-1884181641" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -198,12 +198,12 @@ with a specific ID number (e.g. <a href="http://example.com/api/v1/accounts/1/us
                                                                     <a href="../classes/CanvasObject.html#method___construct" class="">__construct()</a><br />
                                                                     <a href="../classes/CanvasObject.html#method___isset" class="">__isset()</a><br />
                                                                     <a href="../classes/CanvasObject.html#method___get" class="">__get()</a><br />
-                                                                    <a href="../classes/CanvasObject.html#method___set" class="">__set()</a><br />
-                                                                    <a href="../classes/CanvasObject.html#method___unset" class="">__unset()</a><br />
+                                                                    <a href="../classes/CanvasObject.html#method___set" class="deprecated">__set()</a><br />
+                                                                    <a href="../classes/CanvasObject.html#method___unset" class="deprecated">__unset()</a><br />
                                                                     <a href="../classes/CanvasObject.html#method_offsetExists" class="">offsetExists()</a><br />
                                                                     <a href="../classes/CanvasObject.html#method_offsetGet" class="">offsetGet()</a><br />
-                                                                    <a href="../classes/CanvasObject.html#method_offsetSet" class="">offsetSet()</a><br />
-                                                                    <a href="../classes/CanvasObject.html#method_offsetUnset" class="">offsetUnset()</a><br />
+                                                                    <a href="../classes/CanvasObject.html#method_offsetSet" class="deprecated">offsetSet()</a><br />
+                                                                    <a href="../classes/CanvasObject.html#method_offsetUnset" class="deprecated">offsetUnset()</a><br />
                                                             </section>
                             <section class="span4">
                                                                     <em>No public properties found</em>
@@ -284,13 +284,13 @@ with a specific ID number (e.g. <a href="http://example.com/api/v1/accounts/1/us
             <a id="property_data" name="property_data" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$data</h3>
-                <pre class="signature">$data : </pre>
+                <pre class="signature">$data : array</pre>
                 <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                array
+                &mdash; Backing store                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -316,21 +316,16 @@ with a specific ID number (e.g. <a href="http://example.com/api/v1/accounts/1/us
             <article class="method">
                 <h3 class="public ">__construct()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__construct(  <span class="argument">$response</span>,   <span class="argument">$canvasPest</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">__construct(string|array&lt;mixed,string&gt;  <span class="argument">$response</span>) : void</pre>
+                <p><em>Construct a CanvasObject</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>string|array&lt;mixed,string&gt;</td>
                                 <td>$response </td>
-                                <td></td>
-                            </tr>
-                                                    <tr>
-                                <td></td>
-                                <td>$canvasPest </td>
-                                <td></td>
+                                <td><p>JSON-encoded response from the Canvas API or the resulting JSON-decoded associative array</p></td>
                             </tr>
                                             </table>
                 
@@ -355,27 +350,31 @@ with a specific ID number (e.g. <a href="http://example.com/api/v1/accounts/1/us
             <article class="method">
                 <h3 class="public ">__isset()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__isset(  <span class="argument">$key</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">__isset(string  <span class="argument">$key</span>) : boolean</pre>
+                <p><em>Whether a property exists</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>string</td>
                                 <td>$key </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                				
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members"><span class="namespace-wrapper">Property overloading</span></a></dd>
+                                                                </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -389,27 +388,31 @@ with a specific ID number (e.g. <a href="http://example.com/api/v1/accounts/1/us
             <article class="method">
                 <h3 class="public ">__get()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__get(  <span class="argument">$key</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">__get(string  <span class="argument">$key</span>) : mixed</pre>
+                <p><em>Property to retrieve</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>string</td>
                                 <td>$key </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                				
+                                    <h4>Returns</h4>
+                    mixed
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members"><span class="namespace-wrapper">Property overloading</span></a></dd>
+                                                                </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -421,34 +424,32 @@ with a specific ID number (e.g. <a href="http://example.com/api/v1/accounts/1/us
         <div class="span8 content class">
             <a id="method___set" name="method___set" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">__set()</h3>
+                <h3 class="public deprecated">__set()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__set(  <span class="argument">$key</span>,   <span class="argument">$value</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">__set() : void</pre>
+                <p><em>Whether a property exists</em></p>
                 
 
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td></td>
-                                <td>$key </td>
-                                <td></td>
-                            </tr>
-                                                    <tr>
-                                <td></td>
-                                <td>$value </td>
-                                <td></td>
-                            </tr>
-                                            </table>
                 
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CanvasObject_Exception</dt>
+                            <dd><p>IMMUTABLE All calls to this method will cause an exception</p></dd>
+                                                                    </dl>
                 
                 				
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                                            </dl>
+                                                                <aside class="alert alert-block alert-error">
+                    <h4>Deprecated</h4>
+                    Canvas objects are immutable
+                </aside>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members"><span class="namespace-wrapper">Property overloading</span></a></dd>
+                                                                </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -460,29 +461,32 @@ with a specific ID number (e.g. <a href="http://example.com/api/v1/accounts/1/us
         <div class="span8 content class">
             <a id="method___unset" name="method___unset" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">__unset()</h3>
+                <h3 class="public deprecated">__unset()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__unset(  <span class="argument">$key</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">__unset() : void</pre>
+                <p><em>Unset a property</em></p>
                 
 
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td></td>
-                                <td>$key </td>
-                                <td></td>
-                            </tr>
-                                            </table>
                 
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CanvasObject_Exception</dt>
+                            <dd><p>IMMUTABLE All calls to this method will cause an exception</p></dd>
+                                                                    </dl>
                 
                 				
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                                            </dl>
+                                                                <aside class="alert alert-block alert-error">
+                    <h4>Deprecated</h4>
+                    Canvas objects are immutable
+                </aside>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members"><span class="namespace-wrapper">Property overloading</span></a></dd>
+                                                                </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -496,27 +500,31 @@ with a specific ID number (e.g. <a href="http://example.com/api/v1/accounts/1/us
             <article class="method">
                 <h3 class="public ">offsetExists()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">offsetExists(  <span class="argument">$offset</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">offsetExists(integer|string  <span class="argument">$offset</span>) : boolean</pre>
+                <p><em>Whether an offset exists</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>integer|string</td>
                                 <td>$offset </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                				
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/arrayaccess.offsetexists.php"><span class="namespace-wrapper">ArrayAccess::offsetExists</span></a></dd>
+                                                                </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -530,27 +538,31 @@ with a specific ID number (e.g. <a href="http://example.com/api/v1/accounts/1/us
             <article class="method">
                 <h3 class="public ">offsetGet()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">offsetGet(  <span class="argument">$offset</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">offsetGet(integer|string  <span class="argument">$offset</span>) : mixed|null</pre>
+                <p><em>Offset to retrieve</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>integer|string</td>
                                 <td>$offset </td>
                                 <td></td>
                             </tr>
                                             </table>
                 
                 
-                				
+                                    <h4>Returns</h4>
+                    mixed|null
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
                                                             <dl>
-                                                                            </dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/arrayaccess.offsetexists.php"><span class="namespace-wrapper">ArrayAccess::offsetGet</span></a></dd>
+                                                                </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -562,34 +574,32 @@ with a specific ID number (e.g. <a href="http://example.com/api/v1/accounts/1/us
         <div class="span8 content class">
             <a id="method_offsetSet" name="method_offsetSet" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">offsetSet()</h3>
+                <h3 class="public deprecated">offsetSet()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">offsetSet(  <span class="argument">$offset</span>,   <span class="argument">$value</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">offsetSet() : void</pre>
+                <p><em>Assign a value to the specified offset</em></p>
                 
 
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td></td>
-                                <td>$offset </td>
-                                <td></td>
-                            </tr>
-                                                    <tr>
-                                <td></td>
-                                <td>$value </td>
-                                <td></td>
-                            </tr>
-                                            </table>
                 
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CanvasObject_Exception</dt>
+                            <dd><p>IMMUTABLE All calls to this method will cause an exception</p></dd>
+                                                                    </dl>
                 
                 				
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                                            </dl>
+                                                                <aside class="alert alert-block alert-error">
+                    <h4>Deprecated</h4>
+                    Canvas objects are immutable
+                </aside>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/arrayaccess.offsetset.php"><span class="namespace-wrapper">ArrayAccess::offsetSet</span></a></dd>
+                                                                </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -601,29 +611,32 @@ with a specific ID number (e.g. <a href="http://example.com/api/v1/accounts/1/us
         <div class="span8 content class">
             <a id="method_offsetUnset" name="method_offsetUnset" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">offsetUnset()</h3>
+                <h3 class="public deprecated">offsetUnset()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">offsetUnset(  <span class="argument">$offset</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">offsetUnset() : void</pre>
+                <p><em>Unset an offset</em></p>
                 
 
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td></td>
-                                <td>$offset </td>
-                                <td></td>
-                            </tr>
-                                            </table>
                 
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\CanvasObject_Exception</dt>
+                            <dd><p>IMMUTABLE All calls to this method will cause an exception</p></dd>
+                                                                    </dl>
                 
                 				
                             </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                                            </dl>
+                                                                <aside class="alert alert-block alert-error">
+                    <h4>Deprecated</h4>
+                    Canvas objects are immutable
+                </aside>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/arrayaccess.offsetunset.php"><span class="namespace-wrapper">ArrayAccess::offsetUnset</span></a></dd>
+                                                                </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
                                     <tr><td colspan="2"><em>None found</em></td></tr>
@@ -682,7 +695,7 @@ with a specific ID number (e.g. <a href="http://example.com/api/v1/accounts/1/us
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
                     on 
 Warning: date_default_timezone_get(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in phar:///Users/sethbattis/Dropbox/Library/Scripts/phpdocumentor.phar/vendor/twig/twig/lib/Twig/Extension/Core.php on line 89
-July 21st, 2015 at 20:19.
+July 22nd, 2015 at 02:48.
                 </section>
             </section>
         </section>

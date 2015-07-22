@@ -106,17 +106,17 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">81</span>
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/deprecated.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">4</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">10</span>
                                 </a>
                             </li>
                         </ul>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-247497682"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-78452067"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-247497682" class="accordion-body collapse in">
+            <div id="namespace-78452067" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -314,12 +314,12 @@ actual API calls to it at <code>https://&lt;path-to-your-instance&gt;/doc/api/li
             <a id="property_headers" name="property_headers" class="anchor"></a>
             <article class="property">
                 <h3 class="protected ">$headers</h3>
-                <pre class="signature">$headers : array</pre>
+                <pre class="signature">$headers : array&lt;mixed,string&gt;</pre>
                 <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                array
+                array&lt;mixed,string&gt;
                 &mdash; Additional headers to be passed to the API with each call                            </article>
         </div>
         <aside class="span4 detailsbar">
@@ -346,8 +346,8 @@ actual API calls to it at <code>https://&lt;path-to-your-instance&gt;/doc/api/li
             <article class="method">
                 <h3 class="public ">__construct()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$apiInstanceUrl</span>, string  <span class="argument">$apiAuthorizationToken = null</span>) </pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$apiInstanceUrl</span>, string  <span class="argument">$apiAuthorizationToken = null</span>) : void</pre>
+                <p><em>Construct a new CanvasPest</em></p>
                 
 
                                     <h4>Parameters</h4>
@@ -355,12 +355,14 @@ actual API calls to it at <code>https://&lt;path-to-your-instance&gt;/doc/api/li
                                                     <tr>
                                 <td>string</td>
                                 <td>$apiInstanceUrl </td>
-                                <td><p>URL of the API instance (e.g. <code>'https://canvas.instructure.com/api/v1'</code>)</p></td>
+                                <td><p>URL of the API instance (e.g.
+<code>'https://canvas.instructure.com/api/v1'</code>)</p></td>
                             </tr>
                                                     <tr>
                                 <td>string</td>
                                 <td>$apiAuthorizationToken </td>
-                                <td><p>(Optional) API access token for the API instance (if not provided now, it will need to be provided later)</p></td>
+                                <td><p>(Optional) API access token for the
+API instance (if not provided now, it will need to be provided later)</p></td>
                             </tr>
                                             </table>
                 
@@ -395,7 +397,7 @@ actual API calls to it at <code>https://&lt;path-to-your-instance&gt;/doc/api/li
                 <h3 class="public ">setupToken()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">setupToken(string  <span class="argument">$token</span>) </pre>
-                <p><em>Set up a new API access token to access this instance.</em></p>
+                <p><em>Set up a new API access token to access this instance</em></p>
                 
 
                                     <h4>Parameters</h4>
@@ -433,8 +435,8 @@ actual API calls to it at <code>https://&lt;path-to-your-instance&gt;/doc/api/li
             <article class="method">
                 <h3 class="public ">prepData()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">prepData(array  <span class="argument">$data</span>) : array|string</pre>
-                <p><em>Prepare data.</em></p>
+                <pre class="signature" style="margin-right: 54px;">prepData(array&lt;mixed,string&gt;  <span class="argument">$data</span>) : string|array&lt;mixed,string&gt;</pre>
+                <p><em>Prepare data</em></p>
                 <p>Extended by CanvasPest to format the HTTP query parameters
 with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rather than
 <code>...foo?bar[0]=1&amp;bar[1]=2</code>, as the Canvas API prefers them).</p>
@@ -442,7 +444,7 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>array</td>
+                                <td>array&lt;mixed,string&gt;</td>
                                 <td>$data </td>
                                 <td><p>Query parameters</p></td>
                             </tr>
@@ -450,7 +452,7 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
                 
                 
                                     <h4>Returns</h4>
-                    array|string
+                    string|array&lt;mixed,string&gt;
                                     				
                             </article>
         </div>
@@ -471,9 +473,14 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
             <article class="method">
                 <h3 class="public ">get()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get(string  <span class="argument">$path</span>, string|array  <span class="argument">$data = array()</span>, string|array  <span class="argument">$headers = array()</span>) : \CanvasObject|\CanvasArray</pre>
+                <pre class="signature" style="margin-right: 54px;">get(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$data = array()</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : \CanvasObject|\CanvasArray</pre>
                 <p><em>Make a GET call to the API</em></p>
-                
+                <p>For queries to individually identified endpoints (e.g.
+<code>accounts/1/users/123</code>), return a CanvasObject representing the API response
+describing <em>that</em> individually identified object affected by the query.</p>
+<p>For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a
+traversable CanvasArray (of CanvasObjects) representing the API response
+describing the list of objects affected by the query.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -483,21 +490,20 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
                                 <td><p>Path to the API endpoint of this call</p></td>
                             </tr>
                                                     <tr>
-                                <td>string|array</td>
+                                <td>string|array&lt;mixed,string&gt;</td>
                                 <td>$data </td>
-                                <td><p>Query parameters for this call</p></td>
+                                <td><p>(Optional) Query parameters for this call</p></td>
                             </tr>
                                                     <tr>
-                                <td>string|array</td>
+                                <td>string|array&lt;mixed,string&gt;</td>
                                 <td>$headers </td>
-                                <td><p>Any additional HTTP headers for this call</p></td>
+                                <td><p>(Optional) Any additional HTTP headers for this call</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
                     <a href="../classes/CanvasObject.html">\CanvasObject</a>|<a href="../classes/CanvasArray.html">\CanvasArray</a>
-                                            &mdash; <p>For queries to individually identified endpoints (e.g. <code>accounts/1/users/123</code>), return a CanvasObject representing the API response describing <em>that</em> individually identified object affected by the query. For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a traversable CanvasArray (of CanvasObjects) representing the API response describing the list of objects affected by the query.</p>
                                     				
                             </article>
         </div>
@@ -525,9 +531,14 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
             <article class="method">
                 <h3 class="public ">post()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">post(string  <span class="argument">$path</span>, string|array  <span class="argument">$data = array()</span>, string|array  <span class="argument">$headers = array()</span>) : \CanvasObject|\CanvasArray</pre>
+                <pre class="signature" style="margin-right: 54px;">post(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$data = array()</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : \CanvasObject|\CanvasArray</pre>
                 <p><em>Make a POST call to the API</em></p>
-                
+                <p>For queries to individually identified endpoints (e.g.
+<code>accounts/1/users/123</code>), return a CanvasObject representing the API response
+describing <em>that</em> individually identified object affected by the query.</p>
+<p>For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a
+traversable CanvasArray (of CanvasObjects) representing the API response
+describing the list of objects affected by the query.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -537,21 +548,20 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
                                 <td><p>Path to the API endpoint of this call</p></td>
                             </tr>
                                                     <tr>
-                                <td>string|array</td>
+                                <td>string|array&lt;mixed,string&gt;</td>
                                 <td>$data </td>
-                                <td><p>Query parameters for this call</p></td>
+                                <td><p>(Optional) Query parameters for this call</p></td>
                             </tr>
                                                     <tr>
-                                <td>string|array</td>
+                                <td>string|array&lt;mixed,string&gt;</td>
                                 <td>$headers </td>
-                                <td><p>Any additional HTTP headers for this call</p></td>
+                                <td><p>(Optional) Any additional HTTP headers for this call</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
                     <a href="../classes/CanvasObject.html">\CanvasObject</a>|<a href="../classes/CanvasArray.html">\CanvasArray</a>
-                                            &mdash; <p>For queries to individually identified endpoints (e.g. <code>accounts/1/users/123</code>), return a CanvasObject representing the API response describing <em>that</em> individually identified object affected by the query. For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a traversable CanvasArray (of CanvasObjects) representing the API response describing the list of objects affected by the query.</p>
                                     				
                             </article>
         </div>
@@ -579,9 +589,14 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
             <article class="method">
                 <h3 class="public ">put()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">put(string  <span class="argument">$path</span>, string|array  <span class="argument">$data = array()</span>, string|array  <span class="argument">$headers = array()</span>) : \CanvasObject|\CanvasArray</pre>
+                <pre class="signature" style="margin-right: 54px;">put(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$data = array()</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : \CanvasObject|\CanvasArray</pre>
                 <p><em>Make a PUT call to the API</em></p>
-                
+                <p>For queries to individually identified endpoints (e.g.
+<code>accounts/1/users/123</code>), return a CanvasObject representing the API response
+describing <em>that</em> individually identified object affected by the query.</p>
+<p>For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a
+traversable CanvasArray (of CanvasObjects) representing the API response
+describing the list of objects affected by the query.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -591,21 +606,20 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
                                 <td><p>Path to the API endpoint of this call</p></td>
                             </tr>
                                                     <tr>
-                                <td>string|array</td>
+                                <td>string|array&lt;mixed,string&gt;</td>
                                 <td>$data </td>
-                                <td><p>Query parameters for this call</p></td>
+                                <td><p>(Optional) Query parameters for this call</p></td>
                             </tr>
                                                     <tr>
-                                <td>string|array</td>
+                                <td>string|array&lt;mixed,string&gt;</td>
                                 <td>$headers </td>
-                                <td><p>Any additional HTTP headers for this call</p></td>
+                                <td><p>(Optional) Any additional HTTP headers for this call</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
                     <a href="../classes/CanvasObject.html">\CanvasObject</a>|<a href="../classes/CanvasArray.html">\CanvasArray</a>
-                                            &mdash; <p>For queries to individually identified endpoints (e.g. <code>accounts/1/users/123</code>), return a CanvasObject representing the API response describing <em>that</em> individually identified object affected by the query. For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a traversable CanvasArray (of CanvasObjects) representing the API response describing the list of objects affected by the query.</p>
                                     				
                             </article>
         </div>
@@ -633,9 +647,14 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
             <article class="method">
                 <h3 class="public ">delete()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">delete(string  <span class="argument">$path</span>, string|array  <span class="argument">$headers = array()</span>) : \CanvasObject|\CanvasArray</pre>
+                <pre class="signature" style="margin-right: 54px;">delete(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : \CanvasObject|\CanvasArray</pre>
                 <p><em>Make a DELETE call to the API</em></p>
-                
+                <p>For queries to individually identified endpoints (e.g.
+<code>accounts/1/users/123</code>), return a CanvasObject representing the API response
+describing <em>that</em> individually identified object affected by the query.</p>
+<p>For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a
+traversable CanvasArray (of CanvasObjects) representing the API response
+describing the list of objects affected by the query.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -645,16 +664,15 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
                                 <td><p>Path to the API endpoint of this call</p></td>
                             </tr>
                                                     <tr>
-                                <td>string|array</td>
+                                <td>string|array&lt;mixed,string&gt;</td>
                                 <td>$headers </td>
-                                <td><p>Any additional HTTP headers for this call</p></td>
+                                <td><p>(Optional) Any additional HTTP headers for this call</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
                     <a href="../classes/CanvasObject.html">\CanvasObject</a>|<a href="../classes/CanvasArray.html">\CanvasArray</a>
-                                            &mdash; <p>For queries to individually identified endpoints (e.g. <code>accounts/1/users/123</code>), return a CanvasObject representing the API response describing <em>that</em> individually identified object affected by the query. For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a traversable CanvasArray (of CanvasObjects) representing the API response describing the list of objects affected by the query.</p>
                                     				
                             </article>
         </div>
@@ -682,28 +700,10 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
             <article class="method">
                 <h3 class="public deprecated">patch()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">patch(  <span class="argument">$path</span>,   <span class="argument">$data = array()</span>,   <span class="argument">$headers = array()</span>) </pre>
-                <p><em>Overrides Pest::patch() to prevent accidental calls.</em></p>
+                <pre class="signature" style="margin-right: 54px;">patch() : void</pre>
+                <p><em>Make a PATCH call to the API</em></p>
                 
 
-                                    <h4>Parameters</h4>
-                    <table class="table table-condensed table-hover">
-                                                    <tr>
-                                <td></td>
-                                <td>$path </td>
-                                <td></td>
-                            </tr>
-                                                    <tr>
-                                <td></td>
-                                <td>$data </td>
-                                <td></td>
-                            </tr>
-                                                    <tr>
-                                <td></td>
-                                <td>$headers </td>
-                                <td></td>
-                            </tr>
-                                            </table>
                 
                                     <h4>Throws</h4>
                     <dl>
@@ -735,14 +735,18 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
             <article class="method">
                 <h3 class="protected ">prepHeaders()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">prepHeaders(array  <span class="argument">$headers</span>) : array</pre>
-                <p><em>Flatten headers from an associative array to a numerically indexed array of &quot;Name: Value&quot; style entries like CURLOPT_HTTPHEADER expects. Numerically indexed arrays are not modified.</em></p>
-                <p>Extended by CanvasPest to include the API access token in the Authorization header.</p>
+                <pre class="signature" style="margin-right: 54px;">prepHeaders(array&lt;mixed,string&gt;  <span class="argument">$headers</span>) : array&lt;mixed,string&gt;</pre>
+                <p><em>Prepare API request headers</em></p>
+                <p>Flatten headers from an associative array to a numerically indexed array
+of <code>"Name: Value"</code> style entries like <code>CURLOPT_HTTPHEADER</code> expects.
+Numerically indexed arrays are not modified.</p>
+<p>Extended by CanvasPest to include the API access token in the
+<code>Authorization</code> header.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>array</td>
+                                <td>array&lt;mixed,string&gt;</td>
                                 <td>$headers </td>
                                 <td></td>
                             </tr>
@@ -750,7 +754,7 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
                 
                 
                                     <h4>Returns</h4>
-                    array
+                    array&lt;mixed,string&gt;
                                     				
                             </article>
         </div>
@@ -773,7 +777,12 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">postprocessResponse(string  <span class="argument">$path</span>, string  <span class="argument">$response</span>) : \CanvasObject|\CanvasArray</pre>
                 <p><em>Parse the API response into an object (or collection of objects).</em></p>
-                
+                <p>For queries to individually identified endpoints (e.g.
+<code>accounts/1/users/123</code>), return a CanvasObject representing the API response
+describing <em>that</em> individually identified object affected by the query.</p>
+<p>For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a
+traversable CanvasArray (of CanvasObjects) representing the API response
+describing the list of objects affected by the query.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -792,7 +801,6 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
                 
                                     <h4>Returns</h4>
                     <a href="../classes/CanvasObject.html">\CanvasObject</a>|<a href="../classes/CanvasArray.html">\CanvasArray</a>
-                                            &mdash; <p>For queries to individually identified endpoints (e.g. <code>accounts/1/users/123</code>), return a CanvasObject representing the API response describing <em>that</em> individually identified object affected by the query. For queries to generic endpoints (e.g. <code>accounts/1/users</code>), return a traversable CanvasArray (of CanvasObjects) representing the API response describing the list of objects affected by the query.</p>
                                     				
                             </article>
         </div>
@@ -813,14 +821,14 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
             <article class="method">
                 <h3 class="private ">preprocessData()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">preprocessData(array  <span class="argument">$data</span>) : array</pre>
-                <p><em>Preprocess API call parameters before use.</em></p>
+                <pre class="signature" style="margin-right: 54px;">preprocessData(array&lt;mixed,string&gt;  <span class="argument">$data</span>) : array&lt;mixed,string&gt;</pre>
+                <p><em>Preprocess API call parameters before use</em></p>
                 <p>Force maximum response page size, if not already defined.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>array</td>
+                                <td>array&lt;mixed,string&gt;</td>
                                 <td>$data </td>
                                 <td><p>Array of parameters for the next API call</p></td>
                             </tr>
@@ -828,7 +836,7 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
                 
                 
                                     <h4>Returns</h4>
-                    array
+                    array&lt;mixed,string&gt;
                                             &mdash; <p>Updated array of parameters</p>
                                     				
                             </article>
@@ -898,7 +906,7 @@ with non-indexed array elements (so <code>...foo?bar[]=1&amp;bar[]=2</code>, rat
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
                     on 
 Warning: date_default_timezone_get(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in phar:///Users/sethbattis/Dropbox/Library/Scripts/phpdocumentor.phar/vendor/twig/twig/lib/Twig/Extension/Core.php on line 89
-July 21st, 2015 at 20:19.
+July 22nd, 2015 at 02:48.
                 </section>
             </section>
         </section>

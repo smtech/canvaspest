@@ -59,17 +59,17 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">81</span>
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/deprecated.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">4</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">10</span>
                                 </a>
                             </li>
                         </ul>
@@ -89,9 +89,10 @@
         <div class="span2 sidebar">
             <ul class="side-nav nav nav-list">
                 <li class="nav-header">Navigation</li>
-                                                            <li><a href="#CanvasPestImmutable.php"><i class="icon-file"></i> CanvasPestImmutable.php</a></li>
-                                                                                                                                                                                                                    <li><a href="#CanvasPest.php"><i class="icon-file"></i> CanvasPest.php</a></li>
-                                                                    </ul>
+                                                            <li><a href="#CanvasPest.php"><i class="icon-file"></i> CanvasPest.php</a></li>
+                                                                                                                                                                                                                                                                            <li><a href="#CanvasArray.php"><i class="icon-file"></i> CanvasArray.php</a></li>
+                                                                                                                                                            <li><a href="#CanvasObject.php"><i class="icon-file"></i> CanvasObject.php</a></li>
+                                                                                                                                                                                                                                            </ul>
         </div>
 
         <div class="span10 offset2">
@@ -101,37 +102,7 @@
             </ul>
 
             <div id="marker-accordion">
-                                                                            <a name="CanvasPestImmutable.php" id="CanvasPestImmutable.php"></a>
-                    <h3>
-                        <i class="icon-file"></i>
-                        CanvasPestImmutable.php
-                        <small style="float: right;padding-right: 10px;">1</small>
-                    </h3>
-                    <div>
-                        <table class="table markers table-bordered">
-                            <tr>
-                                <th>Element</th>
-                                <th>Line</th>
-                                <th>Description</th>
-                            </tr>
-                                                                                <tr>
-                                    <td>\CanvasPestImmutable::put()</td>
-                                    <td>20</td>
-                                    <td>CanvasPestImmutable only supports GET calls to the API</td>
-                                </tr>
-                                                                                                                                                <tr>
-                                    <td>\CanvasPestImmutable::post()</td>
-                                    <td>31</td>
-                                    <td>CanvasPestImmutable only supports GET calls to the API</td>
-                                </tr>
-                                                                                                                                                <tr>
-                                    <td>\CanvasPestImmutable::delete()</td>
-                                    <td>42</td>
-                                    <td>CanvasPestImmutable only supports GET calls to the API</td>
-                                </tr>
-                                                                                                                                </table>
-                    </div>
-                                        <a name="CanvasPest.php" id="CanvasPest.php"></a>
+                                                                            <a name="CanvasPest.php" id="CanvasPest.php"></a>
                     <h3>
                         <i class="icon-file"></i>
                         CanvasPest.php
@@ -146,8 +117,83 @@
                             </tr>
                                                                                 <tr>
                                     <td>\CanvasPest::patch()</td>
-                                    <td>212</td>
+                                    <td>268</td>
                                     <td>The Canvas API does not currently support PATCH calls</td>
+                                </tr>
+                                                                                                                                                <tr>
+                                    <td>\CanvasPestImmutable::put()</td>
+                                    <td>298</td>
+                                    <td>CanvasPestImmutable only supports GET calls to the API</td>
+                                </tr>
+                                                                                                                                                <tr>
+                                    <td>\CanvasPestImmutable::post()</td>
+                                    <td>314</td>
+                                    <td>CanvasPestImmutable only supports GET calls to the API</td>
+                                </tr>
+                                                                                                                                                <tr>
+                                    <td>\CanvasPestImmutable::delete()</td>
+                                    <td>330</td>
+                                    <td>CanvasPestImmutable only supports GET calls to the API</td>
+                                </tr>
+                                                                                                                                </table>
+                    </div>
+                                        <a name="CanvasArray.php" id="CanvasArray.php"></a>
+                    <h3>
+                        <i class="icon-file"></i>
+                        CanvasArray.php
+                        <small style="float: right;padding-right: 10px;">1</small>
+                    </h3>
+                    <div>
+                        <table class="table markers table-bordered">
+                            <tr>
+                                <th>Element</th>
+                                <th>Line</th>
+                                <th>Description</th>
+                            </tr>
+                                                                                <tr>
+                                    <td>\CanvasArray::offsetSet()</td>
+                                    <td>219</td>
+                                    <td>Canvas responses are immutable</td>
+                                </tr>
+                                                                                                                                                <tr>
+                                    <td>\CanvasArray::offsetUnset()</td>
+                                    <td>237</td>
+                                    <td>Canvas responses are immutable</td>
+                                </tr>
+                                                                                                                                </table>
+                    </div>
+                                        <a name="CanvasObject.php" id="CanvasObject.php"></a>
+                    <h3>
+                        <i class="icon-file"></i>
+                        CanvasObject.php
+                        <small style="float: right;padding-right: 10px;">1</small>
+                    </h3>
+                    <div>
+                        <table class="table markers table-bordered">
+                            <tr>
+                                <th>Element</th>
+                                <th>Line</th>
+                                <th>Description</th>
+                            </tr>
+                                                                                <tr>
+                                    <td>\CanvasObject::__set()</td>
+                                    <td>76</td>
+                                    <td>Canvas objects are immutable</td>
+                                </tr>
+                                                                                                                                                <tr>
+                                    <td>\CanvasObject::__unset()</td>
+                                    <td>94</td>
+                                    <td>Canvas objects are immutable</td>
+                                </tr>
+                                                                                                                                                <tr>
+                                    <td>\CanvasObject::offsetSet()</td>
+                                    <td>143</td>
+                                    <td>Canvas objects are immutable</td>
+                                </tr>
+                                                                                                                                                <tr>
+                                    <td>\CanvasObject::offsetUnset()</td>
+                                    <td>161</td>
+                                    <td>Canvas objects are immutable</td>
                                 </tr>
                                                                                     </table>
                 </div>
@@ -193,7 +239,7 @@
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
                     on 
 Warning: date_default_timezone_get(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in phar:///Users/sethbattis/Dropbox/Library/Scripts/phpdocumentor.phar/vendor/twig/twig/lib/Twig/Extension/Core.php on line 89
-July 21st, 2015 at 20:19.
+July 22nd, 2015 at 02:48.
                 </section>
             </section>
         </section>

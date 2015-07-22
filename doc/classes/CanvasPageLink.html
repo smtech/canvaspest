@@ -106,17 +106,17 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">81</span>
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/deprecated.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">4</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">10</span>
                                 </a>
                             </li>
                         </ul>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-988854141"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1218917883"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-988854141" class="accordion-body collapse in">
+            <div id="namespace-1218917883" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -245,7 +245,7 @@ to the API response's <code>link</code> header.</p>
                     
                     <dl>
                         <dt>File</dt>
-                            <dd><a href="../files/CanvasPageLink.html"><div class="path-wrapper">CanvasPageLink.php</div></a></dd>
+                            <dd><a href="../files/CanvasArray.html"><div class="path-wrapper">CanvasArray.php</div></a></dd>
                                                 <dt>Package</dt>
                             <dd><div class="namespace-wrapper">Default</div></dd>
                                                 <dt>Class hierarchy</dt>
@@ -565,14 +565,13 @@ representing the canonical name of the page relative to the current page.</li>
                 <h3 class="public ">getName()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getName() : string</pre>
-                <p><em></em></p>
+                <p><em>Canonical name of this page link</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
                     string
-                                            &mdash; <p>The canonical name of this page link</p>
                                     				
                             </article>
         </div>
@@ -594,14 +593,13 @@ representing the canonical name of the page relative to the current page.</li>
                 <h3 class="public ">getEndpoint()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getEndpoint() : string</pre>
-                <p><em></em></p>
+                <p><em>API endpoint being paginated</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
                     string
-                                            &mdash; <p>The path to the API endpoint being paginated</p>
                                     				
                             </article>
         </div>
@@ -623,14 +621,13 @@ representing the canonical name of the page relative to the current page.</li>
                 <h3 class="public ">getParams()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getParams() : array</pre>
-                <p><em></em></p>
+                <p><em>Query parameters to retrieve the linked page</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
                     array
-                                            &mdash; <p>Query parameters to retrieve this page</p>
                                     				
                             </article>
         </div>
@@ -652,14 +649,13 @@ representing the canonical name of the page relative to the current page.</li>
                 <h3 class="public ">getPageNumber()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getPageNumber() : integer</pre>
-                <p><em></em></p>
+                <p><em>The (1-indexed) page number of this page</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
                     integer
-                                            &mdash; <p>The (1-indexed) page number of this page</p>
                                     				
                             </article>
         </div>
@@ -681,14 +677,13 @@ representing the canonical name of the page relative to the current page.</li>
                 <h3 class="public ">getPerPage()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">getPerPage() : integer</pre>
-                <p><em></em></p>
+                <p><em>The number of responses per page generating this pagination</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
                     integer
-                                            &mdash; <p>The number of responses per page generating this pagination</p>
                                     				
                             </article>
         </div>
@@ -709,10 +704,10 @@ representing the canonical name of the page relative to the current page.</li>
     <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="source-view-label">CanvasPageLink.php</h3>
+            <h3 id="source-view-label">CanvasArray.php</h3>
         </div>
         <div class="modal-body">
-            <pre data-src="../files/CanvasPageLink.php.txt" class="language-php line-numbers"></pre>
+            <pre data-src="../files/CanvasArray.php.txt" class="language-php line-numbers"></pre>
         </div>
     </div>
 
@@ -754,7 +749,7 @@ representing the canonical name of the page relative to the current page.</li>
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
                     on 
 Warning: date_default_timezone_get(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in phar:///Users/sethbattis/Dropbox/Library/Scripts/phpdocumentor.phar/vendor/twig/twig/lib/Twig/Extension/Core.php on line 89
-July 21st, 2015 at 20:19.
+July 22nd, 2015 at 02:48.
                 </section>
             </section>
         </section>

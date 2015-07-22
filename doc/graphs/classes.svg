@@ -13,55 +13,10 @@
 <path fill="none" stroke="gray" d="M172.834,-98C172.834,-98 1065.33,-98 1065.33,-98 1071.33,-98 1077.33,-104 1077.33,-110 1077.33,-110 1077.33,-373 1077.33,-373 1077.33,-379 1071.33,-385 1065.33,-385 1065.33,-385 172.834,-385 172.834,-385 166.834,-385 160.834,-379 160.834,-373 160.834,-373 160.834,-110 160.834,-110 160.834,-104 166.834,-98 172.834,-98"/>
 <text text-anchor="middle" x="619.084" y="-372.2" font-family="Times,serif" font-size="11.00" fill="gray">Global</text>
 </g>
-<!-- \\CanvasPageLink -->
-<g id="node1" class="node"><title>\\CanvasPageLink</title>
-<polygon fill="none" stroke="black" points="1036.54,-358 927.706,-358 927.706,-322 1036.54,-322 1036.54,-358"/>
-<text text-anchor="middle" x="982.122" y="-336.7" font-family="Courier,monospace" font-size="11.00">CanvasPageLink</text>
-</g>
-<!-- \\CanvasPageLink_Exception -->
-<g id="node2" class="node"><title>\\CanvasPageLink_Exception</title>
-<polygon fill="none" stroke="black" points="1069.55,-304 894.696,-304 894.696,-268 1069.55,-268 1069.55,-304"/>
-<text text-anchor="middle" x="982.122" y="-282.7" font-family="Courier,monospace" font-size="11.00">CanvasPageLink_Exception</text>
-</g>
-<!-- \\CanvasArray_Exception -->
-<g id="node8" class="node"><title>\\CanvasArray_Exception</title>
-<polygon fill="none" stroke="black" points="822.721,-304 668.475,-304 668.475,-268 822.721,-268 822.721,-304"/>
-<text text-anchor="middle" x="745.598" y="-282.7" font-family="Courier,monospace" font-size="11.00">CanvasArray_Exception</text>
-</g>
-<!-- \\CanvasPageLink_Exception&#45;&gt;\\CanvasArray_Exception -->
-<g id="edge1" class="edge"><title>\\CanvasPageLink_Exception&#45;&gt;\\CanvasArray_Exception</title>
-<path fill="none" stroke="black" d="M894.793,-286C874.682,-286 853.263,-286 833.142,-286"/>
-<polygon fill="none" stroke="black" points="833.068,-282.5 823.068,-286 833.068,-289.5 833.068,-282.5"/>
-</g>
-<!-- \\CanvasPestImmutable -->
-<g id="node3" class="node"><title>\\CanvasPestImmutable</title>
-<polygon fill="none" stroke="black" points="1053.04,-250 911.201,-250 911.201,-214 1053.04,-214 1053.04,-250"/>
-<text text-anchor="middle" x="982.122" y="-228.7" font-family="Courier,monospace" font-size="11.00">CanvasPestImmutable</text>
-</g>
 <!-- \\CanvasPest -->
-<g id="node5" class="node"><title>\\CanvasPest</title>
-<polygon fill="none" stroke="black" points="786.609,-197 704.587,-197 704.587,-161 786.609,-161 786.609,-197"/>
-<text text-anchor="middle" x="745.598" y="-175.7" font-family="Courier,monospace" font-size="11.00">CanvasPest</text>
-</g>
-<!-- \\CanvasPestImmutable&#45;&gt;\\CanvasPest -->
-<g id="edge2" class="edge"><title>\\CanvasPestImmutable&#45;&gt;\\CanvasPest</title>
-<path fill="none" stroke="black" d="M911.392,-216.242C874.561,-207.918 830.198,-197.893 796.784,-190.342"/>
-<polygon fill="none" stroke="black" points="797.311,-186.873 786.786,-188.082 795.768,-193.7 797.311,-186.873"/>
-</g>
-<!-- \\CanvasPestImmutable_Exception -->
-<g id="node4" class="node"><title>\\CanvasPestImmutable_Exception</title>
-<polygon fill="none" stroke="black" points="596.503,-250 388.639,-250 388.639,-214 596.503,-214 596.503,-250"/>
-<text text-anchor="middle" x="492.571" y="-228.7" font-family="Courier,monospace" font-size="11.00">CanvasPestImmutable_Exception</text>
-</g>
-<!-- \\CanvasPest_Exception -->
-<g id="node6" class="node"><title>\\CanvasPest_Exception</title>
-<polygon fill="none" stroke="black" points="316.866,-277 168.823,-277 168.823,-241 316.866,-241 316.866,-277"/>
-<text text-anchor="middle" x="242.845" y="-255.7" font-family="Courier,monospace" font-size="11.00">CanvasPest_Exception</text>
-</g>
-<!-- \\CanvasPestImmutable_Exception&#45;&gt;\\CanvasPest_Exception -->
-<g id="edge3" class="edge"><title>\\CanvasPestImmutable_Exception&#45;&gt;\\CanvasPest_Exception</title>
-<path fill="none" stroke="black" d="M388.665,-243.216C368.175,-245.449 346.898,-247.768 327.163,-249.919"/>
-<polygon fill="none" stroke="black" points="326.559,-246.464 316.997,-251.027 327.317,-253.423 326.559,-246.464"/>
+<g id="node1" class="node"><title>\\CanvasPest</title>
+<polygon fill="none" stroke="black" points="786.609,-211 704.587,-211 704.587,-175 786.609,-175 786.609,-211"/>
+<text text-anchor="middle" x="745.598" y="-189.7" font-family="Courier,monospace" font-size="11.00">CanvasPest</text>
 </g>
 <!-- \\Pest -->
 <g id="node11" class="node"><title>\\Pest</title>
@@ -69,22 +24,47 @@
 <text text-anchor="middle" x="492.571" y="-67.8" font-family="Times,serif" font-size="14.00" fill="gray">\Pest</text>
 </g>
 <!-- \\CanvasPest&#45;&gt;\\Pest -->
-<g id="edge4" class="edge"><title>\\CanvasPest&#45;&gt;\\Pest</title>
-<path fill="none" stroke="black" d="M718.774,-160.877C690.116,-141.577 641.878,-111.458 596.287,-94 574.822,-85.7806 549.597,-80.322 529.516,-76.8981"/>
-<polygon fill="none" stroke="black" points="529.961,-73.4247 519.531,-75.2892 528.847,-80.3355 529.961,-73.4247"/>
+<g id="edge1" class="edge"><title>\\CanvasPest&#45;&gt;\\Pest</title>
+<path fill="none" stroke="black" d="M723.015,-174.712C695.425,-152.291 645.335,-114.725 596.287,-94 575.115,-85.0539 549.894,-79.5842 529.743,-76.3362"/>
+<polygon fill="none" stroke="black" points="530.123,-72.8542 519.715,-74.8336 529.086,-79.7769 530.123,-72.8542"/>
+</g>
+<!-- \\CanvasPestImmutable -->
+<g id="node2" class="node"><title>\\CanvasPestImmutable</title>
+<polygon fill="none" stroke="black" points="1053.04,-304 911.201,-304 911.201,-268 1053.04,-268 1053.04,-304"/>
+<text text-anchor="middle" x="982.122" y="-282.7" font-family="Courier,monospace" font-size="11.00">CanvasPestImmutable</text>
+</g>
+<!-- \\CanvasPestImmutable&#45;&gt;\\CanvasPest -->
+<g id="edge2" class="edge"><title>\\CanvasPestImmutable&#45;&gt;\\CanvasPest</title>
+<path fill="none" stroke="black" d="M920.526,-267.993C911.873,-265.141 903.126,-262.103 894.909,-259 860.175,-245.882 821.913,-228.787 792.953,-215.282"/>
+<polygon fill="none" stroke="black" points="794.433,-212.11 783.893,-211.033 791.461,-218.448 794.433,-212.11"/>
+</g>
+<!-- \\CanvasPest_Exception -->
+<g id="node3" class="node"><title>\\CanvasPest_Exception</title>
+<polygon fill="none" stroke="black" points="316.866,-331 168.823,-331 168.823,-295 316.866,-295 316.866,-331"/>
+<text text-anchor="middle" x="242.845" y="-309.7" font-family="Courier,monospace" font-size="11.00">CanvasPest_Exception</text>
 </g>
 <!-- \\Exception -->
 <g id="node12" class="node"><title>\\Exception</title>
-<ellipse fill="none" stroke="black" cx="48.417" cy="-259" rx="48.3341" ry="18"/>
-<text text-anchor="middle" x="48.417" y="-254.8" font-family="Times,serif" font-size="14.00" fill="gray">\Exception</text>
+<ellipse fill="none" stroke="black" cx="48.417" cy="-313" rx="48.3341" ry="18"/>
+<text text-anchor="middle" x="48.417" y="-308.8" font-family="Times,serif" font-size="14.00" fill="gray">\Exception</text>
 </g>
 <!-- \\CanvasPest_Exception&#45;&gt;\\Exception -->
-<g id="edge5" class="edge"><title>\\CanvasPest_Exception&#45;&gt;\\Exception</title>
-<path fill="none" stroke="black" d="M168.822,-259C148.454,-259 126.611,-259 107.249,-259"/>
-<polygon fill="none" stroke="black" points="107.073,-255.5 97.0732,-259 107.073,-262.5 107.073,-255.5"/>
+<g id="edge3" class="edge"><title>\\CanvasPest_Exception&#45;&gt;\\Exception</title>
+<path fill="none" stroke="black" d="M168.822,-313C148.454,-313 126.611,-313 107.249,-313"/>
+<polygon fill="none" stroke="black" points="107.073,-309.5 97.0732,-313 107.073,-316.5 107.073,-309.5"/>
+</g>
+<!-- \\CanvasPestImmutable_Exception -->
+<g id="node4" class="node"><title>\\CanvasPestImmutable_Exception</title>
+<polygon fill="none" stroke="black" points="596.503,-358 388.639,-358 388.639,-322 596.503,-322 596.503,-358"/>
+<text text-anchor="middle" x="492.571" y="-336.7" font-family="Courier,monospace" font-size="11.00">CanvasPestImmutable_Exception</text>
+</g>
+<!-- \\CanvasPestImmutable_Exception&#45;&gt;\\CanvasPest_Exception -->
+<g id="edge4" class="edge"><title>\\CanvasPestImmutable_Exception&#45;&gt;\\CanvasPest_Exception</title>
+<path fill="none" stroke="black" d="M388.665,-328.784C368.175,-326.551 346.898,-324.232 327.163,-322.081"/>
+<polygon fill="none" stroke="black" points="327.317,-318.577 316.997,-320.973 326.559,-325.536 327.317,-318.577"/>
 </g>
 <!-- \\CanvasArray -->
-<g id="node7" class="node"><title>\\CanvasArray</title>
+<g id="node5" class="node"><title>\\CanvasArray</title>
 <polygon fill="none" stroke="black" points="1026.23,-196 938.009,-196 938.009,-160 1026.23,-160 1026.23,-196"/>
 <text text-anchor="middle" x="982.122" y="-174.7" font-family="Courier,monospace" font-size="11.00">CanvasArray</text>
 </g>
@@ -94,7 +74,7 @@
 <text text-anchor="middle" x="745.598" y="-67.8" font-family="Times,serif" font-size="14.00" fill="gray">\Iterator</text>
 </g>
 <!-- \\CanvasArray&#45;&gt;\\Iterator -->
-<g id="edge6" class="edge"><title>\\CanvasArray&#45;&gt;\\Iterator</title>
+<g id="edge5" class="edge"><title>\\CanvasArray&#45;&gt;\\Iterator</title>
 <path fill="none" stroke="black" stroke-dasharray="1,5" d="M937.785,-167.794C923.67,-163.598 908.219,-158.041 894.909,-151 858.832,-131.916 859.202,-112.672 822.909,-94 813.053,-88.9291 801.862,-84.8736 791.146,-81.6957"/>
 <polygon fill="none" stroke="black" points="792.062,-78.3177 781.49,-79.02 790.192,-85.0635 792.062,-78.3177"/>
 </g>
@@ -104,9 +84,19 @@
 <text text-anchor="middle" x="745.598" y="-13.8" font-family="Times,serif" font-size="14.00" fill="gray">\ArrayAccess</text>
 </g>
 <!-- \\CanvasArray&#45;&gt;\\ArrayAccess -->
-<g id="edge7" class="edge"><title>\\CanvasArray&#45;&gt;\\ArrayAccess</title>
+<g id="edge6" class="edge"><title>\\CanvasArray&#45;&gt;\\ArrayAccess</title>
 <path fill="none" stroke="black" stroke-dasharray="1,5" d="M937.682,-170.437C923.092,-166.394 907.375,-160.258 894.909,-151 849.189,-117.043 868.001,-79.7873 822.909,-45 816.502,-40.0568 809.115,-35.9712 801.515,-32.6077"/>
 <polygon fill="none" stroke="black" points="802.773,-29.3412 792.189,-28.8538 800.159,-35.8348 802.773,-29.3412"/>
+</g>
+<!-- \\CanvasPageLink -->
+<g id="node6" class="node"><title>\\CanvasPageLink</title>
+<polygon fill="none" stroke="black" points="1036.54,-250 927.706,-250 927.706,-214 1036.54,-214 1036.54,-250"/>
+<text text-anchor="middle" x="982.122" y="-228.7" font-family="Courier,monospace" font-size="11.00">CanvasPageLink</text>
+</g>
+<!-- \\CanvasArray_Exception -->
+<g id="node7" class="node"><title>\\CanvasArray_Exception</title>
+<polygon fill="none" stroke="black" points="822.721,-331 668.475,-331 668.475,-295 822.721,-295 822.721,-331"/>
+<text text-anchor="middle" x="745.598" y="-309.7" font-family="Courier,monospace" font-size="11.00">CanvasArray_Exception</text>
 </g>
 <!-- \\CanvasObject_Exception -->
 <g id="node10" class="node"><title>\\CanvasObject_Exception</title>
@@ -114,9 +104,19 @@
 <text text-anchor="middle" x="492.571" y="-282.7" font-family="Courier,monospace" font-size="11.00">CanvasObject_Exception</text>
 </g>
 <!-- \\CanvasArray_Exception&#45;&gt;\\CanvasObject_Exception -->
-<g id="edge8" class="edge"><title>\\CanvasArray_Exception&#45;&gt;\\CanvasObject_Exception</title>
-<path fill="none" stroke="black" d="M668.259,-286C641.538,-286 611.284,-286 583.553,-286"/>
-<polygon fill="none" stroke="black" points="583.461,-282.5 573.461,-286 583.461,-289.5 583.461,-282.5"/>
+<g id="edge7" class="edge"><title>\\CanvasArray_Exception&#45;&gt;\\CanvasObject_Exception</title>
+<path fill="none" stroke="black" d="M668.259,-304.789C641.538,-301.915 611.284,-298.661 583.553,-295.678"/>
+<polygon fill="none" stroke="black" points="583.778,-292.182 573.461,-294.593 583.029,-299.142 583.778,-292.182"/>
+</g>
+<!-- \\CanvasPageLink_Exception -->
+<g id="node8" class="node"><title>\\CanvasPageLink_Exception</title>
+<polygon fill="none" stroke="black" points="1069.55,-358 894.696,-358 894.696,-322 1069.55,-322 1069.55,-358"/>
+<text text-anchor="middle" x="982.122" y="-336.7" font-family="Courier,monospace" font-size="11.00">CanvasPageLink_Exception</text>
+</g>
+<!-- \\CanvasPageLink_Exception&#45;&gt;\\CanvasArray_Exception -->
+<g id="edge8" class="edge"><title>\\CanvasPageLink_Exception&#45;&gt;\\CanvasArray_Exception</title>
+<path fill="none" stroke="black" d="M894.793,-330.061C874.682,-327.746 853.263,-325.28 833.142,-322.964"/>
+<polygon fill="none" stroke="black" points="833.403,-319.471 823.068,-321.804 832.602,-326.425 833.403,-319.471"/>
 </g>
 <!-- \\CanvasObject -->
 <g id="node9" class="node"><title>\\CanvasObject</title>
@@ -130,8 +130,8 @@
 </g>
 <!-- \\CanvasObject_Exception&#45;&gt;\\CanvasPest_Exception -->
 <g id="edge10" class="edge"><title>\\CanvasObject_Exception&#45;&gt;\\CanvasPest_Exception</title>
-<path fill="none" stroke="black" d="M411.825,-277.308C384.86,-274.369 354.686,-271.081 327.432,-268.11"/>
-<polygon fill="none" stroke="black" points="327.462,-264.593 317.142,-266.989 326.704,-271.552 327.462,-264.593"/>
+<path fill="none" stroke="black" d="M411.825,-294.692C384.86,-297.631 354.686,-300.919 327.432,-303.89"/>
+<polygon fill="none" stroke="black" points="326.704,-300.448 317.142,-305.011 327.462,-307.407 326.704,-300.448"/>
 </g>
 </g>
 </svg>
