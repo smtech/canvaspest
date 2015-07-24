@@ -1,6 +1,7 @@
 {
     "name": "smtech/canvaspest",
     "description": "An extension of Pest to make RESTful queries to the Instructure Canvas API",
+    "license": "LGPL-3.0",
     "authors": [
         {
             "name": "Seth Battis",
