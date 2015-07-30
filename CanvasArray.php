@@ -177,8 +177,10 @@ class CanvasArray implements Iterator, ArrayAccess {
 	 **/
 	public function count() {
 		$this->requestPageNumber($this->pagination[CanvasPageLink::LAST]);
-		end($this->data);
-		return current($this->data) + 1;
+		if (!end($this->data)) {
+			return 0;
+		}
+		return key($this->data) + 1;
 	}
 	
 	/**
