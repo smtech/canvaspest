@@ -144,11 +144,16 @@ class CanvasPest extends Pest {
 	 *
 	 * @return CanvasObject|CanvasArray
 	 **/
-	protected function postprocessResponse($path, $response) {
-		if(preg_match('%^.*/\d+/?$%', $path)) {
+	protected function postprocessResponse($response) {
+		if (substr($response, 0, 1) == '{') {
 			return new CanvasObject($response);
-		} else {
+		} elseif (substr($response, 0, 1) == '[') {
 			return new CanvasArray($response, $this);
+		} else {
+			throw new CanvasPest_Exception(
+				$response,
+				CanvasPest_Exception::INVALID_JSON_RESPONSE
+			);
 		}
 	}
 	
@@ -173,7 +178,6 @@ class CanvasPest extends Pest {
 	 **/
 	public function get($path, $data = array(), $headers = array()) {
 		return $this->postprocessResponse(
-			$path,
 			parent::get($path, $this->preprocessData($data), $headers)
 		);
 	}
@@ -199,7 +203,6 @@ class CanvasPest extends Pest {
 	 **/
 	public function post($path, $data = array(), $headers = array()) {
 		return $this->postprocessResponse(
-			$path,
 			parent::post($path, $this->preprocessData($data), $headers)
 		);
 	}
@@ -225,7 +228,6 @@ class CanvasPest extends Pest {
 	 **/
 	public function put($path, $data = array(), $headers = array()) {
 		return $this->postprocessResponse(
-			$path,
 			parent::put($path, $this->preprocessData($data), $headers)
 		);
 	}
@@ -251,7 +253,6 @@ class CanvasPest extends Pest {
 	 **/
 	public function delete($path, $headers = array()) {
 		return $this->postprocessResponse(
-			$path,
 			parent::delete($path, $headers)
 		);
 	}
@@ -346,6 +347,9 @@ class CanvasPest_Exception extends Exception {
 	
 	/** The API access token provided is invalid */
 	const INVALID_TOKEN = 2;
+	
+	/** Unanticipated JSON response from API */
+	const INVALID_JSON_RESPONSE = 3;
 }
 
 /**
