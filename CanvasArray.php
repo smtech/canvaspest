@@ -60,7 +60,11 @@ class CanvasArray implements Iterator, ArrayAccess {
 		}
 		
 		/* locate ourselves */
-		$this->page = $this->pagination[CanvasPageLink::CURRENT]->getPageNumber();
+		if (isset($this->pagination[CanvasPageLink::CURRENT])) {
+			$this->page = $this->pagination[CanvasPageLink::CURRENT]->getPageNumber();
+		} else {
+			$this->page = 1; // assume only one page (since no pagination)
+		}
 		$this->key = $this->pageNumberToKey($this->page);
 
 		/* parse the JSON response string */
@@ -85,7 +89,11 @@ class CanvasArray implements Iterator, ArrayAccess {
 				CanvasArray_Exception::INVALID_PAGE_NUMBER
 			);
 		}
-		return ($pageNumber - 1) * $this->pagination[CanvasPageLink::CURRENT]->getPerPage();
+		if (isset($this->pagination[CanvasPageLink::CURRENT])) {
+			return ($pageNumber - 1) * $this->pagination[CanvasPageLink::CURRENT]->getPerPage();
+		} else {
+			return 0; // assume only one page (since no pagination);
+		}
 	}
 	
 	/**
@@ -104,7 +112,12 @@ class CanvasArray implements Iterator, ArrayAccess {
 				CanvasArray_Exception::INVALID_ARRAY_KEY
 			);
 		}
-		return ((int) ($key / $this->pagination[CanvasPageLink::CURRENT]->getPerPage())) + 1;
+		
+		if (isset($this->pagination[CanvasPageLink::CURRENT])) {
+			return ((int) ($key / $this->pagination[CanvasPageLink::CURRENT]->getPerPage())) + 1;
+		} else {
+			return 1; // assume single page if no pagination
+		}
 	}
 	
 	/**
@@ -123,11 +136,14 @@ class CanvasArray implements Iterator, ArrayAccess {
 	 **/
 	private function requestPageNumber($pageNumber, $forceRefresh = false) {
 		if (!isset($this->data[$this->pageNumberToKey($pageNumber)]) || $forceRefresh) {
-			$params = $this->pagination[CanvasPageLink::CURRENT]->getParams();
-			$params[CanvasPageLink::PARAM_PAGE_NUMBER] = $pageNumber;
-			$page = $this->api->get($this->pagination[CanvasPageLink::CURRENT]->getEndpoint(), $params);
-			$this->data = array_replace($this->data, $page->data);
-			return true;
+			// assume one page if no pagination (and already loaded)
+			if (isset($this->pagination[CanvasPageLink::CURRENT])) {
+				$params = $this->pagination[CanvasPageLink::CURRENT]->getParams();
+				$params[CanvasPageLink::PARAM_PAGE_NUMBER] = $pageNumber;
+				$page = $this->api->get($this->pagination[CanvasPageLink::CURRENT]->getEndpoint(), $params);
+				$this->data = array_replace($this->data, $page->data);
+				return true;
+			}
 		}
 		return false;
 	}
