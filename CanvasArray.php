@@ -123,13 +123,9 @@ class CanvasArray implements Iterator, ArrayAccess {
 	 **/
 	private function requestPageNumber($pageNumber, $forceRefresh = false) {
 		if (!isset($this->data[$this->pageNumberToKey($pageNumber)]) || $forceRefresh) {
-			$page = $this->api->get(
-				$this->pagination[CanvasPageLink::CURRENT]->getEndpoint(),
-				array(
-					CanvasPageLink::PARAM_PAGE_NUMBER => $pageNumber,
-					CanvasPageLink::PARAM_PER_PAGE => $this->pagination[CanvasPageLink::CURRENT]->getPerPage()
-				)
-			);
+			$params = $this->pagination[CanvasPageLink::CURRENT]->getParams();
+			$params[CanvasPageLink::PARAM_PAGE_NUMBER] = $pageNumber;
+			$page = $this->api->get($this->pagination[CanvasPageLink::CURRENT]->getEndpoint(), $params);
 			$this->data = array_replace($this->data, $page->data);
 			return true;
 		}
