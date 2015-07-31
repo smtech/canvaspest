@@ -8,7 +8,7 @@
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class CanvasArray implements Iterator, ArrayAccess {
+class CanvasArray implements Iterator, ArrayAccess, Serializable {
 	
 	/** The maximum supported number of responses per page */
 	const MAXIMUM_PER_PAGE = 100;
@@ -135,7 +135,7 @@ class CanvasArray implements Iterator, ArrayAccess {
 	 *		(and therefore not requested)
 	 **/
 	private function requestPageNumber($pageNumber, $forceRefresh = false) {
-		if (!isset($this->data[$this->pageNumberToKey($pageNumber)]) || $forceRefresh) {
+		if (!isset($this->data[$this->pageNumberToKey($pageNumber)]) || ($forceRefresh && isset($this->api))) {
 			// assume one page if no pagination (and already loaded)
 			if (isset($this->pagination[CanvasPageLink::CURRENT])) {
 				$params = $this->pagination[CanvasPageLink::CURRENT]->getParams();
@@ -146,6 +146,20 @@ class CanvasArray implements Iterator, ArrayAccess {
 			}
 		}
 		return false;
+	}
+	
+	private function requestAllPages($forceRefresh = false) {
+		$_page = $this->page;
+		$_key = $this->key;
+		
+		if (isset($this->pagination[CanvasPageLink::LAST])) {
+			for ($page = 1; $page <= $this->pagination[CanvasPageLink::LAST]->getPageNumber(); $page++) {
+				$this->requestPageNumber($page, $forceRefresh);
+			}
+		}
+		
+		$this->page = $_page;
+		$this->key = $_key;
 	}
 	
 	/**
@@ -229,11 +243,15 @@ class CanvasArray implements Iterator, ArrayAccess {
 	 * @see http://php.net/manual/en/arrayaccess.offsetexists.php ArrayAccess::offsetExists
 	 **/
 	public function offsetExists($offset) {
-		$lastPageNumber = $this->pagination[CanvasPageLink::LAST]->getPageNumber();
-		if ($this->keyToPageNumber($offset) == $lastPageNumber && !isset($this->data[$this->pageNumberToKey($lastPageNumber)])) {
-			$this->requestPageNumber($lastPageNumber);
+		if (isset($this->pagination[CanvasPageLink::LAST])) {
+			$lastPageNumber = $this->pagination[CanvasPageLink::LAST]->getPageNumber();
+			if ($this->keyToPageNumber($offset) == $lastPageNumber && !isset($this->data[$this->pageNumberToKey($lastPageNumber)])) {
+				$this->requestPageNumber($lastPageNumber);
+			}
+			return isset($this->data[$offset]) || ($offset >= 0 && $offset < $this->pageNumberToKey($lastPageNumber));
+		} else {
+			return isset($this->data[$offset]);
 		}
-		return isset($this->data[$offset]) || ($offset >= 0 && $offset < $this->pageNumberToKey($lastPageNumber));
 	}
 	
 	/**
@@ -356,6 +374,52 @@ class CanvasArray implements Iterator, ArrayAccess {
 		return ($this->offsetExists($this->key));
 	}
 	
+	/****************************************************************************/
+
+	/****************************************************************************
+	 Serializable methods */
+	
+	/**
+	 * String representation of CanvasArray
+	 *
+	 * @return string
+	 *
+	 * @see http://php.net/manual/en/serializable.serialize.php Serializable::serialize()
+	 **/
+	public function serialize() {
+		$this->requestAllPages();
+		return serialize(
+			array(
+				'page' => $this->page,
+				'key' => $this->key,
+				'data' => $this->data
+			)
+		);
+	}
+	
+	/**
+	 * Construct a CanvasArray from its string representation
+	 *
+	 * The data in the unserialized CanvasArray is static and cannot be refreshed,
+	 * as the CanvasPest API connection is _not_ serialized to preserve the
+	 * security of API access tokens.
+	 *
+	 * @param string $data
+	 *
+	 * @return string
+	 * 
+	 * @see http://php.net/manual/en/serializable.unserialize.php Serializable::unserialize()
+	 **/
+	public function unserialize($data) {
+		$_data = unserialize($data);
+		$this->page = $_data['page'];
+		$this->key = $_data['key'];
+		$this->data = $_data['data'];
+		$this->api = null;
+		$this->endpoint = null;
+		$this->pagination = array();
+	}
+
 	/****************************************************************************/
 }
 

@@ -13,7 +13,7 @@
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class CanvasObject implements ArrayAccess {
+class CanvasObject implements ArrayAccess, Serializable {
 	
 	/** @var array $data Backing store */
 	private $data;
@@ -115,7 +115,7 @@ class CanvasObject implements ArrayAccess {
 	 *
 	 * @return bool
 	 *
-	 * @see http://php.net/manual/en/arrayaccess.offsetexists.php ArrayAccess::offsetExists
+	 * @see http://php.net/manual/en/arrayaccess.offsetexists.php ArrayAccess::offsetExists()
 	 **/
 	public function offsetExists ($offset) {
 		return isset($this->data[$offset]);
@@ -128,7 +128,7 @@ class CanvasObject implements ArrayAccess {
 	 *
 	 * @return mixed|null
 	 *
-	 * @see http://php.net/manual/en/arrayaccess.offsetexists.php ArrayAccess::offsetGet
+	 * @see http://php.net/manual/en/arrayaccess.offsetexists.php ArrayAccess::offsetGet()
 	 **/
 	public function offsetGet ($offset) {
 		return $this->data[$offset];
@@ -146,7 +146,7 @@ class CanvasObject implements ArrayAccess {
 	 *
 	 * @throws CanvasObject_Exception IMMUTABLE All calls to this method will cause an exception
 	 *
-	 * @see http://php.net/manual/en/arrayaccess.offsetset.php ArrayAccess::offsetSet
+	 * @see http://php.net/manual/en/arrayaccess.offsetset.php ArrayAccess::offsetSet()
 	 **/
 	public function offsetSet($offset, $value) {
 		throw new CanvasObject_Exception(
@@ -166,7 +166,7 @@ class CanvasObject implements ArrayAccess {
 	 *
 	 * @throws CanvasObject_Exception IMMUTABLE All calls to this method will cause an exception
 	 *
-	 * @see http://php.net/manual/en/arrayaccess.offsetunset.php ArrayAccess::offsetUnset
+	 * @see http://php.net/manual/en/arrayaccess.offsetunset.php ArrayAccess::offsetUnset()
 	 **/
 	public function offsetUnset ($offset) {
 		throw new CanvasObject_Exception(
@@ -175,6 +175,35 @@ class CanvasObject implements ArrayAccess {
 		);
 	}
 	
+	/****************************************************************************/
+
+	/****************************************************************************
+	 Serializable methods */
+	
+	/**
+	 * String representation of CanvasObject
+	 *
+	 * @return string
+	 *
+	 * @see http://php.net/manual/en/serializable.serialize.php Serializable::serialize()
+	 **/
+	public function serialize() {
+		return serialize($this->data);
+	}
+	
+	/**
+	 * Construct a CanvasObject from its string representation
+	 *
+	 * @param string $data
+	 *
+	 * @return void
+	 *
+	 * @see http://php.net/manual/en/serializable.unserialize.php Serializable::unsserialize()
+	 **/
+	public function unserialize($data) {
+		$this->data = unserialize($data);
+	}
+
 	/****************************************************************************/
 }
 
