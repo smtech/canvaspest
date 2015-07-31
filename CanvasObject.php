@@ -29,7 +29,7 @@ class CanvasObject implements ArrayAccess {
 		if (is_array($response)) {
 			$this->data = $response;
 		} else {
-			$this->data = json_decode($jsonResponse, true);
+			$this->data = json_decode($response, true);
 		}
 	}
 	
