@@ -148,6 +148,17 @@ class CanvasArray implements Iterator, ArrayAccess, Serializable {
 		return false;
 	}
 	
+	/**
+	 * Request all pages from API
+	 *
+	 * This stores the entire API response locally, in preparation for, most
+	 * likely, serializing this object.
+	 *
+	 * @param bool $forceRefresh (Optional) Force a refresh of backing data, even
+	 *		if cached (defaults to `FALSE`)
+	 *
+	 * @return void
+	 */
 	private function requestAllPages($forceRefresh = false) {
 		$_page = $this->page;
 		$_key = $this->key;

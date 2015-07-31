@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-76628688"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-287926770"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-76628688" class="accordion-body collapse in">
+            <div id="namespace-287926770" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -204,6 +204,8 @@ the Canvas API.</em></p>
                                                                     <a href="../classes/CanvasArray.html#method_next" class="">next()</a><br />
                                                                     <a href="../classes/CanvasArray.html#method_rewind" class="">rewind()</a><br />
                                                                     <a href="../classes/CanvasArray.html#method_valid" class="">valid()</a><br />
+                                                                    <a href="../classes/CanvasArray.html#method_serialize" class="">serialize()</a><br />
+                                                                    <a href="../classes/CanvasArray.html#method_unserialize" class="">unserialize()</a><br />
                                                             </section>
                             <section class="span4">
                                                                     <em>No public properties found</em>
@@ -228,6 +230,7 @@ the Canvas API.</em></p>
                                                                     <a href="../classes/CanvasArray.html#method_pageNumberToKey" class="">pageNumberToKey()</a><br />
                                                                     <a href="../classes/CanvasArray.html#method_keyToPageNumber" class="">keyToPageNumber()</a><br />
                                                                     <a href="../classes/CanvasArray.html#method_requestPageNumber" class="">requestPageNumber()</a><br />
+                                                                    <a href="../classes/CanvasArray.html#method_requestAllPages" class="">requestAllPages()</a><br />
                                                                     <a href="../classes/CanvasArray.html#method_rewindToPageNumber" class="">rewindToPageNumber()</a><br />
                                                             </section>
                             <section class="span4">
@@ -258,6 +261,7 @@ the Canvas API.</em></p>
 
                                                                             <dt>Implements</dt>
                                                         <dd><a href=""><div class="namespace-wrapper"></div></a></dd>
+                                                                                <dd><a href=""><div class="namespace-wrapper"></div></a></dd>
                                                                                 <dd><a href=""><div class="namespace-wrapper"></div></a></dd>
                         
                         
@@ -885,6 +889,76 @@ pages relative to the current page of responses                            </art
         </aside>
     </div>
 
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_serialize" name="method_serialize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">serialize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">serialize() : string</pre>
+                <p><em>String representation of CanvasArray</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/serializable.serialize.php"><span class="namespace-wrapper">Serializable::serialize()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_unserialize" name="method_unserialize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">unserialize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">unserialize(string  <span class="argument">$data</span>) : string</pre>
+                <p><em>Construct a CanvasArray from its string representation</em></p>
+                <p>The data in the unserialized CanvasArray is static and cannot be refreshed,
+as the CanvasPest API connection is <em>not</em> serialized to preserve the
+security of API access tokens.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$data </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="http://php.net/manual/en/serializable.unserialize.php"><span class="namespace-wrapper">Serializable::unserialize()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
                                                                     <div class="row-fluid">
         <div class="span8 content class">
             <a id="method_pageNumberToKey" name="method_pageNumberToKey" class="anchor"></a>
@@ -1015,6 +1089,42 @@ if cached (defaults to <code>FALSE</code>)</p></td>
 
                                     <div class="row-fluid">
         <div class="span8 content class">
+            <a id="method_requestAllPages" name="method_requestAllPages" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">requestAllPages()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">requestAllPages(boolean  <span class="argument">$forceRefresh = false</span>) : void</pre>
+                <p><em>Request all pages from API</em></p>
+                <p>This stores the entire API response locally, in preparation for, most
+likely, serializing this object.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$forceRefresh </td>
+                                <td><p>(Optional) Force a refresh of backing data, even
+if cached (defaults to <code>FALSE</code>)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
             <a id="method_rewindToPageNumber" name="method_rewindToPageNumber" class="anchor"></a>
             <article class="method">
                 <h3 class="private ">rewindToPageNumber()</h3>
@@ -1105,7 +1215,7 @@ parameter.</p>
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
                     on 
 Warning: date_default_timezone_get(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in phar:///Users/sethbattis/Dropbox/Library/Scripts/phpdocumentor.phar/vendor/twig/twig/lib/Twig/Extension/Core.php on line 89
-July 22nd, 2015 at 03:20.
+July 31st, 2015 at 18:50.
                 </section>
             </section>
         </section>
