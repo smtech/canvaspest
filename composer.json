@@ -10,7 +10,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "educoder/pest": "dev-master"
+        "battis/educoder-pest-fork": "dev-master"
     },
     "autoload": {
         "classmap": [""]
