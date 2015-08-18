@@ -217,7 +217,7 @@ class CanvasArray implements Iterator, ArrayAccess, Serializable {
 	 * @see http://php.net/manual/en/arrayobject.count.php ArrayObject::count
 	 **/
 	public function count() {
-		$this->requestPageNumber($this->pagination[CanvasPageLink::LAST]);
+		$this->requestPageNumber($this->pagination[CanvasPageLink::LAST]->getPageNumber());
 		if (!end($this->data)) {
 			return 0;
 		}
