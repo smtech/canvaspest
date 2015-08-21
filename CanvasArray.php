@@ -593,6 +593,23 @@ class CanvasPageLink {
 	public function getPerPage() {
 		return $this->params[self::PARAM_PER_PAGE];
 	}
+	
+	/**
+	 * An array representation of the CanvasArray
+	 *
+	 * @return array
+	 **/
+	public function getArrayCopy() {
+		$arr = array();
+		$_key = $this->key;
+		$_page = $this->page;
+		foreach($this as $obj) {
+			$arr[] = $obj->getArrayCopy();
+		}
+		$this->page = $_page;
+		$this->key = $_key;
+		return $arr;
+	}
 }
 
 /**

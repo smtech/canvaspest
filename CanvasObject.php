@@ -205,6 +205,15 @@ class CanvasObject implements ArrayAccess, Serializable {
 	}
 
 	/****************************************************************************/
+	
+	/**
+	 * An array representation of the CanvasObject
+	 *
+	 * @return array
+	 **/
+	public function getArrayCopy() {
+		return $this->data;
+	}
 }
 
 /**
