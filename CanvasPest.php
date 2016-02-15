@@ -15,7 +15,7 @@
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class CanvasPest extends Pest {
+class CanvasPest extends \Battis\Educoder\Pest {
 	
 	/** Name of the parameter controlling the number of responses per page */
 	const PARAM_PER_PAGE = 'per_page';
@@ -136,7 +136,7 @@ class CanvasPest extends Pest {
 	 *
 	 * @return string
 	 **/
-	protected static function http_build_query($data) {
+	protected function http_build_query($data) {
 		return preg_replace('/%5B\d+%5D/simU', '[]', http_build_query($data));
 	}
 	
