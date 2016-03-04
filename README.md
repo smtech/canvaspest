@@ -6,7 +6,7 @@ Object-oriented access to the Canvas API using PHP.
 
 In your `composer.json`, include:
 
-```
+```PHP
 "require": {
 	"smtech/canvaspest": "1.*"
 }
@@ -25,7 +25,7 @@ $api = new CanvasPest('https://canvas.instructure.com/api/v1', 'df2bcbad95f606d6
 
 Make a RESTful query to the API:
 
-```
+```PHP
 // GET, PUT, POST, DELETE are all supported
 $obj = $api->get('users/self/profile');
 ```
@@ -36,7 +36,7 @@ The response from a query is either a `CanvasObject` or a `CanvasArray` (of Canv
 
 CanvasObject fields can be accessed either object-style or array style:
 
-```
+```PHP
 $obj = $api->get('courses/123');
 echo $obj['sis_course_id']; // array-style
 echo $obj->title; // object-style
@@ -46,7 +46,7 @@ echo $obj->title; // object-style
 
 CanvasArrays can be iterated conveniently using the `foreach` control structure.
 
-```
+```PHP
 $arr = $api->get('/accounts/1/users');
 foreach($arr as $obj) {
 	echo $obj->name;
@@ -55,7 +55,7 @@ foreach($arr as $obj) {
 
 One could also access arbitrary elements of the CanvasArray:
 
-```
+```PHP
 $arr = $api->get('accounts/1/courses');
 echo $arr[1337]->title;
 ```
