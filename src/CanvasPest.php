@@ -2,6 +2,8 @@
 
 /** CanvasPest and (directly) related classes */
 
+namespace smtech\CanvasPest;
+
 /**
  * An object to handle interactions with the Canvas API.
  * 

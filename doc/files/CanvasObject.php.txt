@@ -2,6 +2,8 @@
 
 /** CanvasObject and related classes */
 
+namespace smtech\CanvasPest;
+
 /**
  * An object that represents a single Canvas object, providing both object-
  * style access (obj->key) and array-style access (array[key]).
@@ -205,6 +207,15 @@ class CanvasObject implements ArrayAccess, Serializable {
 	}
 
 	/****************************************************************************/
+	
+	/**
+	 * An array representation of the CanvasObject
+	 *
+	 * @return array
+	 **/
+	public function getArrayCopy() {
+		return $this->data;
+	}
 }
 
 /**

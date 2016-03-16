@@ -13,6 +13,8 @@
         "battis/educoder-pest-fork": "dev-master"
     },
     "autoload": {
-        "classmap": [""]
+        "psr-4": {
+	        "smtech\\CanvasPest\\" : "src/"
+        }
     }
 }

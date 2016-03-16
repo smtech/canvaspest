@@ -11,7 +11,6 @@
 		<template name="responsive"/>
 	</transformation>
 	<files>
-		<ignore>.</ignore>
-		<file>Canvas*</file>
+		<directory>src</directory>
 	</files>
 </phpdoc>

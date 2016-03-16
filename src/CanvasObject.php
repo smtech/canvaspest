@@ -2,6 +2,8 @@
 
 /** CanvasObject and related classes */
 
+namespace smtech\CanvasPest;
+
 /**
  * An object that represents a single Canvas object, providing both object-
  * style access (obj->key) and array-style access (array[key]).

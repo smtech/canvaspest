@@ -2,6 +2,8 @@
 	
 /** CanvasArray and related classes */
 
+namespace smtech\CanvasPest;
+
 /**
  * An object to represent a list of Canvas Objects returned as a response from
  * the Canvas API.
@@ -217,11 +219,15 @@ class CanvasArray implements Iterator, ArrayAccess, Serializable {
 	 * @see http://php.net/manual/en/arrayobject.count.php ArrayObject::count
 	 **/
 	public function count() {
-		$this->requestPageNumber($this->pagination[CanvasPageLink::LAST]);
-		if (!end($this->data)) {
-			return 0;
+		if (isset($this->pagination[CanvasPageLink::LAST])) {
+			$this->requestPageNumber($this->pagination[CanvasPageLink::LAST]->getPageNumber());
+			if (!end($this->data)) {
+				return 0;
+			}
+			return key($this->data) + 1;
+		} else {
+			return count($this->data);
 		}
-		return key($this->data) + 1;
 	}
 	
 	/**
@@ -582,7 +588,13 @@ class CanvasPageLink {
 	 * @return int
 	 **/
 	public function getPageNumber() {
-		return $this->params[self::PARAM_PAGE_NUMBER];
+		if (is_int($this->params[self::PARAM_PAGE_NUMBER])) {
+			return $this->params[self::PARAM_PAGE_NUMBER];
+		} elseif ($this->params[self::PARAM_PAGE_NUMBER] == 'first') {
+			return 1; /* weirdly, api/v1/users/<user_id>/logins returns first instead of page numbers */
+		} else {
+			return 1; // FIXME probably not good to assume that this is safe
+		}
 	}
 	
 	/**
@@ -592,6 +604,23 @@ class CanvasPageLink {
 	 **/
 	public function getPerPage() {
 		return $this->params[self::PARAM_PER_PAGE];
+	}
+	
+	/**
+	 * An array representation of the CanvasArray
+	 *
+	 * @return array
+	 **/
+	public function getArrayCopy() {
+		$arr = array();
+		$_key = $this->key;
+		$_page = $this->page;
+		foreach($this as $obj) {
+			$arr[] = $obj->getArrayCopy();
+		}
+		$this->page = $_page;
+		$this->key = $_key;
+		return $arr;
 	}
 }
 
@@ -616,3 +645,4 @@ class CanvasPageLink_Exception extends CanvasArray_Exception {
 }
 
 ?>
+

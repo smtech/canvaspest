@@ -2,6 +2,8 @@
 	
 /** CanvasArray and related classes */
 
+namespace smtech\CanvasPest;
+
 /**
  * An object to represent a list of Canvas Objects returned as a response from
  * the Canvas API.
