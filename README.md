@@ -1,5 +1,7 @@
 # CanvasPest
 
+[![Latest Version](https://img.shields.io/packagist/v/smtech/canvaspest.svg)](https://packagist.org/packages/smtech/canvaspest)
+
 Object-oriented access to the Canvas API using PHP.
 
 ## Install
