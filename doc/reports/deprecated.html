@@ -67,12 +67,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
                                 </a>
                             </li>
                             <li>
@@ -97,8 +97,9 @@
         <div class="span2 sidebar">
             <ul class="side-nav nav nav-list">
                 <li class="nav-header">Navigation</li>
-                                                            <li><a href="#CanvasPest.php"><i class="icon-file"></i> CanvasPest.php</a></li>
-                                                                                                                                                                                                                                                                            <li><a href="#CanvasArray.php"><i class="icon-file"></i> CanvasArray.php</a></li>
+                                                            <li><a href="#CanvasPestImmutable.php"><i class="icon-file"></i> CanvasPestImmutable.php</a></li>
+                                                                                                                                                                                                                    <li><a href="#CanvasPest.php"><i class="icon-file"></i> CanvasPest.php</a></li>
+                                                                                                    <li><a href="#CanvasArray.php"><i class="icon-file"></i> CanvasArray.php</a></li>
                                                                                                                                                             <li><a href="#CanvasObject.php"><i class="icon-file"></i> CanvasObject.php</a></li>
                                                                                                                                                                                                                                             </ul>
         </div>
@@ -110,7 +111,37 @@
             </ul>
 
             <div id="marker-accordion">
-                                                                            <a name="CanvasPest.php" id="CanvasPest.php"></a>
+                                                                            <a name="CanvasPestImmutable.php" id="CanvasPestImmutable.php"></a>
+                    <h3>
+                        <i class="icon-file"></i>
+                        CanvasPestImmutable.php
+                        <small style="float: right;padding-right: 10px;">1</small>
+                    </h3>
+                    <div>
+                        <table class="table markers table-bordered">
+                            <tr>
+                                <th>Element</th>
+                                <th>Line</th>
+                                <th>Description</th>
+                            </tr>
+                                                                                <tr>
+                                    <td>\smtech\CanvasPest\CanvasPestImmutable::put()</td>
+                                    <td>29</td>
+                                    <td>CanvasPestImmutable only supports GET calls to the API</td>
+                                </tr>
+                                                                                                                                                <tr>
+                                    <td>\smtech\CanvasPest\CanvasPestImmutable::post()</td>
+                                    <td>45</td>
+                                    <td>CanvasPestImmutable only supports GET calls to the API</td>
+                                </tr>
+                                                                                                                                                <tr>
+                                    <td>\smtech\CanvasPest\CanvasPestImmutable::delete()</td>
+                                    <td>61</td>
+                                    <td>CanvasPestImmutable only supports GET calls to the API</td>
+                                </tr>
+                                                                                                                                </table>
+                    </div>
+                                        <a name="CanvasPest.php" id="CanvasPest.php"></a>
                     <h3>
                         <i class="icon-file"></i>
                         CanvasPest.php
@@ -125,23 +156,8 @@
                             </tr>
                                                                                 <tr>
                                     <td>\smtech\CanvasPest\CanvasPest::patch()</td>
-                                    <td>254</td>
+                                    <td>251</td>
                                     <td>The Canvas API does not currently support PATCH calls</td>
-                                </tr>
-                                                                                                                                                <tr>
-                                    <td>\smtech\CanvasPest\CanvasPestImmutable::put()</td>
-                                    <td>284</td>
-                                    <td>CanvasPestImmutable only supports GET calls to the API</td>
-                                </tr>
-                                                                                                                                                <tr>
-                                    <td>\smtech\CanvasPest\CanvasPestImmutable::post()</td>
-                                    <td>300</td>
-                                    <td>CanvasPestImmutable only supports GET calls to the API</td>
-                                </tr>
-                                                                                                                                                <tr>
-                                    <td>\smtech\CanvasPest\CanvasPestImmutable::delete()</td>
-                                    <td>316</td>
-                                    <td>CanvasPestImmutable only supports GET calls to the API</td>
                                 </tr>
                                                                                                                                 </table>
                     </div>
@@ -160,12 +176,12 @@
                             </tr>
                                                                                 <tr>
                                     <td>\smtech\CanvasPest\CanvasArray::offsetSet()</td>
-                                    <td>304</td>
+                                    <td>302</td>
                                     <td>Canvas responses are immutable</td>
                                 </tr>
                                                                                                                                                 <tr>
                                     <td>\smtech\CanvasPest\CanvasArray::offsetUnset()</td>
-                                    <td>324</td>
+                                    <td>322</td>
                                     <td>Canvas responses are immutable</td>
                                 </tr>
                                                                                                                                 </table>
@@ -185,22 +201,22 @@
                             </tr>
                                                                                 <tr>
                                     <td>\smtech\CanvasPest\CanvasObject::__set()</td>
-                                    <td>81</td>
+                                    <td>79</td>
                                     <td>Canvas objects are immutable</td>
                                 </tr>
                                                                                                                                                 <tr>
                                     <td>\smtech\CanvasPest\CanvasObject::__unset()</td>
-                                    <td>101</td>
+                                    <td>99</td>
                                     <td>Canvas objects are immutable</td>
                                 </tr>
                                                                                                                                                 <tr>
                                     <td>\smtech\CanvasPest\CanvasObject::offsetSet()</td>
-                                    <td>153</td>
+                                    <td>151</td>
                                     <td>Canvas objects are immutable</td>
                                 </tr>
                                                                                                                                                 <tr>
                                     <td>\smtech\CanvasPest\CanvasObject::offsetUnset()</td>
-                                    <td>173</td>
+                                    <td>171</td>
                                     <td>Canvas objects are immutable</td>
                                 </tr>
                                                                                     </table>
@@ -247,8 +263,8 @@
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
                     on 
-Warning: date_default_timezone_get(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in phar:///usr/local/bin/phpdoc/vendor/twig/twig/lib/Twig/Extension/Core.php on line 89
-March 16th, 2016 at 15:11.
+Warning: date_default_timezone_get(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in phar:///Users/sethbattis/Dropbox/Library/Scripts/phpdocumentor.phar/vendor/twig/twig/lib/Twig/Extension/Core.php on line 89
+March 18th, 2016 at 02:19.
                 </section>
             </section>
         </section>

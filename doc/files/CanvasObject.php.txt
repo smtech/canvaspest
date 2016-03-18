@@ -1,6 +1,6 @@
 <?php
 
-/** CanvasObject and related classes */
+/** smtech\CanvasPest\CanvasObject */
 
 namespace smtech\CanvasPest;
 
@@ -15,7 +15,7 @@ namespace smtech\CanvasPest;
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class CanvasObject implements ArrayAccess, Serializable {
+class CanvasObject implements \ArrayAccess, \Serializable {
 	
 	/** @var array $data Backing store */
 	private $data;
@@ -24,8 +24,6 @@ class CanvasObject implements ArrayAccess, Serializable {
 	 * Construct a CanvasObject
 	 *
 	 * @param string|string[] $response JSON-encoded response from the Canvas API or the resulting JSON-decoded associative array
-	 *
-	 * @return void
 	 **/
 	public function __construct($response) {
 		if (is_array($response)) {
@@ -217,15 +215,3 @@ class CanvasObject implements ArrayAccess, Serializable {
 		return $this->data;
 	}
 }
-
-/**
- * All exceptions thrown by CanvasObject
- *
- * @author Seth Battis <SethBattis@stmarksschool.org>
- **/
-class CanvasObject_Exception extends CanvasPest_Exception {
-	/** Response values are read-only */
-	const IMMUTABLE = 101;
-}
-
-?>

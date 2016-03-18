@@ -1,6 +1,6 @@
 <?php
 
-/** CanvasPest and (directly) related classes */
+/** smtech\CanvasPest\CanvasPest */
 
 namespace smtech\CanvasPest;
 
@@ -34,8 +34,6 @@ class CanvasPest extends \Battis\Educoder\Pest {
 	 *		`'https://canvas.instructure.com/api/v1'`)
 	 * @param string $apiAuthorizationToken (Optional) API access token for the
 	 *		API instance (if not provided now, it will need to be provided later)
-	 *
-	 * @return void
 	 *
 	 * @see CanvasPest::setupToken() To configure the API access token later
 	 **/
@@ -111,7 +109,6 @@ class CanvasPest extends \Battis\Educoder\Pest {
 	 * traversable CanvasArray (of CanvasObjects) representing the API response
 	 * describing the list of objects affected by the query.
 	 *
-	 * @param string $path Path to the API endpoint queried
 	 * @param string $response JSON-encoded response from the API
 	 *
 	 * @return CanvasObject|CanvasArray
@@ -258,95 +255,3 @@ class CanvasPest extends \Battis\Educoder\Pest {
 		);
 	}
 }
-
-/**
- * Treat the API as read-only.
- *
- * Without excessive editorializing, the permissions structure in Canvas bites.
- * For example, one can't create a user who has read-only access to the
- * complete API -- if a user has complete access to the API, they have
- * _complete_ access to the API, including the ability to alter and delete
- * information. This object provides a comparative level of safety, enforcing
- * a restriction on GET-only API calls.
- *
- * @author Seth Battis <SethBattis@stmarksschool.org>
- **/
-class CanvasPestImmutable extends CanvasPest {
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @deprecated CanvasPestImmutable only supports GET calls to the API
-	 *
-	 * @return void
-	 *
-	 * @throws CanvasPestImmutable_Exception IMMUTABLE All calls to this method will cause an exception
-	 **/
-	public function put() {
-		throw new CanvasPestImmutable_Exception(
-			'Only GET calls to the API are allowed from CanvasPestImmutable.',
-			CanvasPestImmutable_Exception::IMMUTABLE
-		);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @deprecated CanvasPestImmutable only supports GET calls to the API
-	 *
-	 * @return void
-	 *
-	 * @throws CanvasPestImmutable_Exception IMMUTABLE All calls to this method will cause an exception
-	 **/
-	public function post() {
-		throw new CanvasPestImmutable_Exception(
-			'Only GET calls to the API are allowed from CanvasPestImmutable.',
-			CanvasPestImmutable_Exception::IMMUTABLE
-		);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @deprecated CanvasPestImmutable only supports GET calls to the API
-	 *
-	 * @return void
-	 *
-	 * @throws CanvasPestImmutable_Exception IMMUTABLE All calls to this method will cause an exception
-	 **/
-	public function delete() {
-		throw new CanvasPestImmutable_Exception(
-			'Only GET calls to the API are allowed from CanvasPestImmutable.',
-			CanvasPestImmutable_Exception::IMMUTABLE
-		);
-	}
-}
-
-/**
- * All exceptions thrown by the CanvasPest object
- *
- * @author Seth Battis <SethBattis@stmarksschool.org>
- **/	
-class CanvasPest_Exception extends Exception {
-	/** The API access method is not supported by the Canvas API */
-	const UNSUPPORTED_METHOD = 1;
-	
-	/** The API access token provided is invalid */
-	const INVALID_TOKEN = 2;
-	
-	/** Unanticipated JSON response from API */
-	const INVALID_JSON_RESPONSE = 3;
-}
-
-/**
- * All exceptions thrown by CanvasPestImmutable
- *
- * @author Seth Battis <SethBattis@stmarksschool.org>
- **/
-class CanvasPestImmutable_Exception extends CanvasPest_Exception {
-	/**
-	 * @const IMMUTABLE A request to the API that would change data was attempted
-	 **/
-	const IMMUTABLE = 1001;
-}
-
-?>
