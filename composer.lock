@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/battis/pest.git",
-                "reference": "b12e9056465e2894bd698eede139a03b91723545"
+                "reference": "ee99df2b7e276195d3ab06738f2af3f44f3ed054"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/battis/pest/zipball/b12e9056465e2894bd698eede139a03b91723545",
-                "reference": "b12e9056465e2894bd698eede139a03b91723545",
+                "url": "https://api.github.com/repos/battis/pest/zipball/ee99df2b7e276195d3ab06738f2af3f44f3ed054",
+                "reference": "ee99df2b7e276195d3ab06738f2af3f44f3ed054",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
             ],
             "description": "A proper REST client for PHP.",
             "homepage": "https://github.com/educoder/pest",
-            "time": "2016-02-15 19:52:14"
+            "time": "2016-03-23 15:38:23"
         }
     ],
     "packages-dev": [],
