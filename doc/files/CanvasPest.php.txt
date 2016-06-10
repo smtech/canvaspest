@@ -233,7 +233,14 @@ class CanvasPest extends \Battis\Educoder\Pest {
 	 *
 	 * @return CanvasObject|CanvasArray
 	 **/
-	public function delete($path, $headers = array()) {
+	public function delete($path, $data = array(), $headers = array()) {
+        if (!empty($data)) {
+            $pos = strpos($path, '?');
+            if ($pos !== false) {
+                $path = substr($path, 0, $pos);
+            }
+            $path .= '?' . $this->http_build_query($data);
+        }		
 		return $this->postprocessResponse(
 			parent::delete($path, $headers)
 		);
