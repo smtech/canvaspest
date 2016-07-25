@@ -8,9 +8,9 @@
             "email": "sethbattis@stmarksschool.org"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
-        "battis/educoder-pest-fork": "dev-master"
+        "battis/educoder-pest-fork": "~1.0"
     },
     "autoload": {
         "psr-4": {

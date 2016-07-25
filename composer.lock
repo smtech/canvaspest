@@ -4,12 +4,12 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8770d2c793073fe2bed81fd25186be08",
-    "content-hash": "bcbd6a34d70b93094c10f3a5ca1ec5c4",
+    "hash": "c564c9dda2985f50074a3b5815f05de1",
+    "content-hash": "02a0bc778666fafc2c08550ddc85ff67",
     "packages": [
         {
             "name": "battis/educoder-pest-fork",
-            "version": "dev-master",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/battis/pest.git",
@@ -52,10 +52,8 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "battis/educoder-pest-fork": 20
-    },
+    "minimum-stability": "stable",
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
