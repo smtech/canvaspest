@@ -1,6 +1,6 @@
 # CanvasPest
 
-[![Latest Version](https://img.shields.io/packagist/v/smtech/canvaspest.svg)](https://packagist.org/packages/smtech/canvaspest)
+[![Latest Version](https://img.shields.io/packagist/v/smtech/canvaspest.svg)](https://packagist.org/packages/smtech/canvaspest) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/smtech/canvaspest/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/smtech/canvaspest/?branch=master)
 
 Object-oriented access to the Canvas API using PHP.
 
