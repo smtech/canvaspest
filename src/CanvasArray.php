@@ -238,7 +238,7 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable {
 	public function getArrayCopy() {
 		$_key = $this->key;
 		$this->rewindToPageNumber(1);
-		while(isset($this->pagination[CanvasPageLink::NEXT])) {
+		while (isset($this->pagination[CanvasPageLink::NEXT])) {
 			$this->rewindToPageNumber($this->pagination[CanvasPageLink::NEXT]);
 		}
 		$this->key = $_key;

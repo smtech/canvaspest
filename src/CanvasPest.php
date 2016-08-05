@@ -82,17 +82,17 @@ class CanvasPest extends \Battis\Educoder\Pest {
 	}
 
 	/**
-     * Prepare API request headers
-     *
-     * Flatten headers from an associative array to a numerically indexed array
-     * of `"Name: Value"` style entries like `CURLOPT_HTTPHEADER` expects.
-     * Numerically indexed arrays are not modified.
-     *
-     * Extended by CanvasPest to include the API access token in the
-     * `Authorization` header.
-     *
-     * @param string[] $headers
-     * @return string[]
+	 * Prepare API request headers
+	 *
+	 * Flatten headers from an associative array to a numerically indexed array
+	 * of `"Name: Value"` style entries like `CURLOPT_HTTPHEADER` expects.
+	 * Numerically indexed arrays are not modified.
+	 *
+	 * Extended by CanvasPest to include the API access token in the
+	 * `Authorization` header.
+	 *
+	 * @param string[] $headers
+	 * @return string[]
 	 **/
 	protected function prepHeaders($headers) {
 		return parent::prepHeaders(array_merge($this->headers, $headers));
@@ -234,13 +234,13 @@ class CanvasPest extends \Battis\Educoder\Pest {
 	 * @return CanvasObject|CanvasArray
 	 **/
 	public function delete($path, $data = array(), $headers = array()) {
-        if (!empty($data)) {
-            $pos = strpos($path, '?');
-            if ($pos !== false) {
-                $path = substr($path, 0, $pos);
-            }
-            $path .= '?' . $this->http_build_query($data);
-        }		
+		if (!empty($data)) {
+			$pos = strpos($path, '?');
+			if ($pos !== false) {
+				$path = substr($path, 0, $pos);
+			}
+			$path .= '?' . $this->http_build_query($data);
+		}		
 		return $this->postprocessResponse(
 			parent::delete($path, $headers)
 		);

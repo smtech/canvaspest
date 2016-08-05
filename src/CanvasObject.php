@@ -117,7 +117,7 @@ class CanvasObject implements \ArrayAccess, \Serializable {
 	 *
 	 * @see http://php.net/manual/en/arrayaccess.offsetexists.php ArrayAccess::offsetExists()
 	 **/
-	public function offsetExists ($offset) {
+	public function offsetExists($offset) {
 		return isset($this->data[$offset]);
 	}
 	
@@ -130,7 +130,7 @@ class CanvasObject implements \ArrayAccess, \Serializable {
 	 *
 	 * @see http://php.net/manual/en/arrayaccess.offsetexists.php ArrayAccess::offsetGet()
 	 **/
-	public function offsetGet ($offset) {
+	public function offsetGet($offset) {
 		return $this->data[$offset];
 	}
 	
@@ -168,7 +168,7 @@ class CanvasObject implements \ArrayAccess, \Serializable {
 	 *
 	 * @see http://php.net/manual/en/arrayaccess.offsetunset.php ArrayAccess::offsetUnset()
 	 **/
-	public function offsetUnset ($offset) {
+	public function offsetUnset($offset) {
 		throw new CanvasObject_Exception(
 			'Canvas objects are immutable',
 			CanvasObject_Exception::IMMUTABLE

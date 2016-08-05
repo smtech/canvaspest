@@ -87,7 +87,7 @@ class CanvasPageLink {
 				if (is_int($pageNumber) && $pageNumber > 0 && $model instanceof CanvasPageLink && is_string($this->name) && !empty($this->name)) {
 					$this->endpoint = $model->endpoint;
 					$this->params = $model->params;
-					switch($this->name) {
+					switch ($this->name) {
 						case self::PREV: {
 							$this->params[self::PARAM_PAGE_NUMBER] = $pageNumber - 1;
 							break;
@@ -179,7 +179,7 @@ class CanvasPageLink {
 		$arr = array();
 		$_key = $this->key;
 		$_page = $this->page;
-		foreach($this as $obj) {
+		foreach ($this as $obj) {
 			$arr[] = $obj->getArrayCopy();
 		}
 		$this->page = $_page;
