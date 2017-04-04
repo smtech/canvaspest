@@ -16,52 +16,56 @@ namespace smtech\CanvasPest;
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class CanvasPestImmutable extends CanvasPest {
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @deprecated CanvasPestImmutable only supports GET calls to the API
-	 *
-	 * @return void
-	 *
-	 * @throws CanvasPestImmutable_Exception IMMUTABLE All calls to this method will cause an exception
-	 **/
-	public function put() {
-		throw new CanvasPestImmutable_Exception(
-			'Only GET calls to the API are allowed from CanvasPestImmutable.',
-			CanvasPestImmutable_Exception::IMMUTABLE
-		);
-	}
+class CanvasPestImmutable extends CanvasPest
+{
+    /**
+     * {@inheritDoc}
+     *
+     * @deprecated CanvasPestImmutable only supports GET calls to the API
+     *
+     * @return void
+     *
+     * @throws CanvasPestImmutable_Exception IMMUTABLE All calls to this method will cause an exception
+     **/
+    public function put($url, $data = array(), $headers = array())
+    {
+        throw new CanvasPestImmutable_Exception(
+            'Only GET calls to the API are allowed from CanvasPestImmutable.',
+            CanvasPestImmutable_Exception::IMMUTABLE
+        );
+    }
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @deprecated CanvasPestImmutable only supports GET calls to the API
-	 *
-	 * @return void
-	 *
-	 * @throws CanvasPestImmutable_Exception IMMUTABLE All calls to this method will cause an exception
-	 **/
-	public function post() {
-		throw new CanvasPestImmutable_Exception(
-			'Only GET calls to the API are allowed from CanvasPestImmutable.',
-			CanvasPestImmutable_Exception::IMMUTABLE
-		);
-	}
+    /**
+     * {@inheritDoc}
+     *
+     * @deprecated CanvasPestImmutable only supports GET calls to the API
+     *
+     * @return void
+     *
+     * @throws CanvasPestImmutable_Exception IMMUTABLE All calls to this method will cause an exception
+     **/
+    public function post($url, $data = array(), $headers = array())
+    {
+        throw new CanvasPestImmutable_Exception(
+            'Only GET calls to the API are allowed from CanvasPestImmutable.',
+            CanvasPestImmutable_Exception::IMMUTABLE
+        );
+    }
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @deprecated CanvasPestImmutable only supports GET calls to the API
-	 *
-	 * @return void
-	 *
-	 * @throws CanvasPestImmutable_Exception IMMUTABLE All calls to this method will cause an exception
-	 **/
-	public function delete() {
-		throw new CanvasPestImmutable_Exception(
-			'Only GET calls to the API are allowed from CanvasPestImmutable.',
-			CanvasPestImmutable_Exception::IMMUTABLE
-		);
-	}
+    /**
+     * {@inheritDoc}
+     *
+     * @deprecated CanvasPestImmutable only supports GET calls to the API
+     *
+     * @return void
+     *
+     * @throws CanvasPestImmutable_Exception IMMUTABLE All calls to this method will cause an exception
+     **/
+    public function delete($url, $data = array(), $headers = array())
+    {
+        throw new CanvasPestImmutable_Exception(
+            'Only GET calls to the API are allowed from CanvasPestImmutable.',
+            CanvasPestImmutable_Exception::IMMUTABLE
+        );
+    }
 }
