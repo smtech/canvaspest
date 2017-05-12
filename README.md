@@ -64,4 +64,4 @@ echo $arr[1337]->title;
 
 Note that both CanvasObjects and CanvasArrays are immutable objects -- that is, they are treated as read-only. In fact, if you attempt to alter a CanvasObject or a CanvasArray, exceptions will be thrown.
 
-[Full API documentation](https://htmlpreview.github.io/?https://raw.githubusercontent.com/smtech/canvaspest/master/doc/namespaces/smtech.CanvasPest.html) is available in the repository.
+[Full API documentation](http://smtech.github.io/canvaspest/namespaces/smtech.CanvasPest.html) is available in the repository.

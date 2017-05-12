@@ -278,3 +278,4 @@ class CanvasPest extends \Battis\Educoder\Pest
         );
     }
 }
+
