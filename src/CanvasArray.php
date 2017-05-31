@@ -20,18 +20,23 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
 
     /**
      * @var string $endpoint API endpoint whose response is represented by this
-     * object
+     *      object
      **/
     private $endpoint = null;
 
     /**
-     * @var CanvasPageLink[] $pagination The canonical (first, last, next, prev, current)
-     * pages relative to the current page of responses
+     * @var CanvasPageLink[] $pagination The canonical (first, last, next,
+     *      prev, current) pages relative to the current page of responses
      **/
-    private $pagination = array();
+    private $pagination = [];
+
+    /**
+     * @var array Cached pagination per each page response
+     */
+    private $paginationPerPage = [];
 
     /** @var CanvasObject[] $data Backing store */
-    private $data = array();
+    private $data = [];
 
     /** @var int $page Page number corresponding to current $key */
     private $page = null;
@@ -42,21 +47,15 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
     /**
      * Construct a CanvasArray
      *
-     * @param string $jsonResponse A JSON-encoded response array from the Canvas API
+     * @param string $jsonResponse A JSON-encoded response array from the
+     *                             Canvas API
      * @param CanvasPest $canvasPest An API object for making pagination calls
      **/
     public function __construct($jsonResponse, $canvasPest)
     {
         $this->api = $canvasPest;
 
-        /* parse Canvas page links */
-        if (preg_match_all('%<([^>]*)>\s*;\s*rel="([^"]+)"%', $this->api->lastHeader('link'), $links, PREG_SET_ORDER)) {
-            foreach ($links as $link) {
-                $this->pagination[$link[2]] = new CanvasPageLink($link[1], $link[2]);
-            }
-        } else {
-            $this->pagination = array(); // might only be one page of results
-        }
+        $this->pagination = $this->parsePageLinks();
 
         /* locate ourselves */
         if (isset($this->pagination[CanvasPageLink::CURRENT])) {
@@ -65,12 +64,36 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
             $this->page = 1; // assume only one page (since no pagination)
         }
         $this->key = $this->pageNumberToKey($this->page);
+        $this->paginationPerPage[$this->page] = $this->pagination;
 
         /* parse the JSON response string */
         $key = $this->key;
         foreach (json_decode($jsonResponse, true) as $item) {
             $this->data[$key++] = new CanvasObject($item, $this->api);
         }
+    }
+
+    /**
+     * Parse the API response link headers into pagination information
+     *
+     * @param  boolean|string[] $headers (Optional, defaults to `$this->api->lastHeader('link')`)
+     * @return CanvasPageLink[]
+     */
+    protected function parsePageLinks($headers = false)
+    {
+        $pagination = [];
+        if (!$headers) {
+            $headers = $this->api->lastHeader('link');
+        }
+
+        /* parse Canvas page links */
+        if (preg_match_all('%<([^>]*)>\s*;\s*rel="([^"]+)"%', $headers, $links, PREG_SET_ORDER)) {
+            foreach ($links as $link) {
+                $pagination[$link[2]] = new CanvasPageLink($link[1], $link[2]);
+            }
+        }
+
+        return $pagination;
     }
     /**
      * Convert a page number to an array key
@@ -81,7 +104,7 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
      *
      * @throws CanvasArray_Exception INVALID_PAGE_NUMBER If $pageNumber < 1
      **/
-    private function pageNumberToKey($pageNumber)
+    protected function pageNumberToKey($pageNumber)
     {
         if ($pageNumber < 1) {
             throw new CanvasArray_Exception(
@@ -105,7 +128,7 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
      *
      * @throws CanvasArray_Exception INVALID_ARRAY_KEY If $key < 0
      **/
-    private function keyToPageNumber($key)
+    protected function keyToPageNumber($key)
     {
         if ($key < 0) {
             throw new CanvasArray_Exception(
@@ -124,18 +147,18 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
     /**
      * Request a page of responses from the API
      *
-     * A page of responses will be requested if it appears that that page has not
-     * yet been loaded (tested by checking if the initial element of the page has
-     * been initialized in the $data array).
+     * A page of responses will be requested if it appears that that page has
+     * not yet been loaded (tested by checking if the initial element of the
+     * page has been initialized in the $data array).
      *
      * @param int $pageNumber Page number to request
-     * @param bool $forceRefresh (Optional) Force a refresh of backing data, even
-     *        if cached (defaults to `FALSE`)
+     * @param bool $forceRefresh (Optional) Force a refresh of backing data,
+     *                           even if cached (defaults to `FALSE`)
      *
-     * @return bool `TRUE` if the page is requested, `FALSE` if it is already cached
-     *        (and therefore not requested)
+     * @return bool `TRUE` if the page is requested, `FALSE` if it is already
+     *                     cached (and therefore not requested)
      **/
-    private function requestPageNumber($pageNumber, $forceRefresh = false)
+    protected function requestPageNumber($pageNumber, $forceRefresh = false)
     {
         if (!isset($this->data[$this->pageNumberToKey($pageNumber)]) || ($forceRefresh && isset($this->api))) {
             // assume one page if no pagination (and already loaded)
@@ -144,6 +167,8 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
                 $params[CanvasPageLink::PARAM_PAGE_NUMBER] = $pageNumber;
                 $page = $this->api->get($this->pagination[CanvasPageLink::CURRENT]->getEndpoint(), $params);
                 $this->data = array_replace($this->data, $page->data);
+                $pagination = $this->parsePageLinks();
+                $this->paginationPerPage[$pagination[CanvasPageLink::CURRENT]->getPageNumber()] = $pagination;
                 return true;
             }
         }
@@ -156,58 +181,43 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
      * This stores the entire API response locally, in preparation for, most
      * likely, serializing this object.
      *
-     * @param bool $forceRefresh (Optional) Force a refresh of backing data, even
-     *        if cached (defaults to `FALSE`)
+     * @param bool $forceRefresh (Optional) Force a refresh of backing data,
+     *                           even if cached (defaults to `FALSE`)
      *
      * @return void
      */
-    private function requestAllPages($forceRefresh = false)
+    protected function requestAllPages($forceRefresh = false)
     {
         $_page = $this->page;
         $_key = $this->key;
 
-        if (isset($this->pagination[CanvasPageLink::LAST])) {
-            for ($page = 1; $page <= $this->pagination[CanvasPageLink::LAST]->getPageNumber(); $page++) {
-                $this->requestPageNumber($page, $forceRefresh);
+        /* first fall-back: just keep going from where we are */
+        $nextPageNumber = false;
+        if (isset($this->pagination[CanvasPageLink::NEXT])) {
+            $nextPageNumber = $this->pagination[CanvasPageLink::NEXT]->getPageNumber();
+        }
+
+        /* best case: start at the beginning and request every page */
+        if (isset($this->pagination[CanvasPageLink::FIRST])) {
+            $first = $this->pagination[CanvasPageLink::FIRST]->getPageNumber();
+            $this->requestPageNumber($first, $forceRefresh);
+            if (isset($this->paginationPerPage[$first][CanvasPageLink::NEXT])) {
+                $nextPageNumber = $this->paginationPerPage[$first][CanvasPageLink::NEXT]->getPageNumber();
+            }
+        }
+
+        /* welp, here goes... let's hope we have a next page! */
+        while ($nextPageNumber !== false) {
+            $this->requestPageNumber($nextPageNumber, true);
+            if (isset($this->paginationPerPage[$nextPageNumber][CanvasPageLink::NEXT])) {
+                $nextPageNumber = $this->paginationPerPage[$nextPageNumber][CanvasPageLink::NEXT]->getPageNumber();
+            } else {
+                $nextPageNumber = false;
             }
         }
 
         $this->page = $_page;
         $this->key = $_key;
-    }
-
-    /**
-     * Rewind the iterator to a specific page of data
-     *
-     * If the page of data is already cached, it will not (by default) be reloaded
-     * from the API, although this can be overridden with the $forceRefresh
-     * parameter.
-     *
-     * @param int $pageNumber Page number to rewind to
-     * @param bool $forceRefresh (Optional) Defaults to `FALSE`
-     *
-     * @return void
-     **/
-    private function rewindToPageNumber($pageNumber, $forceRefresh = false)
-    {
-        $page = null;
-        $key = $this->pageNumberToKey($pageNumber);
-        if ($forceRefresh || !isset($this->data[$key])) {
-            $page = $this->requestPageNumber($pageNumber, $forceRefresh);
-        }
-
-        $this->key = $key;
-        $this->page = $pageNumber;
-        $this->pagination[CanvasPageLink::PREV] = new CanvasPageLink(
-            $pageNumber,
-            $this->pagination[CanvasPageLink::FIRST],
-            CanvasPageLink::PREV
-        );
-        $this->pagination[CanvasPageLink::NEXT] = new CanvasPageLink(
-            $pageNumber,
-            $this->pagination[CanvasPageLink::FIRST],
-            CanvasPageLink::NEXT
-        );
     }
 
     /***************************************************************************
@@ -223,15 +233,8 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
      **/
     public function count()
     {
-        if (isset($this->pagination[CanvasPageLink::LAST])) {
-            $this->requestPageNumber($this->pagination[CanvasPageLink::LAST]->getPageNumber());
-            if (!end($this->data)) {
-                return 0;
-            }
-            return key($this->data) + 1;
-        } else {
-            return count($this->data);
-        }
+        $this->requestAllPages();
+        return count($this->data);
     }
 
     /**
@@ -239,16 +242,12 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
      *
      * @return CanvasObject[]
      *
-     * @see http://php.net/manual/en/arrayobject.getarraycopy.php ArrayObject::getArrayCopy
+     * @see http://php.net/manual/en/arrayobject.getarraycopy.php
+     *      ArrayObject::getArrayCopy
      **/
     public function getArrayCopy()
     {
-        $_key = $this->key;
-        $this->rewindToPageNumber(1);
-        while (isset($this->pagination[CanvasPageLink::NEXT])) {
-            $this->rewindToPageNumber($this->pagination[CanvasPageLink::NEXT]);
-        }
-        $this->key = $_key;
+        $this->requestAllPages();
         return $this->data;
     }
 
@@ -263,20 +262,15 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
      *
      * @return bool
      *
-     * @see http://php.net/manual/en/arrayaccess.offsetexists.php ArrayAccess::offsetExists
+     * @see http://php.net/manual/en/arrayaccess.offsetexists.php
+     *      ArrayAccess::offsetExists
      **/
     public function offsetExists($offset)
     {
-        if (isset($this->pagination[CanvasPageLink::LAST])) {
-            $lastPageNumber = $this->pagination[CanvasPageLink::LAST]->getPageNumber();
-            if ($this->keyToPageNumber($offset) == $lastPageNumber &&
-                !isset($this->data[$this->pageNumberToKey($lastPageNumber)])) {
-                $this->requestPageNumber($lastPageNumber);
-            }
-            return isset($this->data[$offset]) || ($offset >= 0 && $offset < $this->pageNumberToKey($lastPageNumber));
-        } else {
-            return isset($this->data[$offset]);
+        if (!isset($this->data[$offset])) {
+            $this->requestAllPages();
         }
+        return isset($this->data[$offset]);
     }
 
     /**
@@ -286,20 +280,18 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
      *
      * @return CanvasObject|null
      *
-     * @see http://php.net/manual/en/arrayaccess.offsetexists.php ArrayAccess::offsetGet
+     * @see http://php.net/manual/en/arrayaccess.offsetexists.php
+     *      ArrayAccess::offsetGet
      **/
     public function offsetGet($offset)
     {
-        if ($this->offsetExists($offset) && !isset($this->data[$offset])) {
-            $this->requestPageNumber($this->keyToPageNumber($offset));
-        }
         return $this->data[$offset];
     }
 
     /**
      * Assign a value to the specified offset
      *
-     * @deprecated Canvas responses are immutable
+     * @deprecated CanvasObject and CanvasArray responses are immutable
      *
      * @param int|string $offset
      * @param CanvasObject $value
@@ -308,7 +300,8 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
      *
      * @throws CanvasArray_Exception IMMUTABLE All calls to this method will cause an exception
      *
-     * @see http://php.net/manual/en/arrayaccess.offsetset.php ArrayAccess::offsetSet
+     * @see http://php.net/manual/en/arrayaccess.offsetset.php
+     *      ArrayAccess::offsetSet
      **/
     public function offsetSet($offset, $value)
     {
@@ -321,15 +314,17 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
     /**
      * Unset an offset
      *
-     * @deprecated Canvas responses are immutable
+     * @deprecated CanvasObject and CanvasArray responses are immutable
      *
      * @param int|string $offset
      *
      * @return void
      *
-     * @throws CanvasArray_Exception IMMUTABLE All calls to this method will cause an exception
+     * @throws CanvasArray_Exception IMMUTABLE All calls to this method will
+     *         cause an exception
      *
-     * @see http://php.net/manual/en/arrayaccess.offsetunset.php ArrayAccess::offsetUnset
+     * @see http://php.net/manual/en/arrayaccess.offsetunset.php
+     *      ArrayAccess::offsetUnset
      **/
     public function offsetUnset($offset)
     {
@@ -419,7 +414,8 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
      *
      * @return string
      *
-     * @see http://php.net/manual/en/serializable.serialize.php Serializable::serialize()
+     * @see http://php.net/manual/en/serializable.serialize.php
+     *      Serializable::serialize()
      **/
     public function serialize()
     {
@@ -436,15 +432,16 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
     /**
      * Construct a CanvasArray from its string representation
      *
-     * The data in the unserialized CanvasArray is static and cannot be refreshed,
-     * as the CanvasPest API connection is _not_ serialized to preserve the
-     * security of API access tokens.
+     * The data in the unserialized CanvasArray is static and cannot be
+     * refreshed, as the CanvasPest API connection is _not_ serialized to
+     * preserve the security of API access tokens.
      *
      * @param string $data
      *
      * @return string
      *
-     * @see http://php.net/manual/en/serializable.unserialize.php Serializable::unserialize()
+     * @see http://php.net/manual/en/serializable.unserialize.php
+     *      Serializable::unserialize()
      **/
     public function unserialize($data)
     {

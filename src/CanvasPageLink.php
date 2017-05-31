@@ -163,13 +163,7 @@ class CanvasPageLink
      **/
     public function getPageNumber()
     {
-        if (is_numeric($this->params[self::PARAM_PAGE_NUMBER])) {
-            return $this->params[self::PARAM_PAGE_NUMBER];
-        } elseif ($this->params[self::PARAM_PAGE_NUMBER] == 'first') {
-            return 1; /* weirdly, api/v1/users/<user_id>/logins returns first instead of page numbers */
-        } else {
-            return 1; // FIXME probably not good to assume that this is safe
-        }
+        return $this->params[self::PARAM_PAGE_NUMBER];
     }
 
     /**
