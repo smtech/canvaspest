@@ -3,18 +3,25 @@ filter:
 
 checks:
     php: true
-#    javascript: true
 
 tools:
     php_code_sniffer:
         config:
             standard: "PSR2"
 
-# build:
-#    tests:
-#        override:
-#            -
-#                command: 'phpunit --coverage-clover=coverage.clover'
-#                coverage:
-#                    file: 'coverage.clover'
-#                    format: 'clover'
+build:
+    environment:
+        php: "5.6"
+        mysql: false
+        postgresql: false
+        mongodb: false
+        redis: false
+        neo4j: false
+        rabbitmq: false
+    tests:
+        override:
+            -
+                command: 'vendor/bin/phpunit --coverage-clover=/tmp/coverage.xml'
+                coverage:
+                    file: '/tmp/coverage.xml'
+                    format: 'clover'
