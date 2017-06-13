@@ -55,7 +55,7 @@ class CanvasPest extends \Battis\Educoder\Pest
      **/
     public function setupToken($token)
     {
-        if (is_string($token) && !empty($token)) {
+        if (!empty($token)) {
             $this->headers['Authorization'] = "Bearer $token";
         } elseif ($this->throw_exceptions) {
             throw new CanvasPest_Exception(
@@ -124,7 +124,7 @@ class CanvasPest extends \Battis\Educoder\Pest
             return new CanvasObject($response);
         } elseif (substr($response, 0, 1) == '[') {
             return new CanvasArray($response, $this);
-        } else {
+        } elseif ($this->throw_exceptions) {
             throw new CanvasPest_Exception(
                 $response,
                 CanvasPest_Exception::INVALID_JSON_RESPONSE
@@ -140,9 +140,11 @@ class CanvasPest extends \Battis\Educoder\Pest
      * @param mixed $data
      *
      * @return string
+     * @codingStandardsIgnoreStart
      **/
     protected function http_build_query($data)
     {
+        // @codingStandardsIgnoreEnd
         return preg_replace('/%5B\d+%5D/simU', '[]', http_build_query($data));
     }
 
@@ -179,17 +181,13 @@ class CanvasPest extends \Battis\Educoder\Pest
      * `accounts/1/users/123`), return a CanvasObject representing the API response
      * describing _that_ individually identified object affected by the query.
      *
-     * For queries to generic endpoints (e.g. `accounts/1/users`), return a
-     * traversable CanvasArray (of CanvasObjects) representing the API response
-     * describing the list of objects affected by the query.
-     *
      * @api
      *
      * @param string $path Path to the API endpoint of this call
      * @param string|string[] $data (Optional) Query parameters for this call
      * @param string|string[] $headers (Optional) Any additional HTTP headers for this call
      *
-     * @return CanvasObject|CanvasArray
+     * @return CanvasObject
      **/
     public function post($path, $data = array(), $headers = array())
     {
@@ -205,17 +203,13 @@ class CanvasPest extends \Battis\Educoder\Pest
      * `accounts/1/users/123`), return a CanvasObject representing the API response
      * describing _that_ individually identified object affected by the query.
      *
-     * For queries to generic endpoints (e.g. `accounts/1/users`), return a
-     * traversable CanvasArray (of CanvasObjects) representing the API response
-     * describing the list of objects affected by the query.
-     *
      * @api
      *
      * @param string $path Path to the API endpoint of this call
      * @param string|string[] $data (Optional) Query parameters for this call
      * @param string|string[] $headers (Optional) Any additional HTTP headers for this call
      *
-     * @return CanvasObject|CanvasArray
+     * @return CanvasObject
      **/
     public function put($path, $data = array(), $headers = array())
     {
@@ -231,26 +225,24 @@ class CanvasPest extends \Battis\Educoder\Pest
      * `accounts/1/users/123`), return a CanvasObject representing the API response
      * describing _that_ individually identified object affected by the query.
      *
-     * For queries to generic endpoints (e.g. `accounts/1/users`), return a
-     * traversable CanvasArray (of CanvasObjects) representing the API response
-     * describing the list of objects affected by the query.
-     *
      * @api
      *
      * @param string $path Path to the API endpoint of this call
      * @param string|string[] $data (Optional) Query parameters for this call
      * @param string|string[] $headers (Optional) Any additional HTTP headers for this call
      *
-     * @return CanvasObject|CanvasArray
+     * @return CanvasObject
      **/
     public function delete($path, $data = array(), $headers = array())
     {
         if (!empty($data)) {
+            $pathData = [];
             $pos = strpos($path, '?');
             if ($pos !== false) {
+                parse_str(substr($path, $pos + 1), $pathData);
                 $path = substr($path, 0, $pos);
             }
-            $path .= '?' . $this->http_build_query($data);
+            $path .= '?' . $this->http_build_query(array_merge($pathData, $data));
         }
         return $this->postprocessResponse(
             parent::delete($path, $headers)
@@ -272,9 +264,11 @@ class CanvasPest extends \Battis\Educoder\Pest
      **/
     public function patch($path, $data = array(), $headers = array())
     {
-        throw new CanvasPest_Exception(
-            'The Canvas API does not support the PATCH method',
-            CanvasPest_Exception::UNSUPPORTED_METHOD
-        );
+        if ($this->throw_exceptions) {
+            throw new CanvasPest_Exception(
+                'The Canvas API does not support the PATCH method',
+                CanvasPest_Exception::UNSUPPORTED_METHOD
+            );
+        }
     }
 }

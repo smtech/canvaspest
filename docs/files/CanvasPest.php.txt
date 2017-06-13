@@ -179,17 +179,13 @@ class CanvasPest extends \Battis\Educoder\Pest
      * `accounts/1/users/123`), return a CanvasObject representing the API response
      * describing _that_ individually identified object affected by the query.
      *
-     * For queries to generic endpoints (e.g. `accounts/1/users`), return a
-     * traversable CanvasArray (of CanvasObjects) representing the API response
-     * describing the list of objects affected by the query.
-     *
      * @api
      *
      * @param string $path Path to the API endpoint of this call
      * @param string|string[] $data (Optional) Query parameters for this call
      * @param string|string[] $headers (Optional) Any additional HTTP headers for this call
      *
-     * @return CanvasObject|CanvasArray
+     * @return CanvasObject
      **/
     public function post($path, $data = array(), $headers = array())
     {
@@ -205,17 +201,13 @@ class CanvasPest extends \Battis\Educoder\Pest
      * `accounts/1/users/123`), return a CanvasObject representing the API response
      * describing _that_ individually identified object affected by the query.
      *
-     * For queries to generic endpoints (e.g. `accounts/1/users`), return a
-     * traversable CanvasArray (of CanvasObjects) representing the API response
-     * describing the list of objects affected by the query.
-     *
      * @api
      *
      * @param string $path Path to the API endpoint of this call
      * @param string|string[] $data (Optional) Query parameters for this call
      * @param string|string[] $headers (Optional) Any additional HTTP headers for this call
      *
-     * @return CanvasObject|CanvasArray
+     * @return CanvasObject
      **/
     public function put($path, $data = array(), $headers = array())
     {
@@ -231,17 +223,13 @@ class CanvasPest extends \Battis\Educoder\Pest
      * `accounts/1/users/123`), return a CanvasObject representing the API response
      * describing _that_ individually identified object affected by the query.
      *
-     * For queries to generic endpoints (e.g. `accounts/1/users`), return a
-     * traversable CanvasArray (of CanvasObjects) representing the API response
-     * describing the list of objects affected by the query.
-     *
      * @api
      *
      * @param string $path Path to the API endpoint of this call
      * @param string|string[] $data (Optional) Query parameters for this call
      * @param string|string[] $headers (Optional) Any additional HTTP headers for this call
      *
-     * @return CanvasObject|CanvasArray
+     * @return CanvasObject
      **/
     public function delete($path, $data = array(), $headers = array())
     {
