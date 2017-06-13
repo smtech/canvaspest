@@ -132,7 +132,7 @@ class CanvasPestTest extends TestCase
     /**
      * @depends testInstantiation
      */
-    public function testPatchThrowsException(CanvasPest $pest)
+    public function testPatchFails(CanvasPest $pest)
     {
         try {
             $response = $pest->patch('foo/bar');

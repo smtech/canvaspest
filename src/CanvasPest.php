@@ -51,17 +51,23 @@ class CanvasPest extends \Battis\Educoder\Pest
      *
      * @param string $token API access token
      *
+     * @return boolean
+     *
      * @throws CanvasPest_Exception INVALID_TOKEN on an empty or non-string token value
      **/
     public function setupToken($token)
     {
         if (!empty($token)) {
             $this->headers['Authorization'] = "Bearer $token";
-        } elseif ($this->throw_exceptions) {
-            throw new CanvasPest_Exception(
-                'API authorization token must be a non-zero-length string',
-                CanvasPest_Exception::INVALID_TOKEN
-            );
+            return true;
+        } else {
+            if ($this->throw_exceptions) {
+                throw new CanvasPest_Exception(
+                    'API authorization token must be a non-zero-length string',
+                    CanvasPest_Exception::INVALID_TOKEN
+                );
+            }
+            return false;
         }
     }
 
@@ -116,7 +122,11 @@ class CanvasPest extends \Battis\Educoder\Pest
      *
      * @param string $response JSON-encoded response from the API
      *
-     * @return CanvasObject|CanvasArray
+     * @return CanvasObject|CanvasArray|false
+     *
+     * @throws CanvasPest_Exception INVALID_JSON_RESPONSE if an
+     *         non-JSON-formatted response is received (and
+     *         $this->throw_exceptions is true -- otherwise it returns false)
      **/
     protected function postprocessResponse($response)
     {
@@ -131,7 +141,7 @@ class CanvasPest extends \Battis\Educoder\Pest
                     CanvasPest_Exception::INVALID_JSON_RESPONSE
                 );
             }
-            return null;
+            return false;
         }
     }
 
@@ -168,7 +178,7 @@ class CanvasPest extends \Battis\Educoder\Pest
      * @param string|string[] $data (Optional) Query parameters for this call
      * @param string|string[] $headers (Optional) Any additional HTTP headers for this call
      *
-     * @return CanvasObject|CanvasArray
+     * @return CanvasObject|CanvasArray|false
      **/
     public function get($path, $data = array(), $headers = array())
     {
@@ -190,7 +200,7 @@ class CanvasPest extends \Battis\Educoder\Pest
      * @param string|string[] $data (Optional) Query parameters for this call
      * @param string|string[] $headers (Optional) Any additional HTTP headers for this call
      *
-     * @return CanvasObject
+     * @return CanvasObject|false
      **/
     public function post($path, $data = array(), $headers = array())
     {
@@ -212,7 +222,7 @@ class CanvasPest extends \Battis\Educoder\Pest
      * @param string|string[] $data (Optional) Query parameters for this call
      * @param string|string[] $headers (Optional) Any additional HTTP headers for this call
      *
-     * @return CanvasObject
+     * @return CanvasObject|false
      **/
     public function put($path, $data = array(), $headers = array())
     {
@@ -225,8 +235,9 @@ class CanvasPest extends \Battis\Educoder\Pest
      * Make a DELETE call to the API
      *
      * For queries to individually identified endpoints (e.g.
-     * `accounts/1/users/123`), return a CanvasObject representing the API response
-     * describing _that_ individually identified object affected by the query.
+     * `accounts/1/users/123`), return a CanvasObject representing the API
+     * response describing _that_ individually identified object affected by
+     * the query.
      *
      * @api
      *
@@ -234,7 +245,7 @@ class CanvasPest extends \Battis\Educoder\Pest
      * @param string|string[] $data (Optional) Query parameters for this call
      * @param string|string[] $headers (Optional) Any additional HTTP headers for this call
      *
-     * @return CanvasObject
+     * @return CanvasObject|false
      **/
     public function delete($path, $data = array(), $headers = array())
     {
@@ -261,7 +272,7 @@ class CanvasPest extends \Battis\Educoder\Pest
      * @param string|string[] $data (Optional) Query parameters for this call
      * @param string|string[] $headers (Optional) Any additional HTTP headers for this call
      *
-     * @return void
+     * @return false
      *
      * @throws CanvasPest_Exception UNSUPPORTED_METHOD All calls to this method will cause an exception
      **/
@@ -273,5 +284,6 @@ class CanvasPest extends \Battis\Educoder\Pest
                 CanvasPest_Exception::UNSUPPORTED_METHOD
             );
         }
+        return false;
     }
 }

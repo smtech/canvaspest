@@ -144,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1600547399"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-684702764"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1600547399" class="accordion-body collapse in">
+            <div id="namespace-684702764" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1377095328"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1415971458"></a>
                                 <a href="../namespaces/smtech.html" style="margin-left: 30px; padding-left: 0">smtech</a>
             </div>
-            <div id="namespace-1377095328" class="accordion-body collapse ">
+            <div id="namespace-1415971458" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-136001898"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1572834140"></a>
                                 <a href="../namespaces/smtech.CanvasPest.html" style="margin-left: 30px; padding-left: 0">CanvasPest</a>
             </div>
-            <div id="namespace-136001898" class="accordion-body collapse ">
+            <div id="namespace-1572834140" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -446,7 +446,7 @@ API instance (if not provided now, it will need to be provided later)</p></td>
             <article class="method">
                 <h3 class="public ">setupToken()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">setupToken(string  <span class="argument">$token</span>) </pre>
+                <pre class="signature" style="margin-right: 54px;">setupToken(string  <span class="argument">$token</span>) : boolean</pre>
                 <p><em>Set up a new API access token to access this instance</em></p>
                 
 
@@ -465,7 +465,9 @@ API instance (if not provided now, it will need to be provided later)</p></td>
                             <dd><p>INVALID_TOKEN on an empty or non-string token value</p></dd>
                                                                     </dl>
                 
-                				
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -487,7 +489,7 @@ API instance (if not provided now, it will need to be provided later)</p></td>
             <article class="method">
                 <h3 class="public ">get()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">get(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$data = array()</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : \smtech\CanvasPest\CanvasObject|\smtech\CanvasPest\CanvasArray</pre>
+                <pre class="signature" style="margin-right: 54px;">get(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$data = array()</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : \smtech\CanvasPest\CanvasObject|\smtech\CanvasPest\CanvasArray|false</pre>
                 <p><em>Make a GET call to the API</em></p>
                 <p>For queries to individually identified endpoints (e.g.
 <code>accounts/1/users/123</code>), return a CanvasObject representing the API response
@@ -517,7 +519,7 @@ describing the list of objects affected by the query.</p>
                 
                 
                                     <h4>Returns</h4>
-                    <a href="../classes/smtech.CanvasPest.CanvasObject.html">\smtech\CanvasPest\CanvasObject</a>|<a href="../classes/smtech.CanvasPest.CanvasArray.html">\smtech\CanvasPest\CanvasArray</a>
+                    <a href="../classes/smtech.CanvasPest.CanvasObject.html">\smtech\CanvasPest\CanvasObject</a>|<a href="../classes/smtech.CanvasPest.CanvasArray.html">\smtech\CanvasPest\CanvasArray</a>|false
                                     				
                             </article>
         </div>
@@ -664,8 +666,9 @@ will cause an exception</p></dd>
                 <pre class="signature" style="margin-right: 54px;">delete(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$data = array()</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : void</pre>
                 <p><em>Make a DELETE call to the API</em></p>
                 <p>For queries to individually identified endpoints (e.g.
-<code>accounts/1/users/123</code>), return a CanvasObject representing the API response
-describing <em>that</em> individually identified object affected by the query.</p>
+<code>accounts/1/users/123</code>), return a CanvasObject representing the API
+response describing <em>that</em> individually identified object affected by
+the query.</p>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
@@ -718,7 +721,7 @@ will cause an exception</p></dd>
             <article class="method">
                 <h3 class="public deprecated">patch()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">patch(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$data = array()</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : void</pre>
+                <pre class="signature" style="margin-right: 54px;">patch(string  <span class="argument">$path</span>, string|array&lt;mixed,string&gt;  <span class="argument">$data = array()</span>, string|array&lt;mixed,string&gt;  <span class="argument">$headers = array()</span>) : false</pre>
                 <p><em>Make a PATCH call to the API</em></p>
                 
 
@@ -747,7 +750,9 @@ will cause an exception</p></dd>
                             <dd><p>UNSUPPORTED_METHOD All calls to this method will cause an exception</p></dd>
                                                                     </dl>
                 
-                				
+                                    <h4>Returns</h4>
+                    false
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -815,7 +820,7 @@ Numerically indexed arrays are not modified.</p>
             <article class="method">
                 <h3 class="protected ">postprocessResponse()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">postprocessResponse(string  <span class="argument">$response</span>) : \smtech\CanvasPest\CanvasObject|\smtech\CanvasPest\CanvasArray</pre>
+                <pre class="signature" style="margin-right: 54px;">postprocessResponse(string  <span class="argument">$response</span>) : \smtech\CanvasPest\CanvasObject|\smtech\CanvasPest\CanvasArray|false</pre>
                 <p><em>Parse the API response into an object (or collection of objects).</em></p>
                 <p>For queries to individually identified endpoints (e.g.
 <code>accounts/1/users/123</code>), return a CanvasObject representing the API response
@@ -833,9 +838,16 @@ describing the list of objects affected by the query.</p>
                             </tr>
                                             </table>
                 
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\smtech\CanvasPest\CanvasPest_Exception</dt>
+                            <dd><p>INVALID_JSON_RESPONSE if an
+non-JSON-formatted response is received (and
+$this-&gt;throw_exceptions is true -- otherwise it returns false)</p></dd>
+                                                                    </dl>
                 
                                     <h4>Returns</h4>
-                    <a href="../classes/smtech.CanvasPest.CanvasObject.html">\smtech\CanvasPest\CanvasObject</a>|<a href="../classes/smtech.CanvasPest.CanvasArray.html">\smtech\CanvasPest\CanvasArray</a>
+                    <a href="../classes/smtech.CanvasPest.CanvasObject.html">\smtech\CanvasPest\CanvasObject</a>|<a href="../classes/smtech.CanvasPest.CanvasArray.html">\smtech\CanvasPest\CanvasArray</a>|false
                                     				
                             </article>
         </div>
@@ -885,7 +897,14 @@ describing the list of objects affected by the query.</p>
                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            codingStandardsIgnoreStart
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -982,7 +1001,7 @@ describing the list of objects affected by the query.</p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on June 12th, 2017 at 22:45.
+                    on June 13th, 2017 at 16:16.
                 </section>
             </section>
         </section>
