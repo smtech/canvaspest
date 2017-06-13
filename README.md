@@ -1,6 +1,9 @@
 # CanvasPest
 
-[![Latest Version](https://img.shields.io/packagist/v/smtech/canvaspest.svg)](https://packagist.org/packages/smtech/canvaspest) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/smtech/canvaspest/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/smtech/canvaspest/?branch=master)
+[![Latest Version](https://img.shields.io/packagist/v/smtech/canvaspest.svg)](https://packagist.org/packages/smtech/canvaspest)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/smtech/canvaspest/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/smtech/canvaspest/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/smtech/canvaspest/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/smtech/canvaspest/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/smtech/canvaspest/badges/build.png?b=master)](https://scrutinizer-ci.com/g/smtech/canvaspest/build-status/master)
 
 Object-oriented access to the Canvas API using PHP.
 
