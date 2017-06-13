@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Wrapper;
+namespace Tests\Wrappers;
 
 use smtech\CanvasPest\CanvasPest;
 use smtech\CanvasPest\CanvasObject;
@@ -8,11 +8,11 @@ use smtech\CanvasPest\CanvasObject;
 class CanvasPestWrapper
 {
     public $pest;
-    public $event;
+    public $response;
 
-    public function __construct(CanvasPest $pest, CanvasObject $event)
+    public function __construct(CanvasPest $pest, $response)
     {
         $this->pest = $pest;
-        $this->event = $event;
+        $this->response = $response;
     }
 }

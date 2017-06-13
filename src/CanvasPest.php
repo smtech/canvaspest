@@ -124,11 +124,14 @@ class CanvasPest extends \Battis\Educoder\Pest
             return new CanvasObject($response);
         } elseif (substr($response, 0, 1) == '[') {
             return new CanvasArray($response, $this);
-        } elseif ($this->throw_exceptions) {
-            throw new CanvasPest_Exception(
-                $response,
-                CanvasPest_Exception::INVALID_JSON_RESPONSE
-            );
+        } else {
+            if ($this->throw_exceptions) {
+                throw new CanvasPest_Exception(
+                    $response,
+                    CanvasPest_Exception::INVALID_JSON_RESPONSE
+                );
+            }
+            return null;
         }
     }
 
