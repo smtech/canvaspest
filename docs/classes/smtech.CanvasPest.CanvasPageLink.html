@@ -144,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1736993480"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1152874355"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1736993480" class="accordion-body collapse in">
+            <div id="namespace-1152874355" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1033629372"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-82468025"></a>
                                 <a href="../namespaces/smtech.html" style="margin-left: 30px; padding-left: 0">smtech</a>
             </div>
-            <div id="namespace-1033629372" class="accordion-body collapse ">
+            <div id="namespace-82468025" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-152687877"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1635706437"></a>
                                 <a href="../namespaces/smtech.CanvasPest.html" style="margin-left: 30px; padding-left: 0">CanvasPest</a>
             </div>
-            <div id="namespace-152687877" class="accordion-body collapse ">
+            <div id="namespace-1635706437" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -242,7 +242,6 @@ to the API response's <code>link</code> header.</p>
                                                                     <a href="../classes/smtech.CanvasPest.CanvasPageLink.html#method_getParams" class="">getParams()</a><br />
                                                                     <a href="../classes/smtech.CanvasPest.CanvasPageLink.html#method_getPageNumber" class="">getPageNumber()</a><br />
                                                                     <a href="../classes/smtech.CanvasPest.CanvasPageLink.html#method_getPerPage" class="">getPerPage()</a><br />
-                                                                    <a href="../classes/smtech.CanvasPest.CanvasPageLink.html#method_getArrayCopy" class="">getArrayCopy()</a><br />
                                                             </section>
                             <section class="span4">
                                                                     <em>No public properties found</em>
@@ -564,30 +563,30 @@ to the API response's <code>link</code> header.</p>
             <article class="method">
                 <h3 class="public ">__construct()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__construct() </pre>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$pageUrl</span>, string  <span class="argument">$pageName</span>) </pre>
                 <p><em>Construct a new Canvas page link object.</em></p>
                 <p>CanvasPageLinks can be constructed with two possible parameter lists:</p>
-<ol>
-<li><code>__construct(string $pageUrl, string $pageName)</code> which expects a
-non-empty string representing the URL of the API endpoint to retrieve the
-page and a non-empty string representing the canonical name of the page
-relative to the current page.</li>
-<li><code>__construct(int $pageNumber, CanvasPageLink $modelCanvasPageLink, string $pageName)</code>
-which expects a page number greater than zero, any CanvasPageLink object
-relative to the current page (to be used as a model) and a non-empty string
-representing the canonical name of the page relative to the current page.</li>
-</ol>
 
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$pageUrl </td>
+                                <td><p>URL of the API endpoint to retrieve the page</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$pageName </td>
+                                <td><p>Canonical name of the page relative to the current
+page.</p></td>
+                            </tr>
+                                            </table>
                 
                                     <h4>Throws</h4>
                     <dl>
                                                     <dt>\smtech\CanvasPest\CanvasPageLink_Exception</dt>
                             <dd><p>INVALID_CONSTRUCTOR If $pageUrl or
 $pageName is empty or a non-string</p></dd>
-                                                    <dt>\smtech\CanvasPest\CanvasPageLink_Exception</dt>
-                            <dd><p>INVALID_CONSTRUCTOR If $pageNumber is
-not a number greater than zero, $modelCanvasPageLink is not an
-instance of CanvasPageLink or $pageName is empty or a non-string</p></dd>
                                                                     </dl>
                 
                 				
@@ -744,34 +743,6 @@ instance of CanvasPageLink or $pageName is empty or a non-string</p></dd>
         </aside>
     </div>
 
-                                    <div class="row-fluid">
-        <div class="span8 content class">
-            <a id="method_getArrayCopy" name="method_getArrayCopy" class="anchor"></a>
-            <article class="method">
-                <h3 class="public ">getArrayCopy()</h3>
-                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getArrayCopy() : array</pre>
-                <p><em>An array representation of the CanvasArray</em></p>
-                
-
-                
-                
-                                    <h4>Returns</h4>
-                    array
-                                    				
-                            </article>
-        </div>
-        <aside class="span4 detailsbar">
-            <h1><i class="icon-arrow-down"></i></h1>
-                                                            <dl>
-                                                                            </dl>
-            <h2>Tags</h2>
-            <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
-                            </table>
-        </aside>
-    </div>
-
                                                                     </div>
     </section>
 
@@ -822,7 +793,7 @@ instance of CanvasPageLink or $pageName is empty or a non-string</p></dd>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on June 13th, 2017 at 21:28.
+                    on June 13th, 2017 at 21:46.
                 </section>
             </section>
         </section>
