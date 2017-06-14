@@ -7,9 +7,9 @@ use smtech\CanvasPest\CanvasPestImmutable;
 use smtech\CanvasPest\CanvasObject;
 use smtech\CanvasPest\CanvasArray;
 use smtech\CanvasPest\CanvasPestImmutable_Exception;
-use PHPUnit\Framework\TestCase;
+use Tests\Expectations\ExceptionExpectation;
 
-class CanvasPestImmutableTest extends TestCase
+class CanvasPestImmutableTest extends ExceptionExpectation
 {
     public function assertImmutableException(Exception $e)
     {
@@ -37,6 +37,7 @@ class CanvasPestImmutableTest extends TestCase
                 'calendar_event[context_code]' => 'user_' . getenv('CANVASPEST_USER_ID'),
                 'calendar_event[title]' => 'CanvasPest testPostObject'
             ]);
+            $this->assertException(CanvasPestImmutable::class);
         } catch (Exception $e) {
             $this->assertImmutableException($e);
         }
@@ -51,6 +52,7 @@ class CanvasPestImmutableTest extends TestCase
             $response = $pest->put('calendar_events/123', [
                 'calendar_event[description]' => 'CanvasPest testPutObject'
             ]);
+            $this->assertException(CanvasPestImmutable::class);
         } catch (Exception $e) {
             $this->assertImmutableException($e);
         }
@@ -65,6 +67,7 @@ class CanvasPestImmutableTest extends TestCase
             $response = $pest->delete('calendar_events/123', [
                 'cancel_reason' => 'testDeleteObject'
             ]);
+            $this->assertException(CanvasPestImmutable::class);
         } catch (Exception $e) {
             $this->assertImmutableException($e);
         }

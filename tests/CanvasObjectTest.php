@@ -7,16 +7,20 @@ use string;
 use smtech\CanvasPest\CanvasPest;
 use smtech\CanvasPest\CanvasObject;
 use smtech\CanvasPest\CanvasObject_Exception;
-use PHPUnit\Framework\TestCase;
+use Tests\Expectations\ExceptionExpectation;
 
-class CanvasObjectTest extends TestCase
+class CanvasObjectTest extends ExceptionExpectation
 {
     public function testInstantiation()
     {
-        $pest = new CanvasPest(
-            getenv('CANVASPEST_URL'),
-            getenv('CANVASPEST_TOKEN')
-        );
+        try {
+            $pest = new CanvasPest(
+                getenv('CANVASPEST_URL'),
+                getenv('CANVASPEST_TOKEN')
+            );
+        } catch (Exception $e) {
+            $this->assertNotException($e);
+        }
         $this->assertInstanceOf(CanvasPest::class, $pest);
 
         $response = $pest->get('users/self/profile');
@@ -50,6 +54,7 @@ class CanvasObjectTest extends TestCase
     {
         try {
             $obj->name = 'Alice Bob';
+            $this->assertException(CanvasObject_Exception::class);
         } catch (Exception $e) {
             $this->assertInstanceOf(CanvasObject_Exception::class, $e);
             $this->assertEquals(CanvasObject_Exception::IMMUTABLE, $e->getCode());
@@ -63,6 +68,7 @@ class CanvasObjectTest extends TestCase
     {
         try {
             unset($obj->name);
+            $this->assertException(CanvasObject_Exception::class);
         } catch (Exception $e) {
             $this->assertInstanceOf(CanvasObject_Exception::class, $e);
             $this->assertEquals(CanvasObject_Exception::IMMUTABLE, $e->getCode());
@@ -94,6 +100,7 @@ class CanvasObjectTest extends TestCase
     {
         try {
             $obj['name'] = 'Alice Bob';
+            $this->assertException(CanvasObject_Exception::class);
         } catch (Exception $e) {
             $this->assertInstanceOf(CanvasObject_Exception::class, $e);
             $this->assertEquals(CanvasObject_Exception::IMMUTABLE, $e->getCode());
@@ -107,6 +114,7 @@ class CanvasObjectTest extends TestCase
     {
         try {
             unset($obj['name']);
+            $this->assertException(CanvasObject_Exception::class);
         } catch (Exception $e) {
             $this->assertInstanceOf(CanvasObject_Exception::class, $e);
             $this->assertEquals(CanvasObject_Exception::IMMUTABLE, $e->getCode());

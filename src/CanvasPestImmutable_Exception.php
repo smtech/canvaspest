@@ -9,7 +9,7 @@ namespace smtech\CanvasPest;
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class CanvasPestImmutable_Exception extends CanvasPest_Exception
+class /* @codingStandardsIgnoreStart */ CanvasPestImmutable_Exception /* @codingStandardsIgnoreEnd */ extends CanvasPest_Exception
 {
     /**
      * @const IMMUTABLE A request to the API that would change data was attempted

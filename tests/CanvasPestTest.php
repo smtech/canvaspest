@@ -9,19 +9,10 @@ use smtech\CanvasPest\CanvasObject;
 use smtech\CanvasPest\CanvasArray;
 use smtech\CanvasPest\CanvasPest_Exception;
 use Tests\Wrappers\CanvasPestWrapper;
-use PHPUnit\Framework\TestCase;
+use Tests\Expectations\ExceptionExpectation;
 
-class CanvasPestTest extends TestCase
+class CanvasPestTest extends ExceptionExpectation
 {
-    /**
-     * FIXME not the right way to do this --
-     * https://phpunit.de/manual/current/en/extending-phpunit.html#idp1310704
-     */
-    protected function assertNoException(Exception $e)
-    {
-        $this->assertFalse(true, 'No exception expected, ' . get_class($e) . ' thrown with code ' . $e->getCode());
-    }
-
     public function testInstantiation()
     {
         try {
@@ -45,7 +36,7 @@ class CanvasPestTest extends TestCase
         try {
             $response = $pest->get('users/self/profile');
         } catch (Exception $e) {
-            $this->assertNoException($e);
+            $this->assertNotException($e);
         }
         $this->assertInstanceOf(CanvasObject::class, $response);
     }
@@ -56,9 +47,14 @@ class CanvasPestTest extends TestCase
     public function testGetArray(CanvasPest $pest)
     {
         try {
-            $response = $pest->get('users/self/courses');
+            $response = $pest->get(
+                'users/' . getenv('CANVASPEST_USER_ID') . '/calendar_events',
+                [
+                    'start_date' => '2017-06-01',
+                    'end_date' => '2017-07-01'
+                ]);
         } catch (Exception $e) {
-            $this->assertNoException($e);
+            $this->assertNotException($e);
         }
         $this->assertInstanceOf(CanvasArray::class, $response);
     }
@@ -74,7 +70,7 @@ class CanvasPestTest extends TestCase
                 'calendar_event[title]' => 'CanvasPest testPostObject'
             ]);
         } catch (Exception $e) {
-            $this->assertNoException($e);
+            $this->assertNotException($e);
         }
         $this->assertInstanceOf(CanvasObject::class, $response);
 
@@ -91,7 +87,7 @@ class CanvasPestTest extends TestCase
                 'calendar_event[description]' => 'CanvasPest testPutObject'
             ]);
         } catch (Exception $e) {
-            $this->assertNoException($e);
+            $this->assertNotException($e);
         }
         $this->assertInstanceOf(CanvasObject::class, $response);
         $wrapper->response = $response;
@@ -108,25 +104,19 @@ class CanvasPestTest extends TestCase
                 'cancel_reason' => 'testDeleteObject'
             ]);
         } catch (Exception $e) {
-            $this->assertNoException($e);
+            $this->assertNotException($e);
         }
         $this->assertInstanceOf(CanvasObject::class, $response);
     }
 
-    /**
-     * @depends testInstantiation
-     */
-    public function testPostObjectDuplicate(CanvasPest $pest)
+    public function testDeleteObjectWithParamsPath()
     {
-        return $this->testPostObject($pest);
-    }
-
-    /**
-     * @depends testPostObjectDuplicate
-     */
-    public function testDeleteObjectWithParamsPath(CanvasPestWrapper $wrapper)
-    {
-        return $this->testDeleteObject($wrapper, '?foo=bar');
+        return $this->testDeleteObject(
+            $this->testPostObject(
+                $this->testInstantiation()
+            ),
+            '?foo=bar'
+        );
     }
 
     /**
@@ -136,6 +126,7 @@ class CanvasPestTest extends TestCase
     {
         try {
             $response = $pest->patch('foo/bar');
+            $this->assertException(CanvasPest_Exception::class);
         } catch (Exception $e) {
             $this->assertInstanceOf(CanvasPest_Exception::class, $e);
             $this->assertEquals(CanvasPest_Exception::UNSUPPORTED_METHOD, $e->getCode());
@@ -144,10 +135,19 @@ class CanvasPestTest extends TestCase
 
     public function testInvalidJsonResponse()
     {
-        $pest = new CanvasPest(substr(getenv('CANVASPEST_URL'), 0, -7), getenv('CANVASPEST_TOKEN'));
+        try {
+            $pest = new CanvasPest(
+                substr(getenv('CANVASPEST_URL'), 0, -7),
+                getenv('CANVASPEST_TOKEN')
+            );
+        } catch (Exception $e) {
+            $this->assertNotException($e);
+        }
+
         $response = false;
         try {
             $response = $pest->get('login');
+            $this->assertException(CanvasPest_Exception::class);
         } catch (Exception $e) {
             $this->assertInstanceOf(CanvasPest_Exception::class, $e);
             $this->assertEquals(CanvasPest_Exception::INVALID_JSON_RESPONSE, $e->getCode());
@@ -159,6 +159,7 @@ class CanvasPestTest extends TestCase
         $pest = new CanvasPest(getenv('CANVASPEST_URL'));
         try {
             $pest->setupToken("");
+            $this->assertException(CanvasPest_Exception::class);
         } catch (Exception $e) {
             $this->assertInstanceOf(CanvasPest_Exception::class, $e);
             $this->assertEquals(CanvasPest_Exception::INVALID_TOKEN, $e->getCode());

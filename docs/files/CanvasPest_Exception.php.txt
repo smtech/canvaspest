@@ -9,7 +9,7 @@ namespace smtech\CanvasPest;
  *
  * @author Seth Battis <SethBattis@stmarksschool.org>
  **/
-class CanvasPest_Exception extends \Exception
+class /* @codingStandardsIgnoreStart */ CanvasPest_Exception /* @codingStandardsIgnoreEnd */ extends \Exception
 {
     /** The API access method is not supported by the Canvas API */
     const UNSUPPORTED_METHOD = 1;

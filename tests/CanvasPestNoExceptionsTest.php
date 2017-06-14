@@ -22,7 +22,7 @@ class CanvasPestNoExceptionsTest extends CanvasPestTest
         try {
             $response = $pest->get('login');
         } catch (Exception $e) {
-            $this->assertNoException($e);
+            $this->assertNotException($e);
         }
         $this->assertFalse($response);
     }
@@ -35,7 +35,7 @@ class CanvasPestNoExceptionsTest extends CanvasPestTest
         try {
             $response = $pest->setupToken("");
         } catch (Exception $e) {
-            $this->assertNoException($e);
+            $this->assertNotException($e);
         }
         $this->assertFalse($response);
     }
@@ -49,7 +49,7 @@ class CanvasPestNoExceptionsTest extends CanvasPestTest
         try {
             $response = $pest->patch('foo/bar');
         } catch (Exception $e) {
-            $this->assertNoException($e);
+            $this->assertNotException($e);
         }
         $this->assertFalse($response);
     }
