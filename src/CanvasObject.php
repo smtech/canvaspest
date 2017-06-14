@@ -48,7 +48,8 @@ class CanvasObject implements \ArrayAccess, \Serializable
      *
      * @return bool
      *
-     * @see http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members Property overloading
+     * @see http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members
+     *      Property overloading
      **/
     public function __isset($key)
     {
@@ -62,7 +63,8 @@ class CanvasObject implements \ArrayAccess, \Serializable
      *
      * @return mixed
      *
-     * @see http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members Property overloading
+     * @see http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members
+     *      Property overloading
      **/
     public function __get($key)
     {
@@ -81,7 +83,8 @@ class CanvasObject implements \ArrayAccess, \Serializable
      *
      * @throws CanvasObject_Exception IMMUTABLE All calls to this method will cause an exception
      *
-     * @see http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members Property overloading
+     * @see http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members
+     *      Property overloading
      **/
     public function __set($key, $value)
     {
@@ -102,7 +105,8 @@ class CanvasObject implements \ArrayAccess, \Serializable
      *
      * @throws CanvasObject_Exception IMMUTABLE All calls to this method will cause an exception
      *
-     * @see http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members Property overloading
+     * @see http://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members
+     *      Property overloading
      **/
     public function __unset($key)
     {

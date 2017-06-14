@@ -67,7 +67,7 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
         /* parse the JSON response string */
         $key = $this->key;
         foreach (json_decode($jsonResponse, true) as $item) {
-            $this->data[$key++] = new CanvasObject($item, $this->api);
+            $this->data[$key++] = new CanvasObject($item);
         }
     }
 
@@ -162,7 +162,7 @@ class CanvasArray implements \Iterator, \ArrayAccess, \Serializable
 
         /* welp, here goes... let's hope we have a next page! */
         while ($nextPageNumber !== false) {
-            $this->requestPageNumber($nextPageNumber, true);
+            $this->requestPageNumber($nextPageNumber, $forceRefresh);
             if (isset($this->paginationPerPage[$nextPageNumber][CanvasPageLink::NEXT])) {
                 $nextPageNumber = $this->paginationPerPage[$nextPageNumber][CanvasPageLink::NEXT]->getPageNumber();
             } else {
